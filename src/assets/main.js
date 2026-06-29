@@ -328,7 +328,7 @@ void main(){
   vec2 sp=vUv; sp.x*=ca;
   vec2 mp=u_mouse; mp.x*=ca;
   float ld=distance(sp,mp);
-  float reveal=u_hover*smoothstep(0.24,0.09,ld); // 1 inside lens -> 0 outside
+  float reveal=u_hover*smoothstep(0.40,0.18,ld); // 1 inside lens -> 0 outside
   float fx=1.0-reveal;                            // shader strength (0 inside lens)
   // ambient flow distortion (everywhere except inside the lens)
   float n=noise(uv*3.2+u_time*0.28);
@@ -344,7 +344,7 @@ void main(){
   col=mix(col,u_accent*pow(lum,0.9)*1.25,0.16*fx);
   col+=u_accent*0.045*fx;
   // faint accent rim around the lens edge
-  col += u_accent*0.5*u_hover*smoothstep(0.018,0.0,abs(ld-0.16));
+  col += u_accent*0.5*u_hover*smoothstep(0.02,0.0,abs(ld-0.30));
   vec2 d=abs(vUv-0.5);
   float ex=smoothstep(0.5,0.40,d.x), ey=smoothstep(0.5,0.40,d.y);
   gl_FragColor=vec4(col, ex*ey);
