@@ -34,12 +34,28 @@ const head = ({ title, desc, slug }) => {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="${url}">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="${esc(site.name)}">
+<meta property="og:locale" content="en">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${url}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(desc)}">
 <meta name="theme-color" content="#0a0a0f">
+<script type="application/ld+json">${JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: site.name,
+  url: `https://${site.domain}/`,
+  email: site.email,
+  description: site.description,
+  address: { "@type": "PostalAddress", addressCountry: "FI" },
+  knowsAbout: ["Virtual Reality Training", "Computer Vision", "AI", "Business Process Automation"],
+})}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -462,7 +478,28 @@ async function build() {
   // 404 -> reuse home (nice for static hosts)
   await fs.writeFile(path.join(DIST, "404.html"), homePage(), "utf8");
 
-  console.log("✓ Built:", ["/", ...projects.map((p) => "/" + p.slug)].join("  "));
+  // SEO: robots.txt + sitemap.xml
+  const base = `https://${site.domain}`;
+  const today = new Date().toISOString().slice(0, 10);
+  await fs.writeFile(
+    path.join(DIST, "robots.txt"),
+    `User-agent: *\nAllow: /\n\nSitemap: ${base}/sitemap.xml\n`,
+    "utf8"
+  );
+  const urls = ["", ...projects.map((p) => p.slug)];
+  const sitemap =
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    urls
+      .map(
+        (u) =>
+          `  <url>\n    <loc>${base}/${u}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${u === "" ? "1.0" : "0.8"}</priority>\n  </url>`
+      )
+      .join("\n") +
+    `\n</urlset>\n`;
+  await fs.writeFile(path.join(DIST, "sitemap.xml"), sitemap, "utf8");
+
+  console.log("✓ Built:", ["/", ...projects.map((p) => "/" + p.slug)].join("  "), "+ sitemap.xml, robots.txt");
 }
 
 build().catch((e) => {
