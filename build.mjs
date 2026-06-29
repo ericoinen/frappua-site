@@ -269,7 +269,7 @@ const homePage = () => {
     slug: "",
   })}
 <body data-page="home">
-${preloader()}${pageCover()}${cursor()}${progress()}${noise()}
+${preloader()}${pageCover()}${progress()}${noise()}
 ${nav(null)}
 <main>
   <section class="hero hero--home hero--cinematic">
@@ -369,7 +369,7 @@ const projectPage = (p) => {
     slug: p.slug,
   })}
 <body data-page="project" data-project="${p.slug}" style="${accent}">
-${preloader()}${pageCover()}${cursor()}${progress()}${noise()}
+${preloader()}${pageCover()}${progress()}${noise()}
 ${nav(p.slug)}
 <main>
   <section class="hero hero--project${p.hero.hasVideo ? " hero--cinematic" : ""}">
