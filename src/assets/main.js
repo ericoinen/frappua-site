@@ -324,21 +324,27 @@ void main(){
   float ca=u_res.x/u_res.y;
   vec2 scale = ca>u_vaspect ? vec2(1.0,u_vaspect/ca) : vec2(ca/u_vaspect,1.0);
   vec2 uv=(vUv-0.5)*scale+0.5;
-  // hover REMOVES the shader -> clean, true-colour footage on hover
-  float fx = 1.0 - u_hover;
-  float n=noise(uv*3.0+u_time*0.25);
-  vec2 dir=uv-u_mouse; float dist=length(dir);
-  float ripple=smoothstep(0.45,0.0,dist)*0.012*fx;
-  uv += normalize(dir+1e-4)*sin(dist*26.0-u_time*3.2)*ripple;
-  uv += (n-0.5)*(0.005+u_vel*0.03)*fx;
-  float ab=(0.0022+u_vel*0.022+ripple*1.1)*fx;
+  // SPOTLIGHT LENS: a clean circle of true footage follows the cursor.
+  vec2 sp=vUv; sp.x*=ca;
+  vec2 mp=u_mouse; mp.x*=ca;
+  float ld=distance(sp,mp);
+  float reveal=u_hover*smoothstep(0.24,0.09,ld); // 1 inside lens -> 0 outside
+  float fx=1.0-reveal;                            // shader strength (0 inside lens)
+  // ambient flow distortion (everywhere except inside the lens)
+  float n=noise(uv*3.2+u_time*0.28);
+  float t=u_time*2.2;
+  uv += (n-0.5)*(0.008+u_vel*0.03)*fx;
+  uv += vec2(noise(uv*5.0+t)-0.5, noise(uv*5.0-t)-0.5)*0.005*fx;
+  float ab=(0.003+u_vel*0.022)*fx;
   vec3 col;
   col.r=texture2D(u_tex,uv+vec2(ab,0.0)).r;
   col.g=texture2D(u_tex,uv).g;
   col.b=texture2D(u_tex,uv-vec2(ab,0.0)).b;
   float lum=dot(col,vec3(0.299,0.587,0.114));
-  col=mix(col,u_accent*pow(lum,0.9)*1.25,0.13*fx);
-  col+=u_accent*0.035*fx;
+  col=mix(col,u_accent*pow(lum,0.9)*1.25,0.16*fx);
+  col+=u_accent*0.045*fx;
+  // faint accent rim around the lens edge
+  col += u_accent*0.5*u_hover*smoothstep(0.018,0.0,abs(ld-0.16));
   vec2 d=abs(vUv-0.5);
   float ex=smoothstep(0.5,0.40,d.x), ey=smoothstep(0.5,0.40,d.y);
   gl_FragColor=vec4(col, ex*ey);
@@ -384,7 +390,7 @@ void main(){
     new IntersectionObserver((es) => { visible = es[0].isIntersecting; }).observe(hero);
     const render = (ts) => {
       if (t0 === null) t0 = ts;
-      hover += (thover - hover) * 0.07; mx += (tmx - mx) * 0.06; my += (tmy - my) * 0.06;
+      hover += (thover - hover) * 0.12; mx += (tmx - mx) * 0.2; my += (tmy - my) * 0.2;
       vel += (scrollV - vel) * 0.1;
       if (visible && ready && video.readyState >= 2) {
         gl.bindTexture(gl.TEXTURE_2D, tex);
