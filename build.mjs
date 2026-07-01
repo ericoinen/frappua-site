@@ -56,6 +56,7 @@ const head = ({ title, desc, slug }) => {
   email: site.email,
   description: site.description,
   identifier: { "@type": "PropertyValue", propertyID: "Y-tunnus", value: site.businessId },
+  vatID: site.vat,
   address: { "@type": "PostalAddress", addressLocality: "Helsinki", addressCountry: "FI" },
   knowsAbout: ["Virtual Reality Training", "Computer Vision", "AI", "Business Process Automation"],
 })}</script>
@@ -113,6 +114,7 @@ const contact = () => `
       <div class="contact__meta">
         <div class="contact__row"><span>Company</span><p>${site.name}<br><i>Finnish micro-enterprise</i></p></div>
         <div class="contact__row"><span>Business ID</span><p>${site.businessId}<br><i>Y-tunnus</i></p></div>
+        <div class="contact__row"><span>VAT</span><p>${site.vat}<br><i>ALV-numero</i></p></div>
         <div class="contact__row"><span>Location</span><p>${site.location}</p></div>
         <div class="contact__row"><span>We work with</span><p class="contact__tags">${capabilities
           .map((c) => `<b>${esc(c)}</b>`)
@@ -130,7 +132,7 @@ const footer = () => `
       <div class="footer__links">
         ${projects.map((p) => `<a href="/${p.slug}" data-magnetic>${esc(p.name)}</a>`).join("")}
       </div>
-      <p class="footer__copy">© ${new Date().getFullYear() === 2026 ? "2026" : "2025"} ${site.name} · Business ID ${site.businessId} — ${esc(site.tagline)}</p>
+      <p class="footer__copy">© ${new Date().getFullYear() === 2026 ? "2026" : "2025"} ${site.name} · Business ID ${site.businessId} · VAT ${site.vat} — ${esc(site.tagline)}</p>
     </div>
   </div>
 </footer>`;

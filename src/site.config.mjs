@@ -10,6 +10,7 @@ export const site = {
   email: "info@frappua.win",
   location: "Helsinki, Finland",
   businessId: "2775290-7",
+  vat: "FI27752907",
   tagline: "XR, AI & Digital Innovation from Finland",
   description:
     "Frappua! develops digital products across virtual reality training, computer vision, business automation and technology workshops.",
