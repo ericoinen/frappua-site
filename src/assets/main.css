@@ -139,6 +139,7 @@ em.acc{font-family:var(--serif);font-style:italic}
 .nav.is-hidden{transform:translateY(-105%);transition:transform .5s var(--ease)}
 .nav__logo{display:inline-flex;align-items:center;gap:.5em;font-family:var(--disp);
   font-size:1.4rem;font-weight:600;letter-spacing:-.02em}
+.nav__logo-txt em{font-family:var(--serif);font-style:italic;color:var(--c)}
 .logo-mark{width:1.15em;height:1.15em;flex-shrink:0;display:block}
 .logo-mark .mk-f{fill:currentColor}
 .logo-mark .mk-b{fill:var(--c)}

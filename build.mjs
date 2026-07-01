@@ -89,7 +89,7 @@ const progress = () => `<div class="scroll-progress" id="scrollProgress" aria-hi
 
 const nav = (activeSlug) => `
 <header class="nav" id="nav">
-  <a href="/" class="nav__logo" data-magnetic aria-label="Frappua — home">${logoMark()}<span class="nav__logo-txt">Frappua</span></a>
+  <a href="/" class="nav__logo" data-magnetic aria-label="Frappua — home">${logoMark()}<span class="nav__logo-txt">Frappua<em>!</em></span></a>
   <nav class="nav__links" id="navLinks">
     ${projects
       .map(
