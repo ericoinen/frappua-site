@@ -66,6 +66,10 @@ const head = ({ title, desc, slug }) => {
 </head>`;
 };
 
+/* ---------- brand mark (the F! logo) ---------- */
+const logoMark = (cls = "logo-mark") =>
+  `<svg class="${cls}" viewBox="14 13 37 37" aria-hidden="true"><g class="mk-f"><rect x="18" y="15" width="7" height="33" rx="1.5"/><rect x="18" y="15" width="20" height="7" rx="1.5"/><rect x="18" y="28" width="15" height="6" rx="1.5"/></g><g class="mk-b"><rect x="41" y="15" width="6" height="23" rx="2"/><circle cx="44" cy="45" r="3.4"/></g></svg>`;
+
 /* ---------- chrome: preloader, cursor, progress, nav, footer ---------- */
 const preloader = () => `
 <div class="preloader" id="preloader" aria-hidden="true">
@@ -83,7 +87,7 @@ const progress = () => `<div class="scroll-progress" id="scrollProgress" aria-hi
 
 const nav = (activeSlug) => `
 <header class="nav" id="nav">
-  <a href="/" class="nav__logo" data-magnetic>Frappua<span>!</span></a>
+  <a href="/" class="nav__logo" data-magnetic aria-label="Frappua — home">${logoMark()}<span class="nav__logo-txt">Frappua</span></a>
   <nav class="nav__links" id="navLinks">
     ${projects
       .map(
