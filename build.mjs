@@ -46,6 +46,8 @@ const head = ({ title, desc, slug }) => {
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc)}">
 <meta name="theme-color" content="#0a0a0f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
 <script type="application/ld+json">${JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -463,6 +465,7 @@ async function build() {
   await fs.copyFile(path.join(__dirname, "src/assets/main.css"), path.join(DIST, "assets/main.css"));
   await fs.copyFile(path.join(__dirname, "src/assets/main.js"), path.join(DIST, "assets/main.js"));
   await copyDir(path.join(__dirname, "src/assets/vendor"), path.join(DIST, "assets/vendor"));
+  await fs.copyFile(path.join(__dirname, "src/assets/favicon.svg"), path.join(DIST, "favicon.svg"));
 
   // media
   await copyDir(path.join(__dirname, "Videos"), path.join(DIST, "Videos"));
