@@ -1,5 +1,5 @@
 /* ============================================================
-   Frappua! — design system
+   Frappua! - design system
    ============================================================ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
@@ -391,7 +391,7 @@ body.webgl-on .hero__mesh{opacity:0}
 }
 
 /* ============================================================
-   MODERN LAYER — spotlight cards, ⌘K palette, tilt, stats, chars
+   MODERN LAYER - spotlight cards, ⌘K palette, tilt, stats, chars
    ============================================================ */
 
 /* ---------- cursor spotlight on cards (Linear-style) ---------- */

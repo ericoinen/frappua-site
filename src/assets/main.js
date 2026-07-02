@@ -1,5 +1,5 @@
 /* ============================================================
-   Frappua! — interaction layer
+   Frappua! - interaction layer
    Progressive enhancement: if GSAP/Lenis are missing, content
    still shows (see .no-anim fallback at the bottom).
    ============================================================ */
@@ -739,7 +739,7 @@ void main(){
   window.addEventListener("DOMContentLoaded", () => {
     initTransitionClicks();
     loadSequence();
-    // safety net — fires only if the preloader truly hung (it finishes in ~1.5s)
+    // safety net - fires only if the preloader truly hung (it finishes in ~1.5s)
     setTimeout(() => {
       if (!started) {
         const pl = document.getElementById("preloader");

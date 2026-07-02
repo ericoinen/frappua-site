@@ -240,7 +240,7 @@ const ctaButton = (cta, big = false) =>
     ? ""
     : `<a href="${cta.href}" class="btn btn--primary${big ? " btn--lg" : ""}"${cta.external ? ' target="_blank" rel="noopener"' : ""} data-magnetic>${esc(cta.label)} ${icons.arrowUpRight}</a>`;
 
-// "Also from Frappua" — shows the other projects as interactive rows
+// "Also from Frappua" - shows the other projects as interactive rows
 const otherProjects = (currentSlug, heading = "Also from Frappua") => {
   const others = projects.filter((p) => p.slug !== currentSlug);
   return `

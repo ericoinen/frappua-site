@@ -1,4 +1,4 @@
-# Frappua! — site
+# Frappua! - site
 
 Multi-page marketing site. One codebase, separate landing pages per project so each
 can be submitted as its own grant URL.
@@ -15,7 +15,7 @@ can be submitted as its own grant URL.
 
 ## How it works
 
-Pages are **generated** from a template + content model — edit content in one place,
+Pages are **generated** from a template + content model - edit content in one place,
 rebuild, and every page updates.
 
 ```
@@ -26,7 +26,7 @@ src/assets/main.js    ← animations (Lenis smooth scroll, GSAP, cursor, etc.)
 src/assets/vendor/    ← GSAP + ScrollTrigger + Lenis (vendored, no CDN needed)
 build.mjs             ← generator
 Videos/               ← media (copied into the build)
-dist/                 ← GENERATED output — deploy this folder
+dist/                 ← GENERATED output - deploy this folder
 ```
 
 ## Commands

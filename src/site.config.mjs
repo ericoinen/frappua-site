@@ -1,5 +1,5 @@
 // ============================================================
-//  Frappua! — site content model
+//  Frappua! - site content model
 //  Edit content here; run `npm run build` (or `node build.mjs`)
 //  to regenerate all pages into /dist.
 // ============================================================
@@ -16,7 +16,7 @@ export const site = {
     "Frappua! develops digital products across virtual reality training, computer vision, business automation and technology workshops.",
 };
 
-// Order matters — used for nav, project galleries and "other projects".
+// Order matters - used for nav, project galleries and "other projects".
 export const projects = [
   {
     slug: "safeskillvr",
