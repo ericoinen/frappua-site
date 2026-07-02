@@ -202,7 +202,7 @@
   function scramble(el) {
     if (el.dataset.scrambled) return;
     el.dataset.scrambled = "1";
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789·×/—";
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789·×/+";
     const final = el.textContent;
     const total = final.length;
     let frame = 0;
@@ -535,7 +535,7 @@ void main(){
     });
     items.push(
       { label: "Contact", hint: "Section", icon: icMail, href: "/#contact" },
-      { label: "Email us — info@frappua.win", hint: "Action", icon: icMail, href: "mailto:info@frappua.win" },
+      { label: "Email us · info@frappua.win", hint: "Action", icon: icMail, href: "mailto:info@frappua.win" },
       { label: "Copy email address", hint: "Action", icon: icCopy, action: "copy" },
       { label: "Visit aicameras.win", hint: "External", icon: icExt, href: "https://aicameras.win/", ext: true }
     );

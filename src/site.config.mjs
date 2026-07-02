@@ -30,7 +30,7 @@ export const projects = [
       kicker: "Immersive training",
       title: ["Train in", "virtual reality,", "perform in", "the real world"],
       lead:
-        "SafeSkillVR combines immersive VR simulation with an AI assistant so workers learn practical warehouse and logistics tasks in a safe, repeatable and measurable environment — before they ever step onto the floor.",
+        "SafeSkillVR combines immersive VR simulation with an AI assistant so workers learn practical warehouse and logistics tasks in a safe, repeatable and measurable environment, before they ever step onto the floor.",
       hasVideo: true,
     },
     summary:
@@ -53,7 +53,7 @@ export const projects = [
       lead:
         "A digital training environment where warehouse work can be practised, repeated and measured.",
       body:
-        "The trainee performs tasks step by step in VR while the AI assistant provides guidance, explanations and feedback. The system tracks performance indicators — task completion, time, mistakes, safety violations and the number of AI interventions — turning every session into structured, comparable data.",
+        "The trainee performs tasks step by step in VR while the AI assistant provides guidance, explanations and feedback. The system tracks performance indicators such as task completion, time, mistakes, safety violations and the number of AI interventions, turning every session into structured, comparable data.",
     },
     features: [
       { icon: "vr", title: "Immersive VR training", text: "Practise warehouse work in a realistic virtual environment and build confidence before entering operational settings." },
@@ -75,7 +75,7 @@ export const projects = [
       ],
     },
     statusBanner: {
-      title: "Current status — Prototype",
+      title: "Current status: Prototype",
       text:
         "The existing prototype demonstrates VR-based warehouse training with an AI assistant. The next phase focuses on transport-related scenarios, training analytics, user validation and pilot preparation.",
     },
@@ -94,11 +94,11 @@ export const projects = [
       kicker: "Computer vision",
       title: ["Cameras that", "understand", "what they", "see"],
       lead:
-        "We build practical computer vision solutions that let cameras understand scenes, monitor environments and surface meaningful information — instead of endless video you have to watch yourself.",
+        "We build practical computer vision solutions that let cameras understand scenes, monitor environments and surface meaningful information, instead of endless video you have to watch yourself.",
       hasVideo: false,
     },
     summary:
-      "Practical computer vision solutions that transform cameras into intelligent assistants — understanding visual scenes, monitoring environments and reporting only what matters.",
+      "Practical computer vision solutions that transform cameras into intelligent assistants that understand visual scenes, monitor environments and report only what matters.",
     problem: {
       title: "The shift",
       lead: "Cameras should do more than record video.",
@@ -120,10 +120,10 @@ export const projects = [
     },
     features: [
       { icon: "eye", title: "Scene understanding", text: "Cameras interpret what they see and turn raw video into meaningful, structured information." },
-      { icon: "ai", title: "Natural language", text: "Describe what to monitor in plain words — no rules engines, no specialist configuration." },
+      { icon: "ai", title: "Natural language", text: "Describe what to monitor in plain words. No rules engines, no specialist configuration." },
       { icon: "bell", title: "Meaningful alerts", text: "Receive notifications only when something important happens, instead of watching live feeds." },
       { icon: "flow", title: "Flexible scenarios", text: "Automate visual inspection and adapt monitoring to each customer's operational needs." },
-      { icon: "camera", title: "Reuse your cameras", text: "Integrate with existing IP cameras — often no new hardware required." },
+      { icon: "camera", title: "Reuse your cameras", text: "Integrate with existing IP cameras, often with no new hardware required." },
       { icon: "cloud", title: "Cloud or on-prem", text: "Deploy in the cloud or fully on-premise, depending on privacy and infrastructure needs." },
     ],
     productCards: [
@@ -145,7 +145,7 @@ export const projects = [
       tags: ["Consumers & hobbyists", "Small businesses", "Industrial operations", "Warehouses & logistics", "Safety & quality teams", "Existing IP-camera fleets"],
     },
     statusBanner: {
-      title: "Current status — Active",
+      title: "Current status: Active",
       text:
         "AI Cameras is in active development, delivering practical computer vision for both consumers and organisations, with cloud and on-premise deployment options.",
     },
@@ -164,7 +164,7 @@ export const projects = [
       kicker: "Learning by doing",
       title: ["Discover what", "new tech can", "do for", "your work"],
       lead:
-        "Hands-on workshop sessions that introduce participants to the possibilities of emerging technologies — VR, AI, computer vision, automation — and explore how they apply to your specific business challenges.",
+        "Hands-on workshop sessions that introduce participants to the possibilities of emerging technologies such as VR, AI, computer vision and automation, and explore how they apply to your specific business challenges.",
       hasVideo: false,
     },
     summary:
@@ -195,7 +195,7 @@ export const projects = [
       kicker: "Process automation",
       title: ["Automate the", "repetitive,", "focus on", "what matters"],
       lead:
-        "AutomateNow helps organisations streamline operations by automating repetitive tasks and workflows — increasing efficiency and reducing manual effort across business processes.",
+        "AutomateNow helps organisations streamline operations by automating repetitive tasks and workflows, increasing efficiency and reducing manual effort across business processes.",
       hasVideo: false,
     },
     summary:

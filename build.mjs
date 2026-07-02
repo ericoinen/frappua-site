@@ -89,7 +89,7 @@ const progress = () => `<div class="scroll-progress" id="scrollProgress" aria-hi
 
 const nav = (activeSlug) => `
 <header class="nav" id="nav">
-  <a href="/" class="nav__logo" data-magnetic aria-label="Frappua — home">${logoMark()}<span class="nav__logo-txt">Frappua<em>!</em></span></a>
+  <a href="/" class="nav__logo" data-magnetic aria-label="Frappua home">${logoMark()}<span class="nav__logo-txt">Frappua<em>!</em></span></a>
   <nav class="nav__links" id="navLinks">
     ${projects
       .map(
@@ -133,7 +133,7 @@ const footer = () => `
       <div class="footer__links">
         ${projects.map((p) => `<a href="/${p.slug}" data-magnetic>${esc(p.name)}</a>`).join("")}
       </div>
-      <p class="footer__copy">© ${new Date().getFullYear() === 2026 ? "2026" : "2025"} ${site.name} · Business ID ${site.businessId} · VAT ${site.vat} — ${esc(site.tagline)}</p>
+      <p class="footer__copy">© ${new Date().getFullYear() === 2026 ? "2026" : "2025"} ${site.name} · Business ID ${site.businessId} · VAT ${site.vat} · ${esc(site.tagline)}</p>
     </div>
   </div>
 </footer>`;
@@ -275,7 +275,7 @@ const otherProjects = (currentSlug, heading = "Also from Frappua") => {
 const homePage = () => {
   const heroVideoProject = projectBySlug.safeskillvr;
   return `${head({
-    title: "Frappua! — XR, AI & Digital Innovation Studio",
+    title: "Frappua! · XR, AI & Digital Innovation Studio",
     desc: site.description,
     slug: "",
   })}
@@ -305,7 +305,7 @@ ${nav(null)}
   <section class="section manifesto" id="manifesto">
     <div class="wrap">
       <p class="eyebrow reveal">What we do</p>
-      <p class="manifesto__text" data-split>Frappua! turns emerging technology — virtual reality, computer vision, AI assistants and automation — into practical products that organisations can actually use, measure and trust.</p>
+      <p class="manifesto__text" data-split>Frappua! turns emerging technology like virtual reality, computer vision, AI assistants and automation into practical products that organisations can actually use, measure and trust.</p>
     </div>
   </section>
 
@@ -328,7 +328,7 @@ ${nav(null)}
       </div>
       <div class="approach__items">
         ${[
-          ["Practical AI, not research demos", "We ship products that solve real operational problems — not prototypes that never leave the lab."],
+          ["Practical AI, not research demos", "We ship products that solve real operational problems, not prototypes that never leave the lab."],
           ["Built to be measured", "Every solution produces data you can act on: training records, detected events, process metrics."],
           ["Reuse what you have", "We integrate with existing hardware and workflows where possible, keeping adoption fast and affordable."],
           ["Cloud or on-premise", "You choose where things run, depending on your privacy, infrastructure and compliance needs."],
@@ -384,7 +384,7 @@ const homeWork = () => `
 const projectPage = (p) => {
   const accent = `--c:${p.color};--crgb:${p.colorRGB}`;
   return `${head({
-    title: `${p.name} — ${p.tagline} · Frappua!`,
+    title: `${p.name} · ${p.tagline} · Frappua!`,
     desc: p.summary,
     slug: p.slug,
   })}
