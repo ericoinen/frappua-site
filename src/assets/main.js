@@ -412,6 +412,206 @@ void main(){
     setTimeout(() => { if (!on) fallback(); }, 3500);
   }
 
+  /* ============================================================
+     MODERN LAYER
+     ============================================================ */
+
+  /* ---------- cursor spotlight on cards ---------- */
+  function initGlow() {
+    if (isTouch) return;
+    document.querySelectorAll(".feature,.prod,.ps__col,.soon,.stat,.contact__row").forEach((c) => {
+      c.classList.add("glow");
+      c.addEventListener("mousemove", (e) => {
+        const r = c.getBoundingClientRect();
+        c.style.setProperty("--gx", ((e.clientX - r.left) / r.width) * 100 + "%");
+        c.style.setProperty("--gy", ((e.clientY - r.top) / r.height) * 100 + "%");
+      });
+    });
+  }
+
+  /* ---------- 3D tilt with depth ---------- */
+  function initTilt() {
+    if (isTouch || reduced) return;
+    document.querySelectorAll(".prod").forEach((el) => {
+      el.classList.add("tilt");
+      const max = 5;
+      el.addEventListener("mousemove", (e) => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transition = "none";
+        el.style.transform = `perspective(900px) rotateX(${-py * max}deg) rotateY(${px * max}deg)`;
+      });
+      el.addEventListener("mouseleave", () => {
+        el.style.transition = "";
+        el.style.transform = "";
+      });
+    });
+  }
+
+  /* ---------- char-split section titles ---------- */
+  function initCharTitles() {
+    if (!hasGSAP || !window.ScrollTrigger || reduced) return;
+    document.querySelectorAll(".sec-head .h-lg, .contact .h-lg").forEach((el) => {
+      const walk = (node) => {
+        [...node.childNodes].forEach((n) => {
+          if (n.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            n.textContent.split("").forEach((ch) => {
+              if (ch === " ") { frag.appendChild(document.createTextNode(" ")); return; }
+              const s = document.createElement("span");
+              s.className = "ch"; s.textContent = ch;
+              frag.appendChild(s);
+            });
+            n.replaceWith(frag);
+          } else if (n.nodeType === 1 && n.tagName !== "BR") walk(n);
+        });
+      };
+      walk(el);
+      const chars = el.querySelectorAll(".ch");
+      window.ScrollTrigger.create({
+        trigger: el, start: "top 86%", once: true,
+        onEnter: () => {
+          el.classList.add("chars-in");
+          window.gsap.fromTo(chars,
+            { y: "1.05em", opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.7, ease: "power4.out", stagger: 0.016 });
+        },
+      });
+    });
+  }
+
+  /* ---------- animated counters ---------- */
+  function initCounters() {
+    const els = document.querySelectorAll(".stat__num[data-count]");
+    if (!els.length) return;
+    const setFinal = (el) => { el.textContent = el.dataset.count + (el.dataset.suffix || ""); };
+    if (!hasGSAP || !window.ScrollTrigger || reduced) { els.forEach(setFinal); return; }
+    els.forEach((el) => {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || "";
+      window.ScrollTrigger.create({
+        trigger: el, start: "top 90%", once: true,
+        onEnter: () => {
+          const o = { v: 0 };
+          window.gsap.to(o, {
+            v: target, duration: 1.6, ease: "power3.out",
+            onUpdate: () => { el.textContent = Math.round(o.v) + suffix; },
+          });
+        },
+      });
+    });
+  }
+
+  /* ---------- ⌘K command palette ---------- */
+  function initCmdk() {
+    const isMac = /Mac|iPhone|iPad/.test(navigator.platform || "");
+    const keyEl = document.getElementById("cmdkKey");
+    if (keyEl && isMac) keyEl.textContent = "⌘";
+
+    // build overlay
+    const wrap = document.createElement("div");
+    wrap.className = "cmdk"; wrap.id = "cmdk";
+    wrap.innerHTML = `<div class="cmdk__panel" role="dialog" aria-label="Command menu">
+      <input class="cmdk__input" id="cmdkInput" type="text" placeholder="Where to? Type to search…" autocomplete="off" spellcheck="false">
+      <ul class="cmdk__list" id="cmdkList"></ul>
+      <div class="cmdk__foot"><span><kbd>↑↓</kbd> navigate</span><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span></div>
+    </div>`;
+    document.body.appendChild(wrap);
+    const input = wrap.querySelector("#cmdkInput");
+    const list = wrap.querySelector("#cmdkList");
+
+    const ic = (p) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+    const icPage = ic('<path d="M5 12h14M13 6l6 6-6 6"/>');
+    const icMail = ic('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>');
+    const icCopy = ic('<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/>');
+    const icExt = ic('<path d="M7 17L17 7M8 7h9v9"/>');
+
+    const items = [{ label: "Home", hint: "Page", icon: icPage, href: "/" }];
+    document.querySelectorAll(".nav__links .nav__link").forEach((a) => {
+      items.push({ label: a.textContent.trim(), hint: "Project", icon: icPage, href: a.getAttribute("href") });
+    });
+    items.push(
+      { label: "Contact", hint: "Section", icon: icMail, href: "/#contact" },
+      { label: "Email us — info@frappua.win", hint: "Action", icon: icMail, href: "mailto:info@frappua.win" },
+      { label: "Copy email address", hint: "Action", icon: icCopy, action: "copy" },
+      { label: "Visit aicameras.win", hint: "External", icon: icExt, href: "https://aicameras.win/", ext: true }
+    );
+
+    let filtered = items.slice(), active = 0, open = false;
+
+    const render = () => {
+      list.innerHTML = filtered.length
+        ? filtered.map((it, i) =>
+            `<li class="cmdk__item${i === active ? " is-active" : ""}" data-i="${i}">${it.icon}<span>${it.label}</span><span class="cmdk__hint">${it.hint}</span></li>`
+          ).join("")
+        : `<li class="cmdk__empty">Nothing found</li>`;
+    };
+
+    const openP = () => {
+      open = true; wrap.classList.add("is-open");
+      input.value = ""; filtered = items.slice(); active = 0; render();
+      setTimeout(() => input.focus(), 60);
+      if (lenis) lenis.stop();
+    };
+    const closeP = () => {
+      open = false; wrap.classList.remove("is-open");
+      input.blur();
+      if (lenis && !document.body.classList.contains("menu-open")) lenis.start();
+    };
+    const run = (it) => {
+      if (!it) return;
+      closeP();
+      if (it.action === "copy") {
+        (navigator.clipboard ? navigator.clipboard.writeText("info@frappua.win") : Promise.reject()).catch(() => {});
+        return;
+      }
+      if (it.ext) { window.open(it.href, "_blank", "noopener"); return; }
+      if (it.href.startsWith("/#")) {
+        const t = document.querySelector(it.href.slice(1));
+        if (t) { (lenis ? lenis.scrollTo(t, { offset: -20 }) : t.scrollIntoView({ behavior: "smooth" })); return; }
+      }
+      location.href = it.href;
+    };
+
+    input.addEventListener("input", () => {
+      const q = input.value.trim().toLowerCase();
+      filtered = items.filter((it) => it.label.toLowerCase().includes(q));
+      active = 0; render();
+    });
+    list.addEventListener("click", (e) => {
+      const li = e.target.closest(".cmdk__item");
+      if (li) run(filtered[+li.dataset.i]);
+    });
+    list.addEventListener("mousemove", (e) => {
+      const li = e.target.closest(".cmdk__item");
+      if (li && +li.dataset.i !== active) { active = +li.dataset.i; render(); }
+    });
+    wrap.addEventListener("click", (e) => { if (e.target === wrap) closeP(); });
+
+    const btn = document.getElementById("cmdkBtn");
+    if (btn) btn.addEventListener("click", openP);
+
+    window.addEventListener("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") { e.preventDefault(); open ? closeP() : openP(); return; }
+      if (!open) return;
+      if (e.key === "Escape") { closeP(); }
+      else if (e.key === "ArrowDown") { e.preventDefault(); active = Math.min(active + 1, filtered.length - 1); render(); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); active = Math.max(active - 1, 0); render(); }
+      else if (e.key === "Enter") { e.preventDefault(); run(filtered[active]); }
+    });
+  }
+
+  /* ---------- pause hero video when tab hidden ---------- */
+  function initVisibilityPause() {
+    document.addEventListener("visibilitychange", () => {
+      const v = document.querySelector(".hero__src");
+      if (!v) return;
+      if (document.hidden) v.pause();
+      else { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+    });
+  }
+
   /* ---------- scroll progress ---------- */
   function initProgress() {
     const bar = document.getElementById("scrollProgress");
@@ -435,6 +635,12 @@ void main(){
     initScramble();
     initParallax();
     initMarquee();
+    initGlow();
+    initTilt();
+    initCharTitles();
+    initCounters();
+    initCmdk();
+    initVisibilityPause();
     initProgress();
     // feed scroll velocity into the marquee + video shader
     const onVel = (v) => { scrollV += (Math.min(1, Math.abs(v) / 30) - scrollV) * 0.4; marqueeVelocity(v); };

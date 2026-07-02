@@ -97,6 +97,7 @@ const nav = (activeSlug) => `
           `<a href="/${p.slug}" class="nav__link${p.slug === activeSlug ? " is-active" : ""}" data-magnetic>${esc(p.name)}</a>`
       )
       .join("")}
+    <button class="nav__cmdk" id="cmdkBtn" aria-label="Open command menu" title="Quick navigation"><kbd id="cmdkKey">Ctrl</kbd><kbd>K</kbd></button>
     <a href="/#contact" class="nav__cta" data-magnetic>Contact ${icons.arrowUpRight}</a>
   </nav>
   <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span></button>
@@ -305,6 +306,15 @@ ${nav(null)}
     <div class="wrap">
       <p class="eyebrow reveal">What we do</p>
       <p class="manifesto__text" data-split>Frappua! turns emerging technology — virtual reality, computer vision, AI assistants and automation — into practical products that organisations can actually use, measure and trust.</p>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="Company facts">
+    <div class="wrap stats__grid">
+      <div class="stat reveal"><span class="stat__num" data-count="2016">0</span><span class="stat__label">Founded · Helsinki</span></div>
+      <div class="stat reveal"><span class="stat__num" data-count="10" data-suffix="">0</span><span class="stat__label">Years in business</span></div>
+      <div class="stat reveal"><span class="stat__num" data-count="4">0</span><span class="stat__label">Product directions</span></div>
+      <div class="stat reveal"><span class="stat__num stat__num--txt">XR·AI</span><span class="stat__label">Core technologies</span></div>
     </div>
   </section>
 
