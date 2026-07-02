@@ -18,12 +18,12 @@
     if (!el) return done();
     let p = 0;
     const tick = () => {
-      p += Math.max(1, Math.round((100 - p) * 0.08));
+      p += Math.max(2, Math.round((100 - p) * 0.16));
       if (p >= 100) p = 100;
       if (count) count.textContent = p;
       if (bar) bar.style.width = p + "%";
       if (p < 100) {
-        setTimeout(tick, 60 + Math.random() * 70);
+        setTimeout(tick, 40 + Math.random() * 50);
       } else {
         setTimeout(() => {
           el.classList.add("is-done");
@@ -309,6 +309,8 @@ gl_FragColor=vec4(col,1.0);}`;
     const video = stage.querySelector(".hero__src");
     const cv = stage.querySelector(".hero__canvas");
     if (!video || !cv) return;
+    if (cv.dataset.glInit) return; // never double-init the GL pipeline
+    cv.dataset.glInit = "1";
     const fallback = () => { stage.classList.add("is-raw"); cv.style.display = "none"; };
     if (reduced) return fallback();
     const gl = cv.getContext("webgl", { alpha: true, premultipliedAlpha: false }) || cv.getContext("experimental-webgl", { alpha: true, premultipliedAlpha: false });
@@ -660,7 +662,13 @@ void main(){
     set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} },
     del: (k) => { try { sessionStorage.removeItem(k); } catch (e) {} },
   };
-  function start() { document.body.classList.remove("is-loading"); boot(); heroIntro(); }
+  let started = false;
+  function start() {
+    if (started) return; // guard: preloader + safety net must never double-boot
+    started = true;
+    document.body.classList.remove("is-loading");
+    boot(); heroIntro();
+  }
 
   function initTransitionClicks() {
     if (reduced) return;
@@ -731,14 +739,13 @@ void main(){
   window.addEventListener("DOMContentLoaded", () => {
     initTransitionClicks();
     loadSequence();
-    // safety net
+    // safety net — fires only if the preloader truly hung (it finishes in ~1.5s)
     setTimeout(() => {
-      if (document.body.classList.contains("is-loading")) {
-        document.body.classList.remove("is-loading");
+      if (!started) {
         const pl = document.getElementById("preloader");
         if (pl) pl.remove();
         start();
       }
-    }, 4000);
+    }, 7000);
   });
 })();
