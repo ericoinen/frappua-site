@@ -2,7 +2,7 @@
 //  Frappua! static site generator
 //  Usage: node build.mjs
 //  Output: /dist  (deploy this folder)
-//  URLs:   /  /safeskillvr  /aicameras  /workshops  /automatenow
+//  URLs:   /  /safeskillvr  /aicameras  /grimscribe  /workshops  /automatenow
 // ============================================================
 import { promises as fs } from "node:fs";
 import path from "node:path";
@@ -20,6 +20,10 @@ const kineticTitle = (lines, cls = "display") =>
   `<h1 class="${cls}">${lines
     .map((l) => `<span class="line"><span class="line-i">${esc(l)}</span></span>`)
     .join("")}</h1>`;
+
+// Spell out small counts so headings and stats stay in sync with the project list.
+const NUM_WORDS = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+const numWord = (n) => NUM_WORDS[n] || String(n);
 
 const statusChip = (status) =>
   status ? `<span class="chip chip--${status.kind}"><i></i>${esc(status.label)}</span>` : "";
@@ -58,7 +62,7 @@ const head = ({ title, desc, slug }) => {
   identifier: { "@type": "PropertyValue", propertyID: "Y-tunnus", value: site.businessId },
   vatID: site.vat,
   address: { "@type": "PostalAddress", addressLocality: "Helsinki", addressCountry: "FI" },
-  knowsAbout: ["Virtual Reality Training", "Computer Vision", "AI", "Business Process Automation"],
+  knowsAbout: ["Virtual Reality Training", "Computer Vision", "AI", "Business Process Automation", "AI Game Masters"],
 })}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -313,7 +317,7 @@ ${nav(null)}
     <div class="wrap stats__grid">
       <div class="stat reveal"><span class="stat__num" data-count="2016">0</span><span class="stat__label">Founded · Helsinki</span></div>
       <div class="stat reveal"><span class="stat__num" data-count="10" data-suffix="">0</span><span class="stat__label">Years in business</span></div>
-      <div class="stat reveal"><span class="stat__num" data-count="4">0</span><span class="stat__label">Product directions</span></div>
+      <div class="stat reveal"><span class="stat__num" data-count="${projects.length}">0</span><span class="stat__label">Product directions</span></div>
       <div class="stat reveal"><span class="stat__num stat__num--txt">XR·AI</span><span class="stat__label">Core technologies</span></div>
     </div>
   </section>
@@ -358,7 +362,7 @@ const homeWork = () => `
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Our projects</p>
-      <h2 class="h-lg">Four ways we<br>put tech to work.</h2>
+      <h2 class="h-lg">${numWord(projects.length)} ways we<br>put tech to work.</h2>
     </div>
     <div class="rows">
       ${projects

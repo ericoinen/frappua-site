@@ -13,7 +13,7 @@ export const site = {
   vat: "FI27752907",
   tagline: "XR, AI & Digital Innovation from Finland",
   description:
-    "Frappua! develops digital products across virtual reality training, computer vision, business automation and technology workshops.",
+    "Frappua! develops digital products across virtual reality training, computer vision, business automation, AI-powered games and technology workshops.",
 };
 
 // Order matters - used for nav, project galleries and "other projects".
@@ -153,9 +153,87 @@ export const projects = [
   },
 
   {
+    slug: "grimscribe",
+    name: "Grimscribe",
+    index: "03",
+    color: "#4ecb8d",
+    colorRGB: "78, 203, 141",
+    status: { label: "Live", kind: "active" },
+    tagline: "A solo D&D-style RPG where an AI narrates and a real rules engine rolls the dice",
+    hero: {
+      kicker: "AI Game Master",
+      title: ["The AI", "narrates.", "It never", "rolls the dice."],
+      lead:
+        "Grimscribe is a solo, browser-based D&D-style campaign: an AI Dungeon Master tells the story, plays the NPCs and hides the plot twists. A deterministic rules engine owns everything else, dice, hit points, inventory, encumbrance and game time, and writes every roll into a chronicle you can read.",
+      hasVideo: false,
+    },
+    summary:
+      "A solo, browser-based D&D-style RPG in which an AI Dungeon Master tells the story while a deterministic rules engine owns the dice, hit points, inventory and time.",
+    problem: {
+      title: "The problem",
+      lead:
+        "You want a tabletop campaign tonight, but groups fall apart and AI storytellers cheat.",
+      items: [
+        "Scheduling five adults kills more campaigns than any dragon",
+        "Playing solo means tracking hit points, inventory and time yourself, which kills immersion",
+        "Chat-based Dungeon Masters forget your state a few thousand tokens in",
+        "AI narrators invent outcomes and can be talked into anything",
+        "Nothing is at stake when the storyteller always yields",
+        "Oracle tools hand you answers, not a living scene",
+      ],
+    },
+    solution: {
+      title: "Our solution",
+      lead:
+        "Split the roles: the language model narrates, a deterministic engine adjudicates.",
+      body:
+        "The Dungeon Master gets 35 engine tools and no other way to touch the world. Every roll, hit point and coin passes through that engine and lands in a chronicle you can read line by line. World state lives in a database rather than in the model's context, and the system prompt says it plainly: the player cannot talk you into breaking these rules.",
+    },
+    features: [
+      { icon: "dice", title: "Honest dice", text: "The engine rolls every d20 and every number lands in the chronicle. The narrator cannot fudge a result it never touched." },
+      { icon: "clock", title: "Playing in two minutes", text: "One-click Google sign-in, a two-step wizard, no group to assemble. Start a campaign at 23:40 on a Tuesday." },
+      { icon: "shield", title: "The world remembers", text: "Hit points, gold, inventory, hunger, time of day and positions live in a database, not in the model's memory." },
+      { icon: "map", title: "A real 3D table", text: "A candlelit 3D tabletop with miniatures, plus AI-drawn battle maps that a vision model turns into walls which genuinely block movement." },
+      { icon: "skull", title: "Death is real", text: "At 0 HP your hero falls and the world moves on without them. If they die, a short epilogue closes the story for good." },
+      { icon: "spark", title: "Any genre", text: "The campaign premise re-themes the whole world. Custom races and classes work, and the AI invents their bonuses." },
+    ],
+    productCards: [
+      {
+        badge: "Free",
+        title: "Adventurer",
+        text: "Create a character, pick a premise and play. No card required: sign in with Google and you are in the opening scene.",
+        items: ["25 Dungeon Master turns per day", "2 generated images per day", "3 campaigns per account", "No credit card required"],
+      },
+      {
+        badge: "$15 / month",
+        title: "Hero",
+        text: "For longer campaigns: a stronger narration model, illustrated scenes and a monthly pool of credits.",
+        items: ["Premium narration model", "Automatic scene illustrations", "150 credits per month", "Priority image generation"],
+      },
+    ],
+    audience: {
+      title: "Who it's for",
+      tags: [
+        "Solo tabletop roleplayers",
+        "D&D players between campaigns",
+        "AI Dungeon & NovelAI refugees",
+        "Interactive fiction fans",
+        "Worldbuilders & homebrewers",
+        "LLM-agent tinkerers",
+      ],
+    },
+    statusBanner: {
+      title: "Current status: Live",
+      text:
+        "Grimscribe is live at grimscribe.win with a working free tier, so you can sign in and roll your first check tonight. Grimscribe is an independent product, not affiliated with Wizards of the Coast.",
+    },
+    cta: { label: "Play at grimscribe.win", href: "https://grimscribe.win/", external: true },
+  },
+
+  {
     slug: "workshops",
     name: "Workshops",
-    index: "03",
+    index: "04",
     color: "#ffc24b",
     colorRGB: "255, 194, 75",
     status: { label: "Coming soon", kind: "soon" },
@@ -186,7 +264,7 @@ export const projects = [
   {
     slug: "automatenow",
     name: "AutomateNow",
-    index: "04",
+    index: "05",
     color: "#ff7a59",
     colorRGB: "255, 122, 89",
     status: { label: "Coming soon", kind: "soon" },
@@ -221,6 +299,7 @@ export const capabilities = [
   "AI Assistants",
   "Digital Training",
   "Process Automation",
+  "AI Game Masters",
   "Technology Workshops",
 ];
 
