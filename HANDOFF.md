@@ -29,6 +29,9 @@ npx serve dist -l 3000    # preview (or: npm run dev)
 ```
 Push to `main` -> Vercel builds (`node build.mjs`, output `dist/`) and deploys.
 
+If `git push` returns 403 while `gh auth status` shows a logged-in account with
+`repo` scope: run `gh auth setup-git` once, then push works.
+
 ## 2. How the site is built
 
 Static site **generated** by `build.mjs` from a content model. Do NOT hand-edit
