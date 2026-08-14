@@ -2,7 +2,7 @@
 //  Frappua! static site generator
 //  Usage: node build.mjs
 //  Output: /dist  (deploy this folder)
-//  URLs:   /  /safeskillvr  /aicameras  /grimscribe  /workshops  /automatenow
+//  URLs:   /  /safeskillvr  /aicameras  /grimscribe  /loomtale  /workshops  /automatenow
 // ============================================================
 import { promises as fs } from "node:fs";
 import path from "node:path";
@@ -62,7 +62,7 @@ const head = ({ title, desc, slug }) => {
   identifier: { "@type": "PropertyValue", propertyID: "Y-tunnus", value: site.businessId },
   vatID: site.vat,
   address: { "@type": "PostalAddress", addressLocality: "Helsinki", addressCountry: "FI" },
-  knowsAbout: ["Virtual Reality Training", "Computer Vision", "AI", "Business Process Automation", "AI Game Masters"],
+  knowsAbout: ["Virtual Reality Training", "Computer Vision", "AI", "Business Process Automation", "AI Game Masters", "Generative Storytelling"],
 })}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -239,6 +239,17 @@ const statusBanner = (project) =>
   <div><strong>${esc(project.statusBanner.title)}</strong><p>${esc(project.statusBanner.text)}</p></div>
 </div>`;
 
+// Optional extra links (YouTube channels etc.) rendered next to the primary CTA
+const projectLinks = (p) =>
+  !p.links
+    ? ""
+    : p.links
+        .map(
+          (l) =>
+            `<a href="${l.href}" class="btn btn--ghost" target="_blank" rel="noopener" data-magnetic>${icons[l.icon] || ""} ${esc(l.label)}</a>`
+        )
+        .join("");
+
 const ctaButton = (cta, big = false) =>
   !cta
     ? ""
@@ -409,6 +420,7 @@ ${nav(p.slug)}
         <p class="hero__lead reveal-now">${esc(p.hero.lead)}</p>
         <div class="hero__actions reveal-now">
           ${p.cta ? ctaButton(p.cta) : `<a href="#detail" class="btn btn--primary" data-magnetic>Learn more ${icons.arrowDown}</a>`}
+          ${projectLinks(p)}
           <a href="/#contact" class="btn btn--ghost" data-magnetic>Get in touch</a>
         </div>
       </div>

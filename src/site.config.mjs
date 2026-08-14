@@ -150,6 +150,7 @@ export const projects = [
         "AI Cameras is in active development, delivering practical computer vision for both consumers and organisations, with cloud and on-premise deployment options.",
     },
     cta: { label: "Visit aicameras.win", href: "https://aicameras.win/", external: true },
+    links: [{ label: "YouTube", href: "https://www.youtube.com/@AIVisionMonitor", icon: "youtube" }],
   },
 
   {
@@ -228,12 +229,92 @@ export const projects = [
         "Grimscribe is live at grimscribe.win with a working free tier, so you can sign in and roll your first check tonight. Grimscribe is an independent product, not affiliated with Wizards of the Coast.",
     },
     cta: { label: "Play at grimscribe.win", href: "https://grimscribe.win/", external: true },
+    links: [{ label: "YouTube", href: "https://www.youtube.com/@playgrimscribe", icon: "youtube" }],
+  },
+
+  {
+    slug: "loomtale",
+    name: "Loomtale",
+    index: "04",
+    color: "#d67aff",
+    colorRGB: "214, 122, 255",
+    status: { label: "Live", kind: "active" },
+    tagline: "Turn a premise into a playable visual novel",
+    hero: {
+      kicker: "Generative visual novels",
+      title: ["Type a", "premise.", "Play the", "visual novel."],
+      lead:
+        "Loomtale turns a short prompt into a branching, illustrated visual novel: story, characters and art generated together. You watch it assemble in real time and play it right in the browser.",
+      hasVideo: false,
+    },
+    summary:
+      "A generative visual novel studio that turns a short premise into a branching, illustrated story you can play in the browser and share with a link.",
+    problem: {
+      title: "The problem",
+      lead:
+        "A visual novel needs a writer, an artist, an engine and branching logic, all at the same time.",
+      items: [
+        "Writing a branching script is months of work",
+        "Art costs money, or years of practice",
+        "Engines like Ren'Py still expect you to write code",
+        "Keeping one character's face consistent across scenes is hard",
+        "Branching plots collapse into a single corridor with fake choices",
+        "Most visual novel ideas die as notes in a drawer",
+      ],
+    },
+    solution: {
+      title: "Our solution",
+      lead:
+        "Describe the premise, set a few knobs, get a playable draft.",
+      body:
+        "You choose genre, tone, length, art style, cast size and branching depth, and the service generates story, characters and art as one consistent draft. Generation is multi-stage and visible, so you can start playing before it finishes, and everything stays editable: any scene, line, sprite or background can be regenerated. The cost of every generation is shown up front and capped by your plan limits.",
+    },
+    features: [
+      { icon: "spark", title: "From premise to playable", text: "One short prompt becomes a branching, illustrated visual novel you can play in minutes." },
+      { icon: "branch", title: "Choices that matter", text: "Genre, tone, length and branching depth are yours to set, and different choices reach different endings." },
+      { icon: "eye", title: "Watch it weave", text: "Generation is asynchronous and staged: scenes, sprites and backgrounds appear as they finish, and you can start playing early." },
+      { icon: "flow", title: "Everything is a draft", text: "Regenerate any scene, line, sprite or background until it fits the story you had in mind." },
+      { icon: "mask", title: "Characters that stay themselves", text: "Sprites stay visually consistent from scene to scene, and Pro adds a character identity lock." },
+      { icon: "share", title: "Play and share in the browser", text: "No installs: every novel is a link you can send, and finished ones can go to a public gallery." },
+    ],
+    productCards: [
+      {
+        badge: "Free",
+        title: "Storyteller",
+        text: "Try the whole loop for nothing: sign in with Google, describe a premise and play the result the same evening.",
+        items: ["3 stories per month", "Up to 60 images per month", "Short length, 1 save slot", "No credit card required"],
+      },
+      {
+        badge: "$19 / month",
+        title: "Pro",
+        text: "For longer novels and a bigger cast: more stories, every length, and tighter control over how characters look.",
+        items: ["12 stories per month, all lengths", "Up to 500 images per month", "Character identity lock & custom choices", "6 save slots, no watermark"],
+      },
+    ],
+    audience: {
+      title: "Who it's for",
+      tags: [
+        "Visual novel fans who don't draw",
+        "Writers who need art & branching",
+        "Educators & trainers",
+        "Marketers making interactive scenarios",
+        "TTRPG masters & worldbuilders",
+        "Indie devs & game jammers",
+      ],
+    },
+    statusBanner: {
+      title: "Current status: Live",
+      text:
+        "Loomtale is live at loomtale.win with a working free tier: three stories a month, no card required. Per-character voice-over and scene music are next on the roadmap. Loomtale is published by Frappua!",
+    },
+    cta: { label: "Create at loomtale.win", href: "https://loomtale.win/", external: true },
+    links: [{ label: "YouTube", href: "https://www.youtube.com/@playloomtale", icon: "youtube" }],
   },
 
   {
     slug: "workshops",
     name: "Workshops",
-    index: "04",
+    index: "05",
     color: "#ffc24b",
     colorRGB: "255, 194, 75",
     status: { label: "Coming soon", kind: "soon" },
@@ -264,7 +345,7 @@ export const projects = [
   {
     slug: "automatenow",
     name: "AutomateNow",
-    index: "05",
+    index: "06",
     color: "#ff7a59",
     colorRGB: "255, 122, 89",
     status: { label: "Coming soon", kind: "soon" },
@@ -300,6 +381,7 @@ export const capabilities = [
   "Digital Training",
   "Process Automation",
   "AI Game Masters",
+  "Generative Storytelling",
   "Technology Workshops",
 ];
 
