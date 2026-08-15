@@ -230,6 +230,159 @@ const problemSolution = (project) =>
   </div>
 </div>`;
 
+/* ---------- optional deep-dive blocks (offer pages) ---------- */
+// Shared header for the offer blocks: short eyebrow title + one sentence lead.
+const blockHead = (title, lead) => `
+    <div class="sec-head sec-head--sm reveal">
+      <p class="eyebrow">${esc(title)}</p>
+      ${lead ? `<p class="sec-lead">${esc(lead)}</p>` : ""}
+    </div>`;
+
+const casesBlock = (p) =>
+  !p.cases
+    ? ""
+    : `
+  <section class="section cases-sec section--alt">
+    <div class="wrap">
+      ${blockHead(p.cases.title, p.cases.lead)}
+      <div class="cases">
+        ${p.cases.items
+          .map(
+            (c, i) => `
+        <article class="case reveal" style="--i:${i}">
+          <span class="case__ic">${icons[c.icon] || icons.spark}</span>
+          ${c.badge ? `<span class="case__badge">${esc(c.badge)}</span>` : ""}
+          <h3>${esc(c.title)}</h3>
+          <p>${esc(c.text)}</p>
+        </article>`
+          )
+          .join("")}
+      </div>
+    </div>
+  </section>`;
+
+const processBlock = (p) =>
+  !p.process
+    ? ""
+    : `
+  <section class="section steps-sec">
+    <div class="wrap">
+      ${blockHead(p.process.title, p.process.lead)}
+      <ol class="steps">
+        ${p.process.steps
+          .map(
+            (s, i) => `
+        <li class="step reveal" style="--i:${i}">
+          <span class="step__num">${String(i + 1).padStart(2, "0")}</span>
+          <div class="step__body">
+            <h3>${esc(s.title)}</h3>
+            <p>${esc(s.text)}</p>
+          </div>
+        </li>`
+          )
+          .join("")}
+      </ol>
+    </div>
+  </section>`;
+
+const pricingBlock = (p) =>
+  !p.pricing
+    ? ""
+    : `
+  <section class="section tiers-sec section--alt">
+    <div class="wrap">
+      ${blockHead(p.pricing.title, p.pricing.lead)}
+      <div class="tiers">
+        ${p.pricing.tiers
+          .map(
+            (t, i) => `
+        <article class="tier reveal" style="--i:${i}">
+          <h3 class="tier__name">${esc(t.name)}</h3>
+          <p class="tier__price">${esc(t.price)}</p>
+          <p class="tier__text">${esc(t.text)}</p>
+          <ul class="tier__list">${t.items.map((it) => `<li>${esc(it)}</li>`).join("")}</ul>
+        </article>`
+          )
+          .join("")}
+      </div>
+      ${p.pricing.note ? `<p class="tiers__note reveal">${esc(p.pricing.note)}</p>` : ""}
+    </div>
+  </section>`;
+
+const scopeBlock = (p) =>
+  !p.scope
+    ? ""
+    : `
+  <section class="section scope-sec">
+    <div class="wrap">
+      ${blockHead(p.scope.title, p.scope.lead)}
+      <div class="scope">
+        <div class="scope__col scope__col--in reveal">
+          <p class="eyebrow">${esc(p.scope.included.title)}</p>
+          <ul class="scope__list scope__list--in">${p.scope.included.items
+            .map((it) => `<li>${esc(it)}</li>`)
+            .join("")}</ul>
+        </div>
+        <div class="scope__col scope__col--out reveal">
+          <p class="eyebrow eyebrow--warn">${esc(p.scope.excluded.title)}</p>
+          <ul class="scope__list scope__list--out">${p.scope.excluded.items
+            .map((it) => `<li>${esc(it)}</li>`)
+            .join("")}</ul>
+        </div>
+      </div>
+    </div>
+  </section>`;
+
+const measureBlock = (p) =>
+  !p.measure
+    ? ""
+    : `
+  <section class="section metrics-sec section--alt">
+    <div class="wrap">
+      ${blockHead(p.measure.title, p.measure.lead)}
+      <ul class="metrics">
+        ${p.measure.items
+          .map(
+            (m, i) => `
+        <li class="metric reveal" style="--i:${i}">
+          <span class="metric__num">${String(i + 1).padStart(2, "0")}</span>
+          <p>${esc(m)}</p>
+        </li>`
+          )
+          .join("")}
+      </ul>
+    </div>
+  </section>`;
+
+// Two-column matrix: the pain on the left, what the automation does on the right.
+const painsBlock = (p) =>
+  !p.pains
+    ? ""
+    : `
+  <section class="section pains-sec">
+    <div class="wrap">
+      ${blockHead(p.pains.title, p.pains.lead)}
+      <div class="pains">
+        <div class="pains__head" aria-hidden="true"><span>The pain</span><span>What automation does</span></div>
+        ${p.pains.rows
+          .map(
+            (r, i) => `
+        <div class="pain reveal" style="--i:${i}">
+          <div class="pain__cell pain__cell--p">
+            <span class="pain__lbl">The pain</span>
+            <p>${esc(r.pain)}</p>
+          </div>
+          <div class="pain__cell pain__cell--a">
+            <span class="pain__lbl">What automation does</span>
+            <p>${esc(r.answer)}</p>
+          </div>
+        </div>`
+          )
+          .join("")}
+      </div>
+    </div>
+  </section>`;
+
 const statusBanner = (project) =>
   !project.statusBanner
     ? ""
@@ -456,6 +609,12 @@ ${nav(p.slug)}
       ${productCards(p)}
     </div>
   </section>
+  ${casesBlock(p)}
+  ${processBlock(p)}
+  ${pricingBlock(p)}
+  ${scopeBlock(p)}
+  ${measureBlock(p)}
+  ${painsBlock(p)}
 
   ${
     p.comingSoon

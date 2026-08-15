@@ -421,7 +421,7 @@ void main(){
   /* ---------- cursor spotlight on cards ---------- */
   function initGlow() {
     if (isTouch) return;
-    document.querySelectorAll(".feature,.prod,.ps__col,.soon,.stat,.contact__row").forEach((c) => {
+    document.querySelectorAll(".feature,.prod,.ps__col,.soon,.stat,.contact__row,.case,.tier,.scope__col,.metric").forEach((c) => {
       c.classList.add("glow");
       c.addEventListener("mousemove", (e) => {
         const r = c.getBoundingClientRect();

@@ -348,29 +348,209 @@ export const projects = [
     index: "06",
     color: "#ff7a59",
     colorRGB: "255, 122, 89",
-    status: { label: "Coming soon", kind: "soon" },
-    tagline: "Business process automation for operational efficiency",
+    status: { label: "Taking pilots", kind: "active" },
+    tagline: "AI automation of one real process, as a fixed-price pilot in 4 to 6 weeks",
     hero: {
       kicker: "Process automation",
       title: ["Automate the", "repetitive,", "focus on", "what matters"],
       lead:
-        "AutomateNow helps organisations streamline operations by automating repetitive tasks and workflows, increasing efficiency and reducing manual effort across business processes.",
+        "AutomateNow automates one real process with AI, built on the tools you already use. It runs as a fixed-price pilot: 4 to 6 weeks, one process, one figure agreed before the work starts.",
       hasVideo: false,
     },
     summary:
-      "AI-powered business process automation that streamlines operations, removes repetitive manual work and adapts to your workflows.",
-    problem: null,
-    solution: null,
+      "AI process automation assembled from tools that already exist and layered on top of your current systems, delivered as a fixed-price pilot for one process in 4 to 6 weeks.",
+    problem: {
+      title: "The problem",
+      lead:
+        "Routine work quietly consumes the hours of the people you can least afford to lose.",
+      items: [
+        "Calls, bookings and routine questions fill a person's whole day",
+        "Requests arriving at night or at the weekend wait until Monday",
+        "A reply two days late, and the customer is already with a competitor",
+        "A new hire needs weeks and a mentor to reach working speed",
+        "How the process actually works lives in a few people's heads",
+        "Forgotten requests and typos when data is moved by hand",
+      ],
+    },
+    solution: {
+      title: "How it works",
+      lead:
+        "We connect tools that already exist instead of writing software from scratch.",
+      body:
+        "The automation is assembled on workflow platforms such as n8n and integrated into the systems you run today: email, calendar, telephony, CRM. Nothing is replaced, an AI layer is added on top. It handles the typical cases and passes anything unusual to a person with a ready summary. We start with a pilot: one process, a fixed price and a fixed timeframe, so you see the result before there is any talk of a larger contract.",
+    },
     features: [
-      { icon: "flow", title: "Workflow automation", text: "Replace repetitive, manual steps with reliable automated workflows." },
-      { icon: "ai", title: "AI-powered", text: "Automation that adapts to your processes instead of forcing you to adapt to it." },
-      { icon: "chart", title: "Measurable efficiency", text: "Reduce manual effort and free your team for higher-value work." },
+      { icon: "shield", title: "Fixed price, fixed scope", text: "One process, 4 to 6 weeks, one figure agreed before the start. No hourly billing and no additional invoices." },
+      { icon: "flow", title: "Process audit first", text: "Before anything is built we map with your process owner what happens today, who is involved and where the time goes." },
+      { icon: "cloud", title: "Built on your tools", text: "Email, calendar, telephony and CRM stay where they are. The automation layers on top of them instead of replacing them." },
+      { icon: "eye", title: "Full action log", text: "Every action is recorded: what came in, what was handled, what was passed to a person. Transparency instead of a black box." },
+      { icon: "chart", title: "Manager dashboard", text: "Requests handled, hours saved, and every point where the automation handed a question over to a human." },
+      { icon: "globe", title: "Works in your language", text: "Interfaces and AI assistants in Finnish, English, or whatever you need: Swedish, Estonian, Russian, Ukrainian." },
     ],
-    audience: null,
-    comingSoon:
-      "We are developing practical automation solutions to help businesses work smarter. AutomateNow will bring AI-powered process automation that adapts to your workflows. Details will be announced soon.",
-    statusBanner: null,
-    cta: { label: "Get notified", href: "/#contact", external: false },
+    cases: {
+      title: "What we automate",
+      lead: "Three processes we have already built. Your own process fits too, if the shape is similar.",
+      items: [
+        {
+          icon: "share",
+          title: "HR routine",
+          text:
+            "The flow of candidates and staff, automated end to end. Applications get a first-pass screening against criteria you agree in advance, candidates get an answer, interviews are scheduled, hiring documents are collected and expiring certifications are chased. HR spends its time on people instead of correspondence.",
+        },
+        {
+          icon: "map",
+          title: "Employee onboarding",
+          text:
+            "An AI assistant built on your company's own knowledge. A new hire, a marketer for example, is introduced to what the company does, which tools and channels are in use, who is responsible for what and where the roadmap is going, and gets materials handed over and access requested. The new hire asks the assistant instead of interrupting colleagues, the manager sees from the logs what has been covered and where the person is stuck, and company knowledge gets documented and reused automatically.",
+        },
+        {
+          icon: "ai",
+          badge: "Already in production",
+          title: "AI secretary",
+          text:
+            "Running with a client today and in daily use. It receives incoming calls and messages around the clock, answers routine questions, books clients into free time slots, records requests and hands complex cases to a person with a ready summary. Nothing gets lost, including at night and at the weekend.",
+        },
+      ],
+    },
+    process: {
+      title: "How we work",
+      lead: "Four steps, and at every point you know what happens next.",
+      steps: [
+        {
+          title: "Kick-off meeting",
+          text:
+            "We walk through the process with your process owner, agree the acceptance criteria, write down the numbers as they stand today and arrange access to the tools where the process lives: email, calendar, telephony, CRM, limited to the minimum necessary. A data processing agreement is signed before the start and we provide the template.",
+        },
+        {
+          title: "Pilot on your existing tools",
+          text:
+            "Fixed scope, fixed timeframe. We build the automation and integrate it into the systems you already run, with a working demo halfway through the pilot. Your effort stays small: one responsible contact and two meetings of 1 to 2 hours, the process audit and the acceptance.",
+        },
+        {
+          title: "Final report",
+          text:
+            "A closing meeting of one hour on the results: the measured outcome, before and after numbers against the criteria set at the start, and recommendations on what is worth extending next.",
+        },
+        {
+          title: "After the pilot",
+          text:
+            "An optional next step: custom development tailored to your case, or a support subscription. Both are separate agreements, decided once the pilot has produced its numbers.",
+        },
+      ],
+    },
+    pricing: {
+      title: "Pilot options",
+      lead: "Three shapes of pilot. Which one fits is decided at the kick-off meeting, once we have seen the process.",
+      note:
+        "Fixed price, not hourly. Hourly billing turns the conversation into our rate and leaves you with an open-ended bill; a fixed price turns the conversation into the result. Third-party service licences and telephony are paid by you directly, and we help you pick the minimum set.",
+      tiers: [
+        {
+          name: "Basic",
+          price: "6 000 EUR",
+          text: "For one clearly defined process with a small number of connections.",
+          items: ["One process", "Up to 2 integrations", "For example an AI secretary: telephony plus calendar"],
+        },
+        {
+          name: "Extended",
+          price: "12 000 EUR",
+          text: "For a process with more moving parts, or two simpler ones at the same time.",
+          items: ["One complex or two simple processes", "Up to 4 integrations", "Manager dashboard"],
+        },
+        {
+          name: "Complete",
+          price: "20 000 EUR",
+          text: "For covering several processes in one pilot and keeping support afterwards.",
+          items: ["Three processes: secretary, onboarding, HR", "Manager dashboard", "3 months of support after the pilot"],
+        },
+      ],
+    },
+    scope: {
+      title: "What the pilot covers",
+      lead: "The boundary is written into the agreement, so nothing surprising turns up on the invoice.",
+      included: {
+        title: "What the pilot includes",
+        items: [
+          "Process audit in week 0 to 1 with your process owner: what happens, who is involved, where time is lost. Output: a map of the process as it is and as it will be.",
+          "Turnkey automation built on AI and integrated into the tools you already use: email, calendar, telephony, CRM.",
+          "Work in your language: interfaces and AI assistants in Finnish, English, or whatever you need, including Swedish, Estonian, Russian and Ukrainian.",
+          "A full log of everything the automation does: what came in, what was handled, what was passed to a human.",
+          "A manager dashboard: requests handled, hours saved, and where the automation handed a question to a person.",
+          "A handover session of 2 hours for the responsible employee, plus support for the whole pilot period.",
+          "A final report: results, before and after measurements, and recommendations for extending.",
+        ],
+      },
+      excluded: {
+        title: "What it does not include",
+        items: [
+          "Automating a second or further process. That is the next contract.",
+          "Custom software built from scratch. Custom development is possible as a continuation after a successful pilot, not inside it.",
+          "Replacement of your existing systems. They stay, we build on top of them.",
+          "Third-party service licences and telephony. You pay those directly and we help pick the minimum set.",
+          "Support after the pilot ends, except in the Complete option. It is offered separately as a subscription.",
+        ],
+      },
+    },
+    measure: {
+      title: "What we measure",
+      lead: "The metrics are agreed before the start, and the same numbers are read back at the closing meeting.",
+      items: [
+        "Hours of human time spent on the process per week, before and after",
+        "Share of requests handled without a person",
+        "Response time to a client request, from hours or days to seconds",
+        "Number of lost or forgotten requests",
+        "For onboarding: time until a new hire works independently, and the number of questions to colleagues",
+        "Cost of handling one request or one hire, per year",
+      ],
+    },
+    pains: {
+      title: "Where the time and money go",
+      lead: "Five costs that stay invisible on the invoice, and what the automation does about each.",
+      rows: [
+        {
+          pain:
+            "The cost of human time. A secretary, an office manager or the owner spends hours on tasks that do not need a person: taking calls, booking times, answering routine questions, moving data between systems.",
+          answer:
+            "The automation handles the routine and people keep the work that needs judgement. Nobody loses their job, people stop being answering machines.",
+        },
+        {
+          pain:
+            "Missed requests are lost money. A call outside office hours, an email answered two days late, and the customer is already with a competitor.",
+          answer: "The automation works around the clock, and every request is recorded and answered.",
+        },
+        {
+          pain:
+            "Onboarding costs the productivity of two people. The new hire takes weeks to reach working speed while an experienced colleague acts as a mentor instead of doing their own job.",
+          answer: "The assistant answers the new hire's questions, and the manager sees progress from the logs.",
+        },
+        {
+          pain:
+            "Knowledge lives in people's heads. When someone leaves, the knowledge of how the process works goes with them.",
+          answer: "The process is mapped and the assistant is built on that knowledge, so it stays available and gets reused.",
+        },
+        {
+          pain:
+            "Errors in manual routine. A forgotten request, a typo when moving data, a lost email. Cheap individually, expensive over time.",
+          answer: "Every step is logged, and anything non-standard goes to a person with a ready summary.",
+        },
+      ],
+    },
+    audience: {
+      title: "Who it's for",
+      tags: [
+        "Owners answering their own phone",
+        "Teams hiring continuously",
+        "Recurring service requests",
+        "Manual data transfer between systems",
+        "Office and service operations",
+        "Processes nobody has time to fix",
+      ],
+    },
+    statusBanner: {
+      title: "Current status: Taking pilots",
+      text:
+        "The AI secretary is already running in production with a client, handling real calls and bookings. New engagements start with a kick-off meeting: we pick one process, agree the acceptance criteria and set the pilot date.",
+    },
+    cta: { label: "Book a kick-off meeting", href: "/#contact", external: false },
   },
 ];
 
