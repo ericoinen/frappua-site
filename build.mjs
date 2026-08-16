@@ -238,6 +238,25 @@ const blockHead = (title, lead) => `
       ${lead ? `<p class="sec-lead">${esc(lead)}</p>` : ""}
     </div>`;
 
+// Demo video: a real recording with sound, so it plays on request instead of autoplaying.
+const demoBlock = (p) =>
+  !p.demo
+    ? ""
+    : `
+  <section class="section demo-sec section--alt">
+    <div class="wrap">
+      ${blockHead(p.demo.title, p.demo.lead)}
+      <figure class="demo reveal">
+        <video class="demo__v" controls playsinline preload="none"${
+          p.demo.poster ? ` poster="${p.demo.poster}"` : ""
+        }>
+          <source src="${p.demo.src}" type="video/mp4">
+        </video>
+        ${p.demo.caption ? `<figcaption class="demo__cap">${esc(p.demo.caption)}</figcaption>` : ""}
+      </figure>
+    </div>
+  </section>`;
+
 const caseCard = (c, i) => {
   const points = c.points
     ? `<ul class="case__pts">${c.points.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`
@@ -620,6 +639,7 @@ ${nav(p.slug)}
       ${productCards(p)}
     </div>
   </section>
+  ${demoBlock(p)}
   ${casesBlock(p)}
   ${processBlock(p)}
   ${pricingBlock(p)}

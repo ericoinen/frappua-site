@@ -63,6 +63,14 @@ export const projects = [
       { icon: "shield", title: "Error & safety tracking", text: "Identify repeated mistakes and unsafe actions during training, before they happen in real environments." },
       { icon: "eye", title: "Supervisor insight", text: "Training data helps supervisors see where learners struggle and how onboarding can be improved." },
     ],
+    demo: {
+      title: "Demo",
+      lead: "The AI assistant running a workplace safety scenario in the warehouse.",
+      src: "/Videos/SafeSkillVR_demo_web.mp4",
+      poster: "/Videos/SafeSkillVR_demo_web.jpg",
+      caption:
+        "Recorded from the prototype. The assistant meets the trainee on the floor, offers the available safety scenarios, first aid kit and safety vest, and then guides the chosen one step by step. The trainee answers in their own words, by voice or by typing.",
+    },
     audience: {
       title: "Who it's for",
       tags: [
