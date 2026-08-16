@@ -397,14 +397,14 @@ export const projects = [
           badge: "Already in production",
           title: "AI secretary",
           text:
-            "Running with a client today and in daily use. It receives incoming calls and messages around the clock, answers routine questions, books clients into free time slots, records requests and hands complex cases to a person with a ready summary. Nothing gets lost, including at night and at the weekend. The same assistant sits in your own meetings: it notices that a call has started, records it, writes the transcript while people are still talking, and turns what was agreed into tasks, each one carrying the exact quote and the moment in the recording where it was said.",
+            "A Windows app that goes to meetings instead of your memory. It notices that a call has started, in Discord, Zoom or anything else, and offers to record it. One click and you can forget the record button: your voice and the other voices are written on separate tracks, and when the call ends the recording stops and saves itself. The transcript is written while people are still talking, with the key points updating beside it. Recordings, transcripts and tasks stay on your own computer, and speech recognition runs fully locally with no audio sent anywhere.",
           points: [
-            "Notices a call in Discord, Zoom or any other app, records each side on its own track and stops when the call ends",
-            "Live transcript with the key points beside it, every line marked with the speaker and a timestamp that plays back that moment",
-            "Agreements become tasks by themselves: who, what, by when, on which project, with a quote you can listen to",
-            "A task discussed across three meetings stays one task, and the new details are added to it",
-            "The archive answers questions. Ask what was decided about the design in July and get the answer with links to the exact minute",
-            "Recordings, transcripts and tasks stay on your machine, and speech recognition runs locally with no audio sent anywhere",
+            "An important moment can be flagged mid-call with one keystroke, together with a screenshot of what was on screen",
+            "Every line is marked with who was speaking and carries a timestamp: click it and the player is at exactly that moment",
+            "When the call ends the meeting names itself, gets tags and lands in the right project, and an hour of talk folds into a short list of what mattered",
+            "What was agreed becomes tasks by themselves: who, what, by when, on which project, each with the word-for-word quote and a button to hear it",
+            "A task discussed across three meetings stays one task, and a review mode walks through the rest one by one: keep, drop, already done",
+            "Ask the archive what was decided about the design in July and get the answer with links to the exact minute of the exact meeting",
           ],
         },
         {
@@ -457,7 +457,7 @@ export const projects = [
           name: "Basic",
           price: "6 000 EUR",
           text: "For one clearly defined process with a small number of connections.",
-          items: ["One process", "Up to 2 integrations", "For example an AI secretary: telephony plus calendar"],
+          items: ["One process", "Up to 2 integrations", "For example the AI secretary: your meetings plus your task tracker"],
         },
         {
           name: "Extended",
