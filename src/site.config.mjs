@@ -392,6 +392,22 @@ export const projects = [
       lead: "Three processes we have already built. Your own process fits too, if the shape is similar.",
       items: [
         {
+          icon: "ai",
+          wide: true,
+          badge: "Already in production",
+          title: "AI secretary",
+          text:
+            "Running with a client today and in daily use. It receives incoming calls and messages around the clock, answers routine questions, books clients into free time slots, records requests and hands complex cases to a person with a ready summary. Nothing gets lost, including at night and at the weekend. The same assistant sits in your own meetings: it notices that a call has started, records it, writes the transcript while people are still talking, and turns what was agreed into tasks, each one carrying the exact quote and the moment in the recording where it was said.",
+          points: [
+            "Notices a call in Discord, Zoom or any other app, records each side on its own track and stops when the call ends",
+            "Live transcript with the key points beside it, every line marked with the speaker and a timestamp that plays back that moment",
+            "Agreements become tasks by themselves: who, what, by when, on which project, with a quote you can listen to",
+            "A task discussed across three meetings stays one task, and the new details are added to it",
+            "The archive answers questions. Ask what was decided about the design in July and get the answer with links to the exact minute",
+            "Recordings, transcripts and tasks stay on your machine, and speech recognition runs locally with no audio sent anywhere",
+          ],
+        },
+        {
           icon: "share",
           title: "HR routine",
           text:
@@ -402,13 +418,6 @@ export const projects = [
           title: "Employee onboarding",
           text:
             "An AI assistant built on your company's own knowledge. A new hire, a marketer for example, is introduced to what the company does, which tools and channels are in use, who is responsible for what and where the roadmap is going, and gets materials handed over and access requested. The new hire asks the assistant instead of interrupting colleagues, the manager sees from the logs what has been covered and where the person is stuck, and company knowledge gets documented and reused automatically.",
-        },
-        {
-          icon: "ai",
-          badge: "Already in production",
-          title: "AI secretary",
-          text:
-            "Running with a client today and in daily use. It receives incoming calls and messages around the clock, answers routine questions, books clients into free time slots, records requests and hands complex cases to a person with a ready summary. Nothing gets lost, including at night and at the weekend.",
         },
       ],
     },

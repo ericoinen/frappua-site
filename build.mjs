@@ -238,28 +238,39 @@ const blockHead = (title, lead) => `
       ${lead ? `<p class="sec-lead">${esc(lead)}</p>` : ""}
     </div>`;
 
-const casesBlock = (p) =>
-  !p.cases
-    ? ""
-    : `
-  <section class="section cases-sec section--alt">
-    <div class="wrap">
-      ${blockHead(p.cases.title, p.cases.lead)}
-      <div class="cases">
-        ${p.cases.items
-          .map(
-            (c, i) => `
-        <article class="case reveal" style="--i:${i}">
+const caseCard = (c, i) => {
+  const points = c.points
+    ? `<ul class="case__pts">${c.points.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`
+    : "";
+  const body = c.wide
+    ? `<div class="case__cols"><p>${esc(c.text)}</p>${points}</div>`
+    : `<p>${esc(c.text)}</p>${points}`;
+  return `
+        <article class="case${c.wide ? " case--wide" : ""} reveal" style="--i:${i}">
           <span class="case__ic">${icons[c.icon] || icons.spark}</span>
           ${c.badge ? `<span class="case__badge">${esc(c.badge)}</span>` : ""}
           <h3>${esc(c.title)}</h3>
-          <p>${esc(c.text)}</p>
-        </article>`
-          )
-          .join("")}
-      </div>
+          ${body}
+        </article>`;
+};
+
+const casesBlock = (p) => {
+  if (!p.cases) return "";
+  const wide = p.cases.items.filter((c) => c.wide);
+  const rest = p.cases.items.filter((c) => !c.wide);
+  const grid = (items, cls, offset) =>
+    !items.length
+      ? ""
+      : `<div class="cases${cls}">${items.map((c, i) => caseCard(c, i + offset)).join("")}</div>`;
+  return `
+  <section class="section cases-sec section--alt">
+    <div class="wrap">
+      ${blockHead(p.cases.title, p.cases.lead)}
+      ${grid(wide, " cases--full", 0)}
+      ${grid(rest, rest.length === 2 ? " cases--2" : "", wide.length)}
     </div>
   </section>`;
+};
 
 const processBlock = (p) =>
   !p.process
