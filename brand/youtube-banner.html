@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Frappua! YouTube banner 2560x1440</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* Frappua! channel banner. Canvas 2560x1440, all copy inside the 1546x423 safe area. */
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#08080c; --fg:#f4f4f7; --fg-2:#a6a6b4; --fg-3:#6a6a78;
+    --c:#8b7bff;          /* brand accent, same token as the site */
+    --warm:#c98a5b;       /* the coffee years, kept as a trace */
+    --disp:"Space Grotesk",sans-serif;
+    --serif:"Instrument Serif",Georgia,serif;
+    --sans:"Inter",sans-serif;
+  }
+  html,body{background:#000}
+  .stage{position:relative;width:2560px;height:1440px;background:var(--bg);overflow:hidden}
+
+  /* left to right: warm origin fading into the brand purple */
+  .glow-warm{position:absolute;inset:0;
+    background:radial-gradient(58% 62% at 4% 50%, rgba(201,138,91,.26), transparent 72%)}
+  .glow-c{position:absolute;inset:0;
+    background:radial-gradient(75% 70% at 62% 45%, rgba(139,123,255,.20), transparent 72%)}
+  .grid{position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:96px 96px;
+    -webkit-mask-image:radial-gradient(60% 55% at 50% 50%,#000 30%,transparent 78%)}
+  .vig{position:absolute;inset:0;
+    background:radial-gradient(90% 80% at 50% 50%,transparent 45%,rgba(0,0,0,.55))}
+
+  /* the evolution line: warm on the left, brand purple on the right */
+  .line{position:absolute;left:0;right:0;top:calc(50% + 246px);height:2px;
+    background:linear-gradient(90deg,
+      rgba(201,138,91,0) 0%, rgba(201,138,91,.75) 14%,
+      rgba(160,130,180,.65) 42%, rgba(139,123,255,.85) 62%, rgba(139,123,255,0) 96%)}
+  .line-dot{position:absolute;top:calc(50% + 240px);left:50%;width:14px;height:14px;border-radius:50%;
+    background:var(--c);box-shadow:0 0 26px 6px rgba(139,123,255,.55)}
+
+
+  /* a trace of the coffee years: a cup ring on the far left, dissolving into the grid */
+  .ring{position:absolute;top:50%;left:250px;width:520px;height:520px;transform:translateY(-50%);
+    border-radius:50%;border:2px solid rgba(201,138,91,.20);
+    -webkit-mask-image:linear-gradient(90deg,#000 20%,rgba(0,0,0,.35) 60%,transparent 92%)}
+  .ring::after{content:"";position:absolute;inset:64px;border-radius:50%;
+    border:1px solid rgba(201,138,91,.12)}
+  .dissolve{position:absolute;top:50%;left:760px;width:820px;height:420px;transform:translateY(-50%);
+    background-image:radial-gradient(rgba(201,138,91,.5) 1.6px,transparent 1.7px);
+    background-size:46px 46px;
+    -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.7),transparent 85%)}
+
+  /* everything below stays inside 1546x423 */
+  .safe{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:1546px;height:423px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:26px;text-align:center}
+
+  .mark{display:flex;align-items:center;gap:26px}
+  .mark svg{width:116px;height:116px;display:block;color:var(--fg)}
+  .mark .mk-f{fill:currentColor}
+  .mark .mk-b{fill:var(--c)}
+  .word{font-family:var(--disp);font-weight:600;font-size:116px;letter-spacing:-.03em;
+    color:var(--fg);line-height:1}
+  .word em{font-family:var(--serif);font-style:italic;color:var(--c)}
+
+  .studio{font-family:var(--disp);font-weight:500;font-size:42px;letter-spacing:-.01em;
+    color:var(--fg);line-height:1}
+  .dirs{display:flex;align-items:center;gap:18px;
+    font-family:var(--disp);font-weight:500;font-size:25px;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--c)}
+  .dirs span{display:inline-block}
+  .dirs i{width:5px;height:5px;border-radius:50%;background:var(--c);opacity:.8;display:inline-block}
+  .site{font-family:var(--sans);font-weight:400;font-size:23px;letter-spacing:.06em;color:var(--fg-3)}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="glow-warm"></div>
+  <div class="glow-c"></div>
+  <div class="ring"></div>
+  <div class="dissolve"></div>
+  <div class="grid"></div>
+  <div class="vig"></div>
+  <div class="line"></div>
+  <div class="line-dot"></div>
+
+  <div class="safe">
+    <div class="mark">
+      <svg viewBox="14 13 37 37" aria-hidden="true">
+        <g class="mk-f">
+          <rect x="18" y="15" width="7" height="33" rx="1.5"/>
+          <rect x="18" y="15" width="20" height="7" rx="1.5"/>
+          <rect x="18" y="28" width="15" height="6" rx="1.5"/>
+        </g>
+        <g class="mk-b">
+          <rect x="41" y="15" width="6" height="23" rx="2"/>
+          <circle cx="44" cy="45" r="3.4"/>
+        </g>
+      </svg>
+      <span class="word">Frappua<em>!</em></span>
+    </div>
+    <div class="studio">Creative Tech Venture Studio</div>
+    <div class="dirs"><span>AI</span><i></i><span>XR</span><i></i><span>Digital Products</span></div>
+    <div class="site">frappua.win</div>
+  </div>
+</div>
+</body>
+</html>

@@ -605,6 +605,33 @@ void main(){
   }
 
   /* ---------- pause hero video when tab hidden ---------- */
+  /* ---------- contact form: builds a mail draft, nothing is posted anywhere ---------- */
+  function initContactForm() {
+    const f = document.getElementById("contactForm");
+    if (!f) return;
+    const err = document.getElementById("cformErr");
+    const val = (n) => ((f.elements[n] && f.elements[n].value) || "").trim();
+    f.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const problem = val("problem");
+      if (!problem) {
+        if (err) err.textContent = err.getAttribute("data-empty") || "";
+        if (f.elements.problem) f.elements.problem.focus();
+        return;
+      }
+      if (err) err.textContent = "";
+      const name = val("name"), company = val("company"), email = val("email");
+      const subject = company ? "Consultation request from " + company : "Consultation request";
+      const meta = [];
+      if (name) meta.push("Name: " + name);
+      if (company) meta.push("Company: " + company);
+      if (email) meta.push("Email: " + email);
+      const body = meta.length ? problem + "\n\n" + meta.join("\n") : problem;
+      const mail = f.getAttribute("data-mail");
+      window.location.href = "mailto:" + mail + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
+  }
+
   function initVisibilityPause() {
     document.addEventListener("visibilitychange", () => {
       const v = document.querySelector(".hero__src");
@@ -642,6 +669,7 @@ void main(){
     initCharTitles();
     initCounters();
     initCmdk();
+    initContactForm();
     initVisibilityPause();
     initProgress();
     // feed scroll velocity into the marquee + video shader

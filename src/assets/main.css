@@ -316,6 +316,40 @@ body.webgl-on .hero__mesh{opacity:0}
 .sec-lead{font-family:var(--disp);font-weight:500;letter-spacing:-.015em;line-height:1.25;
   font-size:clamp(1.35rem,2.7vw,2.15rem);max-width:26ch;margin-top:1.4rem}
 
+/* ---------- free consultation ---------- */
+.consult{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:start;
+  padding:clamp(2rem,4vw,3.4rem);border:1px solid var(--line);border-radius:24px;background:var(--bg-3)}
+.consult__main .eyebrow{margin-bottom:1.4rem}
+.consult__main .h-lg{font-size:clamp(1.9rem,3.6vw,3rem);margin-bottom:1.4rem}
+.consult__body{color:var(--fg-2);font-size:1.02rem;line-height:1.7;margin-bottom:2rem;max-width:46ch}
+.consult__cols{display:flex;flex-direction:column;gap:1.6rem}
+.consult__col{padding-left:1.4rem;border-left:2px solid rgba(var(--crgb),.45)}
+.consult__col h3{font-family:var(--disp);font-weight:600;font-size:1.05rem;margin-bottom:.6rem}
+.consult__col p{color:var(--fg-2);font-size:.95rem;line-height:1.65}
+@media(max-width:900px){.consult{grid-template-columns:1fr}}
+
+/* ---------- contact form ---------- */
+.cform{margin-top:clamp(3rem,6vw,5rem);padding:clamp(1.8rem,4vw,3rem);
+  border:1px solid var(--line);border-radius:24px;background:var(--bg-2)}
+.cform__head{margin-bottom:2rem;max-width:60ch}
+.cform__head h3{font-family:var(--disp);font-weight:600;font-size:clamp(1.3rem,2.4vw,1.7rem);
+  letter-spacing:-.01em;margin-bottom:.7rem}
+.cform__head p{color:var(--fg-2);font-size:.98rem;line-height:1.65}
+.cform__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:1.2rem}
+.cform__f{display:flex;flex-direction:column;gap:.5rem}
+.cform__f>span{font-family:var(--disp);font-size:.78rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--fg-3)}
+.cform input,.cform textarea{width:100%;font-family:var(--sans);font-size:.98rem;color:var(--fg);
+  background:var(--bg-3);border:1px solid var(--line);border-radius:12px;padding:.85em 1em;
+  transition:border-color .3s,background .3s}
+.cform textarea{resize:vertical;min-height:9em;line-height:1.6}
+.cform input:focus,.cform textarea:focus{outline:none;border-color:rgba(var(--crgb),.7);background:var(--bg)}
+.cform input::placeholder,.cform textarea::placeholder{color:var(--fg-3)}
+.cform__err{min-height:1.4em;margin-top:.7rem;color:#ff8a6a;font-size:.9rem}
+.cform__foot{display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem 1.6rem}
+.cform__note{color:var(--fg-3);font-size:.86rem;line-height:1.6;max-width:44ch}
+@media(max-width:780px){.cform__grid{grid-template-columns:1fr}}
+
 /* ---------- demo video ---------- */
 .demo{border:1px solid var(--line);border-radius:20px;background:var(--bg-3);overflow:hidden}
 .demo__v{display:block;width:100%;aspect-ratio:16/9;background:#000}
@@ -351,6 +385,43 @@ body.webgl-on .hero__mesh{opacity:0}
   .cases,.cases--2{grid-template-columns:1fr}
   .case__cols{grid-template-columns:1fr;gap:0}
   .case--wide .case__pts{margin-top:1.3rem;padding-top:1.3rem;border-top:1px solid var(--line)}
+}
+
+/* ---------- example scenarios ---------- */
+.ex__note{color:var(--fg-2);font-size:.98rem;line-height:1.7;max-width:62ch;
+  margin:-1.4rem 0 clamp(2rem,4vw,3rem)}
+.exs{display:flex;flex-direction:column;gap:1.5rem}
+.ex{position:relative;padding:clamp(1.6rem,3vw,2.6rem);border:1px solid var(--line);
+  border-radius:20px;background:var(--bg-2)}
+.ex__head{display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:start;margin-bottom:1.4rem}
+.ex__num{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--c);line-height:1.2}
+.ex__head h3{font-family:var(--disp);font-weight:600;font-size:clamp(1.15rem,2.2vw,1.45rem);
+  letter-spacing:-.01em;margin-bottom:.35rem}
+.ex__fit{color:var(--fg-3);font-size:.9rem;line-height:1.5}
+.ex__tag{font-family:var(--disp);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--fg-3);border:1px solid var(--line);border-radius:100px;padding:.4em .9em;white-space:nowrap}
+.ex__problem{color:var(--fg-2);font-size:.98rem;line-height:1.7;max-width:78ch;margin-bottom:1.6rem}
+.ex__bounds{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:1.6rem}
+.ex__bound{background:var(--bg-3);padding:1rem 1.2rem}
+.ex__bound span{display:block;font-family:var(--disp);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(var(--crgb),1);margin-bottom:.45rem}
+.ex__bound p{color:var(--fg);font-size:.93rem;line-height:1.55}
+.ex__cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.5vw,2.2rem)}
+.ex__label{display:block;font-family:var(--disp);font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--fg-3);margin-bottom:.9rem}
+.ex__col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.ex__col li{position:relative;padding-left:1.3rem;color:var(--fg-2);font-size:.92rem;line-height:1.55}
+.ex__col li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:1px;background:var(--fg-3)}
+.ex__col--auto li::before{width:8px;height:8px;top:.35em;border-radius:50%;
+  border:1px solid rgba(var(--crgb),.7);background:none}
+.ex__col--res li::before{width:9px;height:5px;top:.3em;border-left:1.5px solid rgba(var(--crgb),1);
+  border-bottom:1.5px solid rgba(var(--crgb),1);transform:rotate(-45deg);background:none}
+@media(max-width:900px){
+  .ex__cols{grid-template-columns:1fr;gap:1.6rem}
+  .ex__bounds{grid-template-columns:1fr}
+  .ex__head{grid-template-columns:auto 1fr}
+  .ex__tag{grid-column:2;justify-self:start}
 }
 
 /* ---------- process steps ---------- */

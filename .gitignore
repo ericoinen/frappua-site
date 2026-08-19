@@ -4,3 +4,6 @@ dist/
 .DS_Store
 *.log
 npm-debug.log*
+
+# local video project (hyperframes)
+video-studio/

@@ -126,6 +126,23 @@ const contact = () => `
           .join("")}</p></div>
       </div>
     </div>
+    <form class="cform reveal" id="contactForm" data-mail="${site.email}" novalidate>
+      <div class="cform__head">
+        <h3>${esc(site.contactForm.title)}</h3>
+        <p>${esc(site.contactForm.lead)}</p>
+      </div>
+      <div class="cform__grid">
+        <label class="cform__f"><span>${esc(site.contactForm.name)}</span><input type="text" name="name" autocomplete="name"></label>
+        <label class="cform__f"><span>${esc(site.contactForm.company)}</span><input type="text" name="company" autocomplete="organization"></label>
+        <label class="cform__f"><span>${esc(site.contactForm.email)}</span><input type="email" name="email" autocomplete="email"></label>
+      </div>
+      <label class="cform__f"><span>${esc(site.contactForm.problem)}</span><textarea name="problem" rows="5" maxlength="1200" placeholder="${esc(site.contactForm.placeholder)}"></textarea></label>
+      <p class="cform__err" id="cformErr" role="alert" data-empty="${esc(site.contactForm.empty)}"></p>
+      <div class="cform__foot">
+        <button type="submit" class="btn btn--primary" data-magnetic>${esc(site.contactForm.submit)} ${icons.arrowUpRight}</button>
+        <p class="cform__note">${esc(site.contactForm.note)}</p>
+      </div>
+    </form>
   </div>
 </section>`;
 
@@ -238,6 +255,35 @@ const blockHead = (title, lead) => `
       ${lead ? `<p class="sec-lead">${esc(lead)}</p>` : ""}
     </div>`;
 
+// Free intro conversation: kept deliberately separate from the paid process study.
+const consultBlock = (p) =>
+  !p.consult
+    ? ""
+    : `
+  <section class="section consult-sec section--alt">
+    <div class="wrap">
+      <div class="consult reveal">
+        <div class="consult__main">
+          <p class="eyebrow">${esc(p.consult.title)}</p>
+          <h2 class="h-lg">${esc(p.consult.lead)}</h2>
+          <p class="consult__body">${esc(p.consult.body)}</p>
+          ${ctaButton(p.consult.cta, true)}
+        </div>
+        <div class="consult__cols">
+          ${p.consult.points
+            .map(
+              (pt) => `
+          <div class="consult__col">
+            <h3>${esc(pt.title)}</h3>
+            <p>${esc(pt.text)}</p>
+          </div>`
+            )
+            .join("")}
+        </div>
+      </div>
+    </div>
+  </section>`;
+
 // Demo video: a real recording with sound, so it plays on request instead of autoplaying.
 const demoBlock = (p) =>
   !p.demo
@@ -290,6 +336,55 @@ const casesBlock = (p) => {
     </div>
   </section>`;
 };
+
+// Example scenarios: possible pilots, deliberately kept apart from delivered work.
+const examplesBlock = (p) =>
+  !p.examples
+    ? ""
+    : `
+  <section class="section ex-sec">
+    <div class="wrap">
+      ${blockHead(p.examples.title, p.examples.lead)}
+      ${p.examples.note ? `<p class="ex__note reveal">${esc(p.examples.note)}</p>` : ""}
+      <div class="exs">
+        ${p.examples.items
+          .map(
+            (x, i) => `
+        <article class="ex reveal" style="--i:${i}">
+          <div class="ex__head">
+            <span class="ex__num">${String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>${esc(x.title)}</h3>
+              <p class="ex__fit">${esc(x.fit)}</p>
+            </div>
+            <span class="ex__tag">Example</span>
+          </div>
+          <p class="ex__problem">${esc(x.problem)}</p>
+          <div class="ex__bounds">
+            <div class="ex__bound"><span>Starts when</span><p>${esc(x.start)}</p></div>
+            <div class="ex__bound"><span>Ends when</span><p>${esc(x.end)}</p></div>
+          </div>
+          <div class="ex__cols">
+            ${[
+              ["Done by hand today", x.manual, "man"],
+              ["What we automate", x.automate, "auto"],
+              ["What the business gets", x.result, "res"],
+            ]
+              .map(
+                ([label, items, kind]) => `
+            <div class="ex__col ex__col--${kind}">
+              <span class="ex__label">${label}</span>
+              <ul>${items.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+            </div>`
+              )
+              .join("")}
+          </div>
+        </article>`
+          )
+          .join("")}
+      </div>
+    </div>
+  </section>`;
 
 const processBlock = (p) =>
   !p.process
@@ -623,6 +718,8 @@ ${nav(p.slug)}
     </div>
   </section>
 
+  ${consultBlock(p)}
+
   ${
     p.problem
       ? `<section class="section ps-sec section--alt"><div class="wrap">${problemSolution(p)}</div></section>`
@@ -641,6 +738,7 @@ ${nav(p.slug)}
   </section>
   ${demoBlock(p)}
   ${casesBlock(p)}
+  ${examplesBlock(p)}
   ${processBlock(p)}
   ${pricingBlock(p)}
   ${scopeBlock(p)}

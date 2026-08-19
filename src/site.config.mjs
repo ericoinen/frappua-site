@@ -12,6 +12,21 @@ export const site = {
   businessId: "2775290-7",
   vat: "FI27752907",
   tagline: "XR, AI & Digital Innovation from Finland",
+  contactForm: {
+    title: "Tell us what you are trying to solve",
+    lead:
+      "Describe the situation in your own words. We read every message, come back with questions, and say honestly whether we see something worth automating.",
+    name: "Your name",
+    company: "Company",
+    email: "Email",
+    problem: "What is the problem?",
+    placeholder:
+      "For example: our office manager spends half the day answering the same questions by phone and email, and requests still get lost.",
+    submit: "Send via email",
+    note:
+      "The button opens your email app with the message ready to send. Nothing leaves this page on its own.",
+    empty: "Please describe the problem first.",
+  },
   description:
     "Frappua! develops digital products across virtual reality training, computer vision, business automation, AI-powered games and technology workshops.",
 };
@@ -107,6 +122,25 @@ export const projects = [
     },
     summary:
       "AI process automation assembled from tools that already exist and layered on top of your current systems, delivered as a fixed-price pilot for one process in 4 to 6 weeks.",
+    consult: {
+      title: "Free consultation",
+      lead: "Start with a conversation, not a contract.",
+      body:
+        "Tell us what your company is struggling with. We talk the problem through, ask the questions that matter and help you work out which automation options could fit, and whether automation is worth it here at all. The first conversation is free, and it commits you to nothing.",
+      points: [
+        {
+          title: "What is free",
+          text:
+            "A first conversation of about 30 minutes. You describe the situation in your own words, we ask clarifying questions and outline the options we can see from what you tell us.",
+        },
+        {
+          title: "What is agreed separately",
+          text:
+            "A proper study of the process: sessions with the people who run it day to day, access to the tools and numbers it lives in, and a written map of how it works now. That is its own piece of work, scoped and agreed with you, and it usually starts the pilot.",
+        },
+      ],
+      cta: { label: "Book a free consultation", href: "/#contact", external: false },
+    },
     problem: {
       title: "The problem",
       lead:
@@ -136,8 +170,8 @@ export const projects = [
       { icon: "globe", title: "Works in your language", text: "Interfaces and AI assistants in Finnish, English, or whatever you need: Swedish, Estonian, Russian, Ukrainian." },
     ],
     cases: {
-      title: "What we automate",
-      lead: "Three processes we have already built. Your own process fits too, if the shape is similar.",
+      title: "What we have built",
+      lead: "The reference we can show: one process, running with a client today.",
       items: [
         {
           icon: "ai",
@@ -155,17 +189,118 @@ export const projects = [
             "Ask the archive what was decided about the design in July and get the answer with links to the exact minute of the exact meeting",
           ],
         },
+      ],
+    },
+    examples: {
+      title: "Example scenarios",
+      lead:
+        "Four processes that fit the shape of a pilot. These are examples of what automation looks like in practice, not work we have delivered.",
+      note:
+        "Each one is a single process with a start and an end, not a plan to automate a company. If your own process has a similar shape, it fits too.",
+      items: [
         {
-          icon: "share",
-          title: "HR routine",
-          text:
-            "The flow of candidates and staff, automated end to end. Applications get a first-pass screening against criteria you agree in advance, candidates get an answer, interviews are scheduled, hiring documents are collected and expiring certifications are chased. HR spends its time on people instead of correspondence.",
+          title: "Incoming customer requests",
+          fit: "Teams where one shared inbox or web form is answered by several people",
+          problem:
+            "Requests arrive by email, through the website form and by phone at the same time. Nobody owns the queue, so the same question gets answered twice, and a request that needed one clarification sits untouched for two days.",
+          start: "A request arrives by email or from the website form",
+          end: "It is recorded, answered or handed to the right person, and the customer knows what happens next",
+          manual: [
+            "Reading every message to work out what it is about",
+            "Copying the details into a spreadsheet or CRM by hand",
+            "Answering the same routine questions again",
+            "Asking around to find out who takes it",
+          ],
+          automate: [
+            "Sorting incoming requests by type and urgency",
+            "Answering the routine questions from your own material",
+            "Creating the record in your CRM with the details already filled in",
+            "Passing anything unusual to a person with a short summary",
+          ],
+          result: [
+            "Every request is recorded, so none of them sits unnoticed",
+            "Routine questions get an answer the same day, including outside office hours",
+            "Less duplicated work, because the queue has one state everyone sees",
+            "The manager can see how many requests came in and what happened to each",
+          ],
         },
         {
-          icon: "map",
-          title: "Employee onboarding",
-          text:
-            "An AI assistant built on your company's own knowledge. A new hire, a marketer for example, is introduced to what the company does, which tools and channels are in use, who is responsible for what and where the roadmap is going, and gets materials handed over and access requested. The new hire asks the assistant instead of interrupting colleagues, the manager sees from the logs what has been covered and where the person is stuck, and company knowledge gets documented and reused automatically.",
+          title: "Handling job applications",
+          fit: "Companies hiring continuously, where HR is one person or part of somebody's job",
+          problem:
+            "Applications pile up in a mailbox during the weeks when hiring is busiest. Screening happens in batches, good candidates wait, and the ones who are not a fit often hear nothing at all.",
+          start: "An application arrives through the job advert",
+          end: "The candidate is either booked into an interview slot or has received an answer",
+          manual: [
+            "Opening every application and comparing it against the requirements",
+            "Keeping a separate list of who is at which stage",
+            "Writing the same first reply and the same rejection over and over",
+            "Going back and forth over email to find an interview time",
+          ],
+          automate: [
+            "A first pass against criteria you agree in advance",
+            "Replies to applicants, including the answer to those who are not a fit",
+            "Interview scheduling against the interviewers' calendars",
+            "Collecting the documents a new hire has to submit",
+          ],
+          result: [
+            "Applicants get an answer quickly, which is what they remember about you",
+            "The hiring manager reviews a shortlist instead of an inbox",
+            "Fewer candidates lost because a message was missed",
+            "The state of every open role is visible in one place",
+          ],
+        },
+        {
+          title: "Onboarding a new employee",
+          fit: "Teams where onboarding repeats often and how things work sits with a few experienced people",
+          problem:
+            "Every new hire is introduced to the company from memory, by whoever is free. The instructions are slightly different each time, access requests are remembered late, and an experienced colleague spends the first weeks answering questions instead of doing their own work.",
+          start: "The contract is signed and the start date is known",
+          end: "The new hire has the accesses and the material they need, and can get answers without a colleague sitting next to them",
+          manual: [
+            "Explaining the same basics to each new person",
+            "Remembering which accesses this role needs and asking around for them",
+            "Digging out documents, links and instructions from chats and drives",
+            "Answering the same questions in the first weeks",
+          ],
+          automate: [
+            "A checklist per role that opens the access requests by itself",
+            "Handing over the materials and links in the right order",
+            "An assistant built on your own documents that answers the recurring questions",
+            "A view for the manager of what has been covered and what has not",
+          ],
+          result: [
+            "The same onboarding every time, instead of one that depends on who is free",
+            "Less senior time spent repeating the basics",
+            "How the work is done gets written down as a side effect and stays available",
+            "The manager sees where new people get stuck, and can fix the material",
+          ],
+        },
+        {
+          title: "Supplier invoices and documents",
+          fit: "Office and service companies where documents travel by email between people and the accounting system",
+          problem:
+            "Invoices and delivery documents arrive as attachments in personal mailboxes. Someone types the numbers into the accounting system, forwards the document for approval and remembers to chase it. When a payment is late, nobody can say where it stopped.",
+          start: "A document arrives by email or from a supplier portal",
+          end: "It is recorded in the accounting or project system and is with the right person for approval",
+          manual: [
+            "Saving attachments and renaming them by hand",
+            "Typing supplier, sum, due date and project code into the system",
+            "Forwarding the document to whoever approves it",
+            "Chasing approvals before the due date",
+          ],
+          automate: [
+            "Reading the fields out of the document and filling the record",
+            "Filing it against the right supplier and project",
+            "Sending it to the approver with a reminder before the due date",
+            "Flagging anything that does not match, for a person to check",
+          ],
+          result: [
+            "Fewer typing errors in figures nobody double checks",
+            "Documents stop living in one person's mailbox",
+            "Approvals happen before the due date rather than after it",
+            "It is possible to answer where any document currently sits",
+          ],
         },
       ],
     },
@@ -259,38 +394,6 @@ export const projects = [
         "Cost of handling one request or one hire, per year",
       ],
     },
-    pains: {
-      title: "Where the time and money go",
-      lead: "Five costs that stay invisible on the invoice, and what the automation does about each.",
-      rows: [
-        {
-          pain:
-            "The cost of human time. A secretary, an office manager or the owner spends hours on tasks that do not need a person: taking calls, booking times, answering routine questions, moving data between systems.",
-          answer:
-            "The automation handles the routine and people keep the work that needs judgement. Nobody loses their job, people stop being answering machines.",
-        },
-        {
-          pain:
-            "Missed requests are lost money. A call outside office hours, an email answered two days late, and the customer is already with a competitor.",
-          answer: "The automation works around the clock, and every request is recorded and answered.",
-        },
-        {
-          pain:
-            "Onboarding costs the productivity of two people. The new hire takes weeks to reach working speed while an experienced colleague acts as a mentor instead of doing their own job.",
-          answer: "The assistant answers the new hire's questions, and the manager sees progress from the logs.",
-        },
-        {
-          pain:
-            "Knowledge lives in people's heads. When someone leaves, the knowledge of how the process works goes with them.",
-          answer: "The process is mapped and the assistant is built on that knowledge, so it stays available and gets reused.",
-        },
-        {
-          pain:
-            "Errors in manual routine. A forgotten request, a typo when moving data, a lost email. Cheap individually, expensive over time.",
-          answer: "Every step is logged, and anything non-standard goes to a person with a ready summary.",
-        },
-      ],
-    },
     audience: {
       title: "Who it's for",
       tags: [
@@ -307,7 +410,7 @@ export const projects = [
       text:
         "The AI secretary is already running in production with a client, handling real calls and bookings. New engagements start with a kick-off meeting: we pick one process, agree the acceptance criteria and set the pilot date.",
     },
-    cta: { label: "Book a kick-off meeting", href: "/#contact", external: false },
+    cta: { label: "Book a free consultation", href: "/#contact", external: false },
   },
 
   {
