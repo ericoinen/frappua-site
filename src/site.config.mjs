@@ -81,8 +81,8 @@ export const projects = [
     demo: {
       title: "Demo",
       lead: "The AI assistant running a workplace safety scenario in the warehouse.",
-      src: "/Videos/SafeSkillVR_demo_web.mp4",
-      poster: "/Videos/SafeSkillVR_demo_web.jpg",
+      src: "/Videos/SafeSkillVR_demo_web_02.mp4",
+      poster: "/Videos/SafeSkillVR_demo_web_02.jpg",
       caption:
         "Recorded from the prototype. The assistant meets the trainee on the floor, offers the available safety scenarios, first aid kit and safety vest, and then guides the chosen one step by step. The trainee answers in their own words, by voice or by typing.",
     },
