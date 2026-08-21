@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Frappua! LinkedIn card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* One card, rendered at both LinkedIn sizes: 1200x1200 and 1200x627. */
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#08080c;--fg:#f4f4f7;--fg-3:#6a6a78;--c:#8b7bff;
+    --disp:"Space Grotesk",sans-serif;--serif:"Instrument Serif",Georgia,serif;--sans:"Inter",sans-serif}
+  html,body{width:100%;height:100%;background:var(--bg);overflow:hidden}
+  .stage{position:relative;width:100vw;height:100vh;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:min(4vh,42px);text-align:center;padding:6vmin}
+  .glow{position:absolute;inset:0;background:radial-gradient(62% 62% at 50% 46%,rgba(139,123,255,.24),transparent 72%)}
+  .grid{position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:7vmin 7vmin;
+    -webkit-mask-image:radial-gradient(58% 58% at 50% 50%,#000 25%,transparent 78%)}
+  .vig{position:absolute;inset:0;background:radial-gradient(88% 84% at 50% 50%,transparent 46%,rgba(0,0,0,.5))}
+  .mark{position:relative;display:flex;align-items:center;gap:min(2.4vmin,26px)}
+  .mark svg{width:min(13vmin,150px);height:min(13vmin,150px);display:block;color:var(--fg)}
+  .mark .mk-f{fill:currentColor}.mark .mk-b{fill:var(--c)}
+  .word{font-family:var(--disp);font-weight:600;font-size:min(13vmin,150px);letter-spacing:-.03em;
+    color:var(--fg);line-height:1}
+  .word em{font-family:var(--serif);font-style:italic;color:var(--c)}
+  .say{position:relative;font-family:var(--disp);font-weight:500;font-size:min(4.4vmin,50px);
+    letter-spacing:-.01em;color:var(--fg);max-width:22ch;line-height:1.25}
+  .site{position:relative;font-family:var(--sans);font-size:min(2.4vmin,27px);letter-spacing:.06em;color:var(--fg-3)}
+  .rule{position:relative;width:min(22vmin,240px);height:2px;
+    background:linear-gradient(90deg,transparent,rgba(139,123,255,.9),transparent)}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="glow"></div><div class="grid"></div><div class="vig"></div>
+    <div class="mark">
+      <svg viewBox="14 13 37 37" aria-hidden="true">
+        <g class="mk-f"><rect x="18" y="15" width="7" height="33" rx="1.5"/><rect x="18" y="15" width="20" height="7" rx="1.5"/><rect x="18" y="28" width="15" height="6" rx="1.5"/></g>
+        <g class="mk-b"><rect x="41" y="15" width="6" height="23" rx="2"/><circle cx="44" cy="45" r="3.4"/></g>
+      </svg>
+      <span class="word">Frappua<em>!</em></span>
+    </div>
+    <div class="rule"></div>
+    <div class="say">Building practical AI, XR and digital products.</div>
+    <div class="site">frappua.win</div>
+  </div>
+</body>
+</html>

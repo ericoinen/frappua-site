@@ -429,7 +429,7 @@ export const projects = [
       hasVideo: false,
     },
     summary:
-      "Practical computer vision solutions that transform cameras into intelligent assistants that understand visual scenes, monitor environments and report only what matters.",
+      "Practical computer vision solutions that transform cameras into intelligent assistants that understand visual scenes, monitor environments and report only what matters. The first product in the line is AI Vision Monitor.",
     problem: {
       title: "The shift",
       lead: "Cameras should do more than record video.",
@@ -478,7 +478,7 @@ export const projects = [
     statusBanner: {
       title: "Current status: Active",
       text:
-        "AI Cameras is in active development, delivering practical computer vision for both consumers and organisations, with cloud and on-premise deployment options.",
+        "AI Cameras is a product line, not a single app. Its first product is AI Vision Monitor, already in active development and available for both consumers and organisations, with cloud and on-premise deployment options. Further products in the same direction follow.",
     },
     cta: { label: "Visit aicameras.win", href: "https://aicameras.win/", external: true },
     links: [{ label: "YouTube", href: "https://www.youtube.com/@AIVisionMonitor", icon: "youtube" }],
