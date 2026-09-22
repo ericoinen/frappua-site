@@ -28,6 +28,11 @@ const numWord = (n) => NUM_WORDS[n] || String(n);
 const statusChip = (status) =>
   status ? `<span class="chip chip--${status.kind}"><i></i>${esc(status.label)}</span>` : "";
 
+// Incubator badge: same chip family as the status pill, with a light sweep around
+// the border so it reads as a live credential rather than a static logo.
+const programmeChip = () =>
+  `<a class="chip chip--programme" href="${site.programme.url}" target="_blank" rel="noopener" data-magnetic><i></i><span>${esc(site.programme.label)}</span>${icons.arrowUpRight}</a>`;
+
 /* ---------- shared head ---------- */
 const head = ({ title, desc, slug }) => {
   const url = slug ? `https://${site.domain}/${slug}` : `https://${site.domain}/`;
@@ -154,7 +159,7 @@ const footer = () => `
       <div class="footer__links">
         ${projects.map((p) => `<a href="/${p.slug}" data-magnetic>${esc(p.name)}</a>`).join("")}
       </div>
-      <p class="footer__copy">© ${new Date().getFullYear() === 2026 ? "2026" : "2025"} ${site.name} · Business ID ${site.businessId} · VAT ${site.vat} · ${esc(site.tagline)}</p>
+      <p class="footer__copy">© ${new Date().getFullYear() === 2026 ? "2026" : "2025"} ${site.name} · Business ID ${site.businessId} · VAT ${site.vat} · ${esc(site.tagline)} · ${esc(site.programme.short)}</p>
     </div>
   </div>
 </footer>`;
@@ -180,7 +185,7 @@ const scripts = () => `
 
 /* ---------- reusable content blocks ---------- */
 const marquee = () => {
-  const row = capabilities.concat(["Built in Finland"]).map((c) => `<span>${esc(c)}</span><i>✳</i>`).join("");
+  const row = capabilities.concat(["Built in Finland", site.programme.short]).map((c) => `<span>${esc(c)}</span><i>✳</i>`).join("");
   return `
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">${row}${row}</div>
@@ -508,6 +513,16 @@ const painsBlock = (p) =>
     </div>
   </section>`;
 
+const programmeBlock = (project) =>
+  !project.programme
+    ? ""
+    : `
+<div class="programme reveal">
+  ${programmeChip()}
+  <blockquote class="programme__quote">${esc(site.programme.quote)}</blockquote>
+  <p class="programme__note">${esc(site.programme.note)}</p>
+</div>`;
+
 const statusBanner = (project) =>
   !project.statusBanner
     ? ""
@@ -579,7 +594,10 @@ ${nav(null)}
   <section class="hero hero--home hero--cinematic">
     <div class="hero__mesh" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="wrap hero__wrap">
-      <p class="hero__kicker reveal-now">Finnish micro-enterprise · XR · AI</p>
+      <div class="hero__top reveal-now">
+        <span class="hero__kicker">Finnish micro-enterprise · XR · AI</span>
+        ${programmeChip()}
+      </div>
       ${kineticTitle(["We build", "intelligent", "products with", "emerging tech"], "display display--xl")}
       <div class="hero__base">
         <p class="hero__lead reveal-now">${esc(site.description)} We help organisations adopt new technology for real operational impact.</p>
@@ -692,6 +710,7 @@ ${nav(p.slug)}
         <span class="hero__idx">${p.index}</span>
         <span class="hero__kicker">${esc(p.hero.kicker)}</span>
         ${statusChip(p.status)}
+        ${p.programme ? programmeChip() : ""}
       </div>
       ${kineticTitle(p.hero.title, "display display--xl")}
       <div class="hero__base">
@@ -752,8 +771,8 @@ ${nav(p.slug)}
   }
 
   ${
-    p.audience || p.statusBanner
-      ? `<section class="section close-sec section--alt"><div class="wrap">${audienceBlock(p)}${statusBanner(p)}</div></section>`
+    p.audience || p.statusBanner || p.programme
+      ? `<section class="section close-sec section--alt"><div class="wrap">${audienceBlock(p)}${statusBanner(p)}${programmeBlock(p)}</div></section>`
       : ""
   }
 

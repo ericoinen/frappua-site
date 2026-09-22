@@ -29,6 +29,18 @@ export const site = {
   },
   description:
     "Frappua! develops digital products across virtual reality training, computer vision, business automation, AI-powered games and technology workshops.",
+  // Incubator membership. Wording follows the programme's own guidance: we may say
+  // we are part of the incubator and quote their one-line description of themselves.
+  programme: {
+    name: "Helsinki Education Hub",
+    short: "Helsinki Education Hub Incubator",
+    label: "Part of the Helsinki Education Hub Incubator",
+    url: "https://helsinkieducationhub.fi/",
+    quote:
+      "Helsinki Education Hub (HEH) is an innovation platform focused on supporting EdTech startups and advancing educational research and practices.",
+    note:
+      "SafeSkillVR is developed as part of the Helsinki Education Hub Incubator, the EdTech programme of the City of Helsinki.",
+  },
 };
 
 // Order matters - used for nav, project galleries and "other projects".
@@ -40,6 +52,7 @@ export const projects = [
     color: "#00d6c2",
     colorRGB: "0, 214, 194",
     status: { label: "Prototype", kind: "prototype" },
+    programme: true,
     tagline: "AI-assisted VR training for warehouse & logistics operations",
     hero: {
       kicker: "Immersive training",

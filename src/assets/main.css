@@ -90,6 +90,26 @@ em.acc{font-family:var(--serif);font-style:italic}
 .chip--prototype i{background:#00d6c2;animation:pulse 2s infinite}
 .chip--soon{color:var(--fg-3)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+/* incubator badge: glass pill with a light sweeping the border, HEH yellow as the signal */
+.chip--programme{position:relative;isolation:isolate;overflow:hidden;text-decoration:none;text-transform:none;
+  letter-spacing:.02em;font-size:.78rem;padding:.5em 1em .5em .85em;gap:.6em;color:var(--fg);
+  border-color:transparent;transition:box-shadow .5s var(--ease),transform .5s var(--ease)}
+.chip--programme::before{content:"";position:absolute;left:50%;top:50%;width:340%;aspect-ratio:1;z-index:-2;
+  transform:translate(-50%,-50%) rotate(0deg);
+  background:conic-gradient(rgba(255,255,255,.16) 0 70%,rgba(249,211,66,.95) 83%,rgba(255,255,255,.16) 96%);
+  animation:sweep 5s linear infinite}
+.chip--programme::after{content:"";position:absolute;inset:1px;border-radius:inherit;z-index:-1;
+  background:rgba(10,10,16,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.chip--programme i{background:#f9d342;box-shadow:0 0 10px rgba(249,211,66,.9);animation:pulse 2.4s infinite}
+.chip--programme svg{width:.85em;height:.85em;opacity:.65;transition:transform .4s var(--ease),opacity .4s}
+.chip--programme:hover{box-shadow:0 0 0 1px rgba(249,211,66,.3),0 10px 36px rgba(249,211,66,.16)}
+.chip--programme:hover svg{opacity:1;transform:translate(1px,-1px)}
+@keyframes sweep{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.programme{margin-top:2.4rem;padding:1.8rem clamp(1.4rem,3vw,2.4rem);border:1px solid var(--line);border-radius:1.4rem;
+  background:rgba(255,255,255,.025);display:grid;gap:1.1rem;justify-items:start}
+.programme__quote{font-family:var(--serif);font-style:italic;font-size:clamp(1.25rem,2.2vw,1.7rem);line-height:1.35;
+  color:var(--fg);max-width:32ch;margin:0}
+.programme__note{font-size:.95rem;color:var(--fg-2);max-width:60ch;margin:0}
 
 /* ---------- preloader ---------- */
 .preloader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;
@@ -651,5 +671,6 @@ body.webgl-on .hero__mesh{opacity:0}
   *{animation:none!important;transition-duration:.01ms!important}
   .display .line-i{transform:none}
   .reveal,.reveal-now{opacity:1;transform:none}
+  .chip--programme::before{animation:none}
   .manifesto__text .word{opacity:1}
 }
