@@ -35,11 +35,11 @@ export const site = {
     name: "Helsinki Education Hub",
     short: "Helsinki Education Hub Incubator",
     label: "Part of the Helsinki Education Hub Incubator",
-    url: "https://helsinkieducationhub.fi/",
+    url: "https://www.helsinki.fi/en/networks/helsinki-education-hub/incubator",
     quote:
       "Helsinki Education Hub (HEH) is an innovation platform focused on supporting EdTech startups and advancing educational research and practices.",
     note:
-      "SafeSkillVR is developed as part of the Helsinki Education Hub Incubator, the EdTech programme of the City of Helsinki.",
+      "SafeSkillVR is developed as part of the Helsinki Education Hub Incubator, a three-month EdTech programme run in Helsinki with the University of Helsinki.",
   },
 };
 
