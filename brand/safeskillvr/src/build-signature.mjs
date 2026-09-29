@@ -67,6 +67,16 @@ const makerPage = ({ ink, caption, tail, bg }) =>
     `<div class="lock">${MARK}<span>Frappua<em>!</em></span></div>
 <div class="by"><span>building SafeSkillVR${tail}</span></div>`);
 
+// Plain type, no logo elements at all: no F! mark, and the "!" is an ordinary glyph
+// in the same face and colour as the word. Two names stacked, hierarchy by size only.
+const plainPage = ({ ink, bg }) =>
+  shell(bg, `
+.wrap{color:${ink}}
+.top{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:150px;letter-spacing:-.025em;line-height:1;display:block}
+.sub{font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:84px;letter-spacing:-.02em;line-height:1;
+  display:block;margin-top:24px;opacity:.78}`,
+    `<span class="top">Frappua!</span><span class="sub">SafeSkillVR</span>`);
+
 const LIGHT = { ink: "#f4f4f7", caption: "rgba(244,244,247,.64)" };
 const DARK = { ink: "#08080c", caption: "rgba(8,8,12,.62)" };
 const HEH = " &middot; Helsinki Education Hub Incubator";
@@ -82,6 +92,8 @@ const variants = [
   { out: "frappua-building-safeskillvr-dark", page: makerPage, tone: DARK, tail: "" },
   { out: "frappua-building-safeskillvr-heh-light", page: makerPage, tone: LIGHT, tail: HEH },
   { out: "frappua-building-safeskillvr-heh-dark", page: makerPage, tone: DARK, tail: HEH },
+  { out: "frappua-safeskillvr-plain-light", page: plainPage, tone: LIGHT, tail: "" },
+  { out: "frappua-safeskillvr-plain-dark", page: plainPage, tone: DARK, tail: "" },
 ];
 
 const only = process.argv[2]; // optional substring filter, e.g. "frappua-"
