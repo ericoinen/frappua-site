@@ -69,16 +69,17 @@ const makerPage = ({ ink, caption, tail, bg }) =>
 
 // Plain type, no logo elements at all: no F! mark, and the "!" is an ordinary glyph
 // in the same face and colour as the word. Two names stacked, hierarchy by size only.
-// With "building" the second line gets longer, so it drops to 56px to stay about as
-// wide as "Frappua!" above it; "building" is lighter so the product name still leads.
-const plainPage = ({ ink, bg, building }) =>
+// A connecting word ("building", "by") makes the second line longer, so it drops to
+// 56px to stay within the width of the first; the connecting word is lighter so the
+// name after it still leads. Without one, the second name sits at 84px.
+const plainPage = ({ ink, bg, top, sub, prefix }) =>
   shell(bg, `
 .wrap{color:${ink}}
 .top{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:150px;letter-spacing:-.025em;line-height:1;display:block}
-.sub{font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:${building ? 56 : 84}px;letter-spacing:-.015em;line-height:1;
-  display:block;margin-top:${building ? 26 : 24}px;opacity:.8}
+.sub{font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:${prefix ? 56 : 84}px;letter-spacing:-.015em;line-height:1;
+  display:block;margin-top:${prefix ? 26 : 24}px;opacity:.8}
 .sub b{font-weight:400;opacity:.72}`,
-    `<span class="top">Frappua!</span><span class="sub">${building ? "<b>building</b> " : ""}SafeSkillVR</span>`);
+    `<span class="top">${top}</span><span class="sub">${prefix ? `<b>${prefix}</b> ` : ""}${sub}</span>`);
 
 const LIGHT = { ink: "#f4f4f7", caption: "rgba(244,244,247,.64)" };
 const DARK = { ink: "#08080c", caption: "rgba(8,8,12,.62)" };
@@ -95,10 +96,11 @@ const variants = [
   { out: "frappua-building-safeskillvr-dark", page: makerPage, tone: DARK, tail: "" },
   { out: "frappua-building-safeskillvr-heh-light", page: makerPage, tone: LIGHT, tail: HEH },
   { out: "frappua-building-safeskillvr-heh-dark", page: makerPage, tone: DARK, tail: HEH },
-  { out: "frappua-safeskillvr-plain-light", page: plainPage, tone: LIGHT, tail: "" },
-  { out: "frappua-safeskillvr-plain-dark", page: plainPage, tone: DARK, tail: "" },
-  { out: "frappua-building-safeskillvr-plain-light", page: plainPage, tone: LIGHT, tail: "", building: true },
-  { out: "frappua-building-safeskillvr-plain-dark", page: plainPage, tone: DARK, tail: "", building: true },
+  { out: "frappua-safeskillvr-plain-light", page: plainPage, tone: LIGHT, text: { top: "Frappua!", sub: "SafeSkillVR" } },
+  { out: "frappua-safeskillvr-plain-dark", page: plainPage, tone: DARK, text: { top: "Frappua!", sub: "SafeSkillVR" } },
+  { out: "frappua-building-safeskillvr-plain-light", page: plainPage, tone: LIGHT, text: { top: "Frappua!", sub: "SafeSkillVR", prefix: "building" } },
+  { out: "frappua-building-safeskillvr-plain-dark", page: plainPage, tone: DARK, text: { top: "Frappua!", sub: "SafeSkillVR", prefix: "building" } },
+  { out: "frappua-developing-safeskillvr-plain-light", page: plainPage, tone: LIGHT, text: { top: "Frappua!", sub: "SafeSkillVR", prefix: "developing" } },
 ];
 
 const only = process.argv[2]; // optional substring filter, e.g. "frappua-"
@@ -110,7 +112,7 @@ mkdirSync(tmp, { recursive: true });
 for (const v of todo) {
   for (const bg of ["000", "fff"]) {
     const html = resolve(tmp, `${v.out}-${bg}.html`);
-    writeFileSync(html, v.page({ ...v.tone, tail: v.tail, mark: v.mark, building: v.building, bg: `#${bg}` }));
+    writeFileSync(html, v.page({ ...v.tone, ...v.text, tail: v.tail ?? "", mark: v.mark, bg: `#${bg}` }));
     execFileSync(CHROME, [
       "--headless=new", "--disable-gpu", "--hide-scrollbars",
       "--force-device-scale-factor=2", "--window-size=1500,480",

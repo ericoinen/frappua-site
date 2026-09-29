@@ -146,8 +146,16 @@ building SafeSkillVR
 | `frappua-safeskillvr-plain-dark.png` | команда | чистый набор без логотипа | светлый |
 | `frappua-building-safeskillvr-plain-light.png` | команда | чистый набор, «building» | тёмный |
 | `frappua-building-safeskillvr-plain-dark.png` | команда | чистый набор, «building» | светлый |
+| `frappua-developing-safeskillvr-plain-light.png` | команда | чистый набор, «developing» | тёмный |
 
-Пересборка всех четырнадцати: `node brand/safeskillvr/src/build-signature.mjs`; только одного
+Выбор Эрика 2026-09-29 из десяти вариантов второй строки (лист сравнения на синем фоне
+хаба: `log/frappua-second-line-options-blue.png`): **«developing SafeSkillVR»** и
+**просто «SafeSkillVR»** без связки. Слово «building» ему не понравилось, файлы с ним
+оставлены, но в новые материалы их не брать. Строка «developing SafeSkillVR» по ширине
+почти точно совпадает с «Frappua!» (1179 против 1184 пикселей), поэтому стоит тем же
+размером, что и «building».
+
+Пересборка всех пятнадцати: `node brand/safeskillvr/src/build-signature.mjs`; только одного
 семейства: добавить фильтр по имени, например `frappua-`.
 
 Все PNG с прозрачным фоном, высота около 520 пикселей, поля включены в файл. Прозрачность
