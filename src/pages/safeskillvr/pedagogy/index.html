@@ -1,0 +1,1416 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How we think about learning · SafeSkillVR</title>
+<meta name="description" content="Twelve slides on curiosity, scaffolding and when an AI mentor should help or wait. SafeSkillVR's working notes on pedagogy, shared as we learn.">
+<link rel="canonical" href="https://frappua.win/safeskillvr/pedagogy">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 500 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url('/safeskillvr/pedagogy/fonts/BricolageGrotesque-normal-500-800.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 500 600;
+  font-display: swap;
+  src: url('/safeskillvr/pedagogy/fonts/Caveat-normal-500-600.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/safeskillvr/pedagogy/fonts/IBMPlexMono-normal-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/safeskillvr/pedagogy/fonts/IBMPlexMono-normal-500.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/safeskillvr/pedagogy/fonts/InstrumentSerif-italic-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/safeskillvr/pedagogy/fonts/Inter-normal-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('/safeskillvr/pedagogy/fonts/SourceSerif4-normal-400-600.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/safeskillvr/pedagogy/fonts/SpaceGrotesk-normal-600.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+  :root{
+    --bg:#F3F5F3; --paper:#FFFFFF; --ink:#16211E; --ink-2:#3E4B47; --mute:#6E7A76; --line:#D6DDD9;
+    --amber:#D99A00; --amber-soft:#FBF1D6; --teal:#2A7A73; --teal-soft:#DDEFEC; --rust:#B4452F; --rust-soft:#F7E1DA;
+    --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif; --serif:"Source Serif 4",Georgia,serif; --mono:"IBM Plex Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ color-scheme:dark;
+    --bg:#141A18; --paper:#1C2421; --ink:#EEF2F0; --ink-2:#C2CBC7; --mute:#8D9995; --line:#2F3B37;
+    --amber:#F2B632; --amber-soft:#3A3010; --teal:#5CC2B8; --teal-soft:#153431; --rust:#E8735A; --rust-soft:#3D1F18; } }
+  :root[data-theme="dark"]{ color-scheme:dark;
+    --bg:#141A18; --paper:#1C2421; --ink:#EEF2F0; --ink-2:#C2CBC7; --mute:#8D9995; --line:#2F3B37;
+    --amber:#F2B632; --amber-soft:#3A3010; --teal:#5CC2B8; --teal-soft:#153431; --rust:#E8735A; --rust-soft:#3D1F18; }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);padding-inline:16px;padding-block:12px;display:flex;flex-direction:column;align-items:center;gap:10px;min-height:100%}
+  .top{display:flex;align-items:center;gap:12px;width:min(100%,calc((100vh - 110px) * 16 / 9))}
+  .brand{font-family:var(--display);font-weight:700;font-size:14px;white-space:nowrap}
+  .brand span{color:var(--amber)}
+  .prog{display:flex;gap:4px;flex:1}
+  .prog i{flex:1;height:4px;background:var(--line);border-radius:2px}
+  .prog i.on{background:var(--amber)}
+  .count{font-family:var(--mono);font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  .deck{width:min(100%,calc((100vh - 110px) * 16 / 9));aspect-ratio:16/9;position:relative;container-type:inline-size}
+  .slide{position:absolute;inset:0;display:none;background:var(--paper);border:1px solid var(--line);padding:4.2cqw 4.5cqw;overflow:hidden}
+  .slide.on{display:grid}
+  .two{grid-template-columns:1.35fr 1fr;gap:4cqw;align-content:start}
+  .one{grid-template-rows:auto 1fr;gap:2cqw}
+  .eyebrow{font-family:var(--mono);font-size:1.1cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 1cqw}
+  h1{font-family:var(--display);font-weight:800;font-size:4.2cqw;line-height:1.02;letter-spacing:-0.02em;margin:0 0 2cqw;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--amber)}
+  .cues{list-style:none;margin:0;padding:0;display:grid;gap:1.1cqw;font-size:1.85cqw;line-height:1.35;color:var(--ink-2)}
+  .cues li{padding-left:1.8cqw;position:relative}
+  .cues li::before{content:"";position:absolute;left:0;top:.55em;width:.7cqw;height:.7cqw;border-radius:50%;background:var(--amber)}
+  .side{display:grid;gap:1.4cqw;align-content:start}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw}
+  .pair .term{font-size:1.8cqw}
+  .pair .def{font-size:1.3cqw}
+  .box{border:1px solid var(--line);padding:1.4cqw 1.6cqw;display:grid;gap:.5cqw}
+  .lbl{font-family:var(--mono);font-size:1cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+  .term{font-family:var(--display);font-weight:700;font-size:2.1cqw;line-height:1.1}
+  .def{font-size:1.5cqw;color:var(--ink-2);line-height:1.35}
+  .say{background:var(--amber-soft);border-left:.5cqw solid var(--amber);padding:1.3cqw 1.5cqw;font-family:var(--display);font-weight:700;font-size:1.9cqw;line-height:1.3}
+  .ladder{display:grid;gap:.4cqw;font-size:1.4cqw;line-height:1.3}
+  .ladder div{display:grid;grid-template-columns:2cqw 1fr;gap:.6cqw;align-items:baseline}
+  .ladder b{font-family:var(--mono);font-weight:500;color:var(--amber)}
+  .abc{display:grid;gap:.8cqw;font-size:1.6cqw}
+  .abc div{padding:.8cqw 1cqw;border-left:.4cqw solid var(--line)}
+  .abc div.bad{border-color:var(--rust)}
+  .abc div.good{border-color:var(--teal)}
+  .tl{width:100%;height:100%;display:block}
+  .sub{font-size:1.8cqw;color:var(--ink-2);margin:0;max-width:60cqw}
+
+
+  /* chalk animation */
+  :root{--chalk:#16211E}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --chalk:#F2F0E6 } }
+  :root[data-theme="dark"]{ --chalk:#F2F0E6 }
+  .side.board{grid-template-rows:auto 1fr;align-items:end}
+  .chalk{width:100%;height:auto;display:block;overflow:visible}
+  .chalk path,.chalk circle,.chalk line,.chalk ellipse,.chalk polygon{fill:none;stroke:var(--chalk);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.92;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s ease-out forwards}
+  .chalk .thick{stroke-width:7}
+  .chalk .dash{stroke-dasharray:.06 .04;stroke-dashoffset:1;animation:draw 1.1s ease-out forwards}
+  .chalk text{font-family:"Caveat","Segoe Print",cursive;font-size:24px;font-weight:600;fill:var(--chalk);opacity:0;animation:fade .6s ease-out forwards}
+  .chalk .cap{font-size:30px}
+  .chalk text.sub{opacity:0;font-weight:500}
+
+  .chalk .thin{stroke-width:1.8}
+  .chalk .faint{stroke-width:1.4;opacity:.55}
+  .chalk .sk2{opacity:.35}
+  .chalk .mentor *{opacity:.7}
+  .chalk .dust ellipse{fill:var(--chalk);opacity:.07}
+  @media (prefers-color-scheme: light){ :root:not([data-theme="dark"]) .chalk .dust ellipse{opacity:0} }
+  :root[data-theme="light"] .chalk .dust ellipse{opacity:0}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes fade{to{opacity:.95}}
+  .chalk .d0{animation-delay:.2s}.chalk .d1{animation-delay:.9s}.chalk .d2{animation-delay:1.7s}.chalk .d3{animation-delay:2.4s}
+  .chalk .d4{animation-delay:3.2s}.chalk .d5{animation-delay:4.2s}.chalk .d6{animation-delay:5s}.chalk .d7{animation-delay:6s}
+  .chalk .d8{animation-delay:7.2s}.chalk .d9{animation-delay:8.6s}.chalk .d10{animation-delay:10s}.chalk .d11{animation-delay:11.4s}
+  .chalk .e0{animation-delay:.3s}.chalk .e1{animation-delay:1.6s}.chalk .e2{animation-delay:3.4s}.chalk .e3{animation-delay:4.8s}
+  .chalk .e4{animation-delay:6.2s}.chalk .e5{animation-delay:8.4s}.chalk .e6{animation-delay:10.6s}
+  .chalk .gazeA{animation:draw 1.1s ease-out 1.6s forwards, fadeout .5s ease-out 4.8s forwards}
+  .chalk .needleA{animation:draw 1.1s ease-out .3s forwards, fadeout .3s ease-out 3.4s forwards}
+  .chalk .head{transform-box:fill-box;transform-origin:center;animation:turn .5s ease-in-out 4.6s forwards}
+  @keyframes turn{to{transform:scaleX(-1)}}
+  .tl .ax{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s ease-out .2s forwards}
+  .tl .axhead{opacity:0;animation:fade .4s ease-out 2.8s forwards}
+  .tl .tp{opacity:0;animation:fade .5s ease-out forwards;animation-delay:calc(.5s + var(--i) * .22s)}
+  .tl .ring{transform-box:fill-box;transform-origin:center;animation:pulse 1.2s ease-out forwards;animation-delay:calc(.9s + var(--i) * .22s)}
+  @keyframes pulse{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.4);opacity:.9}100%{transform:scale(1);opacity:.6}}
+  @media (prefers-reduced-motion:reduce){.tl .ax,.tl .axhead,.tl .tp,.tl .ring{animation:none;opacity:1;stroke-dashoffset:0;transform:none}}
+  .chalk .qmark{animation:fade .6s ease-out .2s forwards, fadeout .8s ease-out 3.4s forwards}
+  @keyframes fadeout{to{opacity:0}}
+  @media (prefers-reduced-motion:reduce){.chalk path,.chalk circle,.chalk line,.chalk ellipse,.chalk text{animation:none;stroke-dashoffset:0;opacity:.95}}
+  @media (prefers-reduced-motion:reduce){.chalk .gazeA,.chalk .needleA{opacity:0}}
+  @media (prefers-reduced-motion:reduce){.chalk .head{animation:none;transform:scaleX(-1)}}
+  .nav{display:flex;justify-content:space-between;gap:12px;width:min(100%,calc((100vh - 110px) * 16 / 9))}
+  button{font-family:var(--display);font-weight:700;font-size:14px;padding:8px 16px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:4px}
+  button:hover{background:var(--ink);color:var(--bg)}
+  button:disabled{opacity:.35;cursor:default}
+  button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+  .mid{display:flex;align-items:center;gap:10px}
+  #play{min-width:120px;border-color:var(--amber)}
+  #play.on{background:var(--amber);color:#16211E;border-color:var(--amber)}
+  .hint{font-family:var(--mono);font-size:11px;color:var(--mute);align-self:center}
+
+  /* site wrapper */
+  .top,.deck,.nav,.sitebar,.intro,.srcs{width:min(100%,calc((100vh - 176px) * 16 / 9))}
+  .sitebar{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:10px 8px;border-bottom:1px solid var(--line)}
+  .back{font-family:"Inter",system-ui,sans-serif;font-size:14px;color:#00d6c2;text-decoration:none;border-bottom:1px solid transparent}
+  .back:hover,.back:focus-visible{border-bottom-color:#00d6c2}
+  .sig{display:grid;gap:5px;justify-items:start;text-decoration:none;color:var(--ink)}
+  .sig__p{font-family:"Space Grotesk","Helvetica Neue",Arial,sans-serif;font-weight:600;font-size:30px;line-height:1;letter-spacing:-0.01em}
+  .sig__by{font-family:"Inter",system-ui,sans-serif;font-weight:400;font-size:10px;line-height:1;opacity:.62}
+  .sig__by i{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:1.25em}
+  .intro{display:grid;gap:8px;padding-block:18px 8px}
+  .intro h1{font-size:clamp(28px,4vw,44px);margin:0}
+  .intro p{margin:0;font-size:17px;line-height:1.5;color:var(--ink-2);max-width:62ch}
+  .intro .eb{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+  .intro .proto{color:var(--ink);border-left:3px solid #00d6c2;padding-left:12px}
+  .srcs{display:grid;gap:10px;padding-block:28px 48px;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
+  .srcs h2{font-family:var(--display);font-size:20px;margin:0;color:var(--ink)}
+  .srcs ul{margin:0;padding-left:18px;display:grid;gap:6px}
+  .srcs a{color:var(--ink);text-decoration-color:var(--amber)}
+  .srcs .note{color:var(--mute);max-width:70ch}
+</style>
+</head>
+<body>
+<div class="sitebar">
+  <a class="back" href="/safeskillvr">&larr; Back to SafeSkillVR</a>
+  <a class="sig" href="/safeskillvr" aria-label="SafeSkillVR by Frappua!"><span class="sig__p">SafeSkillVR</span><span class="sig__by">by Frappua<i>!</i></span></a>
+</div>
+<div class="intro">
+  <span class="eb">Learning in public</span>
+  <h1>How we think about learning</h1>
+  <p>We build VR training with an AI mentor inside it. To build it well we have to understand how people learn, so we study, ask questions and show our working. These are the slides Erik Sindonen prepared for a conversation with Professor Kirsti Lonka at the University of Helsinki in autumn 2026. Press Play on any slide to hear it.</p>
+  <p class="proto">SafeSkillVR is a prototype. The slides describe how we want the mentor to behave and what we want to test. They are questions and design intentions, not measured results.</p>
+</div>
+
+
+<div class="top">
+  <div class="brand">Curiosity <span>can be designed</span></div>
+  <div class="prog" id="prog"></div>
+  <div class="count" id="count"></div>
+</div>
+
+<div class="deck" id="deck">
+
+  <section class="slide one on">
+    <div>
+      <p class="eyebrow">1 &middot; An old problem</p>
+      <h1>How do you teach so a person <em>thinks for himself</em>, instead of waiting for the answer?</h1>
+      <p class="sub">The same answer keeps coming back for 2,500 years: wait for the learner's question, give a part, let him find the rest. Not to scale.</p>
+    </div>
+    <svg class="tl" viewBox="0 0 1600 470" role="img" aria-label="Timeline of thinkers who raised the same question, from Confucius to Lonka">
+      <defs>
+        <style>
+          .ax{stroke:var(--mute);stroke-width:3}
+          .dot{fill:var(--ink-2)}
+          .hi{fill:var(--amber)}
+          .ring{fill:none;stroke:var(--amber);stroke-width:3;opacity:.6}
+          .nm{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:700;font-size:23px;fill:var(--ink)}
+          .nm.h{fill:var(--amber);font-size:26px}
+          .yr{font-family:"IBM Plex Mono",monospace;font-size:16px;fill:var(--mute)}
+          .gs{font-family:"Source Serif 4",Georgia,serif;font-size:18px;fill:var(--ink-2)}
+          .tick{stroke:var(--line);stroke-width:2}
+        </style>
+      </defs>
+      <line class="ax" pathLength="1" x1="40" y1="235" x2="1560" y2="235"/>
+      <polygon class="axhead" points="1560,227 1580,235 1560,243" fill="var(--mute)"/>
+
+      <!-- 0 Confucius (highlight) -->
+      <g class="tp" style="--i:0" transform="translate(160,0)">
+        <line class="tick" x1="0" y1="235" x2="0" y2="170"/>
+        <circle class="ring" cx="0" cy="235" r="22"/><circle class="hi" cx="0" cy="235" r="13"/>
+        <text class="nm h" x="0" y="112" text-anchor="middle">Confucius</text>
+        <text class="yr" x="0" y="136" text-anchor="middle">c. 500 BCE</text>
+        <text class="gs" x="0" y="160" text-anchor="middle">Wait for the question. Show a part.</text>
+      </g>
+      <!-- 1 Socrates -->
+      <g class="tp" style="--i:1" transform="translate(285,0)">
+        <line class="tick" x1="0" y1="235" x2="0" y2="300"/>
+        <circle class="dot" cx="0" cy="235" r="8"/>
+        <text class="nm" x="0" y="330" text-anchor="middle">Socrates</text>
+        <text class="yr" x="0" y="352" text-anchor="middle">c. 400 BCE</text>
+        <text class="gs" x="0" y="376" text-anchor="middle">Teach by asking.</text>
+      </g>
+      <!-- 2 Rousseau -->
+      <g class="tp" style="--i:2" transform="translate(400,0)">
+        <line class="tick" x1="0" y1="235" x2="0" y2="170"/>
+        <circle class="dot" cx="0" cy="235" r="8"/>
+        <text class="nm" x="0" y="112" text-anchor="middle">Rousseau</text>
+        <text class="yr" x="0" y="136" text-anchor="middle">1762</text>
+        <text class="gs" x="0" y="160" text-anchor="middle">Let him discover it.</text>
+      </g>
+      <!-- 3 Fennoman students (highlight) -->
+      <g class="tp" style="--i:3" transform="translate(525,0)">
+        <line class="tick" x1="0" y1="235" x2="0" y2="300"/>
+        <circle class="ring" cx="0" cy="235" r="22"/><circle class="hi" cx="0" cy="235" r="13"/>
+        <text class="nm h" x="0" y="333" text-anchor="middle">Fennoman students</text>
+        <text class="yr" x="0" y="356" text-anchor="middle">1860s to 1890s</text>
+        <text class="gs" x="0" y="380" text-anchor="middle">Go to the learner.</text>
+      </g>
+      <!-- 4 Montessori -->
+      <g class="tp" style="--i:4" transform="translate(640,0)">
+        <line class="tick" x1="0" y1="235" x2="0" y2="170"/>
+        <circle class="dot" cx="0" cy="235" r="8"/>
+        <text class="nm" x="0" y="112" text-anchor="middle">Montessori</text>
+        <text class="yr" x="0" y="136" text-anchor="middle">1907</text>
+        <text class="gs" x="0" y="160" text-anchor="middle">The environment teaches.</text>
+      </g>
+      <!-- 5 Dewey -->
+      <g class="tp" style="--i:5" transform="translate(770,0)">
+        <line class="tick" x1="0" y1="235" x2="0" y2="300"/>
+        <circle class="dot" cx="0" cy="235" r="8"/>
+        <text class="nm" x="0" y="330" text-anchor="middle">Dewey</text>
+        <text class="yr" x="0" y="352" text-anchor="middle">1910</text>
+        <text class="gs" x="0" y="376" text-anchor="middle">Thinking starts with curiosity.</text>
+      </g>
+      <!-- 6 Vygotsky -->
+      <g class="tp" style="--i:6" transform="translate(900,0)">
+        <line class="tick" x1="0" y1="235" x2="0" y2="170"/>
+        <circle class="dot" cx="0" cy="235" r="8"/>
+        <text class="nm" x="0" y="112" text-anchor="middle">Vygotsky</text>
+        <text class="yr" x="0" y="136" text-anchor="middle">1930s</text>
+        <text class="gs" x="0" y="160" text-anchor="middle">Help only what he can't do alone.</text>
+      </g>
+      <!-- 7 Wood, Bruner & Ross -->
+      <g class="tp" style="--i:7" transform="translate(1035,0)">
+        <line class="tick" x1="0" y1="235" x2="0" y2="300"/>
+        <circle class="dot" cx="0" cy="235" r="8"/>
+        <text class="nm" x="0" y="330" text-anchor="middle">Wood, Bruner &amp; Ross</text>
+        <text class="yr" x="0" y="352" text-anchor="middle">1976</text>
+        <text class="gs" x="0" y="376" text-anchor="middle">Scaffolding.</text>
+      </g>
+      <!-- 8 Loewenstein -->
+      <g class="tp" style="--i:8" transform="translate(1165,0)">
+        <line class="tick" x1="0" y1="235" x2="0" y2="170"/>
+        <circle class="dot" cx="0" cy="235" r="8"/>
+        <text class="nm" x="0" y="112" text-anchor="middle">Loewenstein</text>
+        <text class="yr" x="0" y="136" text-anchor="middle">1994</text>
+        <text class="gs" x="0" y="160" text-anchor="middle">The information gap.</text>
+      </g>
+      <!-- 9 D'Mello -->
+      <g class="tp" style="--i:9" transform="translate(1290,0)">
+        <line class="tick" x1="0" y1="235" x2="0" y2="300"/>
+        <circle class="dot" cx="0" cy="235" r="8"/>
+        <text class="nm" x="0" y="330" text-anchor="middle">D'Mello et al.</text>
+        <text class="yr" x="0" y="352" text-anchor="middle">2014</text>
+        <text class="gs" x="0" y="376" text-anchor="middle">Confusion can help.</text>
+      </g>
+      <!-- 10 Arguel -->
+      <g class="tp" style="--i:10" transform="translate(1405,0)">
+        <line class="tick" x1="0" y1="235" x2="0" y2="170"/>
+        <circle class="dot" cx="0" cy="235" r="8"/>
+        <text class="nm" x="0" y="112" text-anchor="middle">Arguel et al.</text>
+        <text class="yr" x="0" y="136" text-anchor="middle">2019</text>
+        <text class="gs" x="0" y="160" text-anchor="middle">Optimal confusion.</text>
+      </g>
+      <!-- 11 Lonka -->
+      <g class="tp" style="--i:11" transform="translate(1520,0)">
+        <line class="tick" x1="0" y1="235" x2="0" y2="300"/>
+        <circle class="dot" cx="0" cy="235" r="8"/>
+        <text class="nm" x="0" y="330" text-anchor="middle">Lonka</text>
+        <text class="yr" x="0" y="352" text-anchor="middle">2026</text>
+        <text class="gs" x="0" y="376" text-anchor="middle">Start with questions.</text>
+      </g>
+    </svg>
+  </section>
+
+  <section class="slide two">
+    <div>
+      <p class="eyebrow">2 &middot; Confucius could wait</p>
+      <h1>One question, <em>two answers</em></h1>
+      <ul class="cues">
+        <li>"If a man does not ask 'what should I do?', I cannot help him."</li>
+        <li>He showed only a part. The rest the student worked out himself.</li>
+        <li>He taught in conversation. No class, no bell. He had time for each student.</li>
+        <li>Two students, same question: should I act at once?</li>
+        <li>Hot-headed one: "wait, ask your elders first." Timid one: "do it at once."</li>
+        <li>Because the students were different.</li>
+      </ul>
+    </div>
+    <div class="side board">
+      <div class="pair">
+      <div class="box"><span class="lbl">in pedagogy</span><span class="term">scaffolding</span><span class="def">A little support, not the whole answer. Wood, Bruner &amp; Ross, 1976.</span></div>
+      <div class="box"><span class="lbl">in pedagogy</span><span class="term">adaptive support</span><span class="def">Help that changes with the learner, not with the task. Analects 11.22.</span></div>
+      </div>
+      <svg class="chalk" viewBox="0 0 640 500" role="img" aria-label="Chalk drawing: Confucius seated between two students who ask the same question and get two different answers">
+        <defs>
+          <filter id="rough21" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="21" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g filter="url(#rough21)">
+<path class="sk d0" pathLength="1" d="M14,440 C200,436 420,442 626,437"/>
+<path class="sk d1" pathLength="1" d="M246,404 L394,404 L394,416 L246,416 Z"/>
+<circle class="sk d1" pathLength="1" cx="320.0" cy="228.6" r="14.6"/>
+<path class="d1" pathLength="1" d="M302.5,220.6 L337.5,220.6 L333.9,208.9 L306.1,208.9 Z"/>
+<path class="d1 thin" pathLength="1" d="M312.7,239.6 C313.4,260.8 326.6,260.8 327.3,239.6"/>
+<path class="d1 thin" pathLength="1" d="M315.6,233.0 L324.4,233.0"/>
+<path class="sk d1" pathLength="1" d="M296.6,252.0 Q320.0,244.7 343.4,252.0 L355.1,404.0 L284.9,404.0 Z"/>
+<path class="d1 thin" pathLength="1" d="M299.5,287.1 C311.2,300.2 328.8,300.2 340.5,287.1"/>
+<path class="d1 thin" pathLength="1" d="M306.8,260.8 L299.5,399.6 M333.2,260.8 L340.5,399.6"/>
+<circle class="sk d2" pathLength="1" cx="112.0" cy="246.2" r="16.2"/>
+<path class="d2 thin" pathLength="1" d="M98.3,238.9 C102.3,229.2 112.0,226.0 120.9,230.8 M103.1,234.0 C108.8,227.6 117.7,227.6 124.9,236.5"/>
+<path class="d2 thin" pathLength="1" d="M108.0,261.5 L108.8,269.6 M116.0,261.5 L115.2,269.6"/>
+<path class="sk d2" pathLength="1" d="M88.6,271.2 Q112.0,263.9 135.4,271.2 L127.3,318.0 L130.6,329.3 L93.4,329.3 L96.7,318.0 Z"/>
+<path class="d2 thin" pathLength="1" d="M112.0,274.4 L112.0,326.1"/>
+<path class="d2" pathLength="1" d="M90.5,272.8 Q77.5,265.5 69.5,258.3 Q68.6,242.9 67.8,227.6"/>
+<circle class="d2" pathLength="1" cx="63.8" cy="230.0" r="5.2"/>
+<path class="d2" pathLength="1" d="M133.5,272.8 Q146.5,265.5 154.5,258.3 Q155.4,242.9 156.2,227.6"/>
+<circle class="d2" pathLength="1" cx="160.2" cy="230.0" r="5.2"/>
+<path class="sk d2" pathLength="1" d="M103.6,329.3 L100.7,368.1 L99.9,440.0 M120.4,329.3 L123.3,368.1 L124.1,440.0"/>
+<path class="d2" pathLength="1" d="M99.9,440.0 L86.2,440.0 M124.1,440.0 L137.8,440.0"/>
+<path class="d2 thin" pathLength="1" d="M52,262 L66,270 M46,284 L62,284 M52,306 L66,298"/>
+<circle class="sk d2" pathLength="1" cx="528.0" cy="246.2" r="16.2"/>
+<path class="d2 thin" pathLength="1" d="M514.3,238.9 C518.3,229.2 528.0,226.0 536.9,230.8 M519.1,234.0 C524.8,227.6 533.7,227.6 540.9,236.5"/>
+<path class="d2 thin" pathLength="1" d="M524.0,261.5 L524.8,269.6 M532.0,261.5 L531.2,269.6"/>
+<path class="sk d2" pathLength="1" d="M504.6,271.2 Q528.0,263.9 551.4,271.2 L543.3,318.0 L546.6,329.3 L509.4,329.3 L512.7,318.0 Z"/>
+<path class="d2 thin" pathLength="1" d="M528.0,274.4 L528.0,326.1"/>
+<path class="d2" pathLength="1" d="M506.5,272.8 Q500.8,286.5 500.0,300.3 Q518.6,303.5 537.1,306.7"/>
+<path class="d2" pathLength="1" d="M549.5,272.8 Q555.2,286.5 556.0,300.3 Q537.4,305.9 518.9,311.6"/>
+<path class="sk d2" pathLength="1" d="M519.6,329.3 L516.7,368.1 L515.9,440.0 M536.4,329.3 L539.3,368.1 L540.1,440.0"/>
+<path class="d2" pathLength="1" d="M515.9,440.0 L502.2,440.0 M540.1,440.0 L553.8,440.0"/>
+<ellipse class="d3" pathLength="1" cx="112" cy="150" rx="82" ry="30"/>
+<path class="d3" pathLength="1" d="M149,176 L112,214 L124,180"/>
+<text class="d3" x="112" y="159.6" text-anchor="middle" style="font-size:30px">act now?</text>
+<ellipse class="d3" pathLength="1" cx="528" cy="150" rx="82" ry="30"/>
+<path class="d3" pathLength="1" d="M565,176 L528,222 L540,180"/>
+<text class="d3" x="528" y="159.6" text-anchor="middle" style="font-size:30px">act now?</text>
+<ellipse class="d4" pathLength="1" cx="236" cy="64" rx="58" ry="30"/>
+<path class="d4" pathLength="1" d="M262,90 L300,204 L245,94"/>
+<text class="d4" x="236" y="73.6" text-anchor="middle" style="font-size:30px">wait</text>
+<ellipse class="d5" pathLength="1" cx="410" cy="64" rx="80" ry="30"/>
+<path class="d5" pathLength="1" d="M374,90 L340,204 L398,94"/>
+<text class="d5" x="410" y="73.6" text-anchor="middle" style="font-size:30px">go, now</text>
+<text class="d6 cap" x="320" y="488" text-anchor="middle" style="font-size:34px">same question, two answers</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="slide two">
+    <div>
+      <p class="eyebrow">3 &middot; Finland, 19th century</p>
+      <h1>The teacher <em>adapted to the learner</em></h1>
+      <ul class="cues">
+        <li>The learner was far away, in the village.</li>
+        <li>The university spoke Swedish. The village spoke Finnish.</li>
+        <li>So the Fennoman students went to the villages. To teach.</li>
+        <li>Confucius waited for the learner. The Fennomans went to the learner.</li>
+      </ul>
+    </div>
+    <div class="side board">
+      <div class="say">Different paths, same point: the teacher adapted to the learner.</div>
+      <svg class="chalk" viewBox="0 0 640 534" role="img" aria-label="Chalk drawing: students walk from a Swedish-speaking university to a Finnish-speaking village to teach">
+        <defs>
+          <filter id="rough31" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="31" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g filter="url(#rough31)">
+<path class="sk d0" pathLength="1" d="M10,430 C200,426 420,432 630,427"/>
+<path class="sk d1" pathLength="1" d="M34,430 L230,430 L230,300 L34,300 Z"/>
+<path class="sk d1" pathLength="1" d="M18,300 L132,236 L246,300"/>
+<path class="d1 thin" pathLength="1" d="M40,306 L224,306"/>
+<path class="d1 thin" pathLength="1" d="M54,312 L54,430 M62,312 L62,430"/><path class="d1 thin" pathLength="1" d="M90,312 L90,430 M98,312 L98,430"/><path class="d1 thin" pathLength="1" d="M126,312 L126,430 M134,312 L134,430"/><path class="d1 thin" pathLength="1" d="M162,312 L162,430 M170,312 L170,430"/><path class="d1 thin" pathLength="1" d="M198,312 L198,430 M206,312 L206,430"/>
+<path class="d1" pathLength="1" d="M118,430 L118,372 L146,372 L146,430"/>
+<text class="d1" x="132" y="470" text-anchor="middle" style="font-size:28px">university</text>
+<text class="d2" x="132" y="214" text-anchor="middle" style="font-size:32px">Swedish</text>
+<path class="sk d2" pathLength="1" d="M404,430 L480,430 L480,366 L404,366 Z"/>
+<path class="sk d2" pathLength="1" d="M392,368 L442,322 L492,368"/>
+<path class="d2 thin" pathLength="1" d="M434,430 L434,396 L452,396 L452,430"/>
+<path class="d2 thin" pathLength="1" d="M414,382 L428,382 L428,396 L414,396 Z"/>
+<path class="d2 thin" pathLength="1" d="M462,334 L462,316 L472,316 L472,344"/>
+<path class="d2 faint" pathLength="1" d="M468,306 C474,298 464,292 470,284 C476,276 468,270 472,262"/>
+<path class="sk d2" pathLength="1" d="M500,430 L566,430 L566,380 L500,380 Z"/>
+<path class="d2" pathLength="1" d="M490,382 L533,346 L576,382"/>
+<path class="d2 thin" pathLength="1" d="M524,430 L524,402 L540,402 L540,430"/>
+<path class="d2 thin" pathLength="1" d="M580,430 L628,430 L628,392 L580,392 Z"/>
+<path class="d2 thin" pathLength="1" d="M572,394 L604,366 L636,394"/>
+<text class="d2" x="516" y="470" text-anchor="middle" style="font-size:28px">village</text>
+<text class="d2" x="516" y="300" text-anchor="middle" style="font-size:32px">Finnish</text>
+<circle class="sk d3" pathLength="1" cx="268.0" cy="315.5" r="9.5"/>
+<path class="d3 thin" pathLength="1" d="M259.9,311.2 C262.3,305.5 268.0,303.6 273.2,306.5 M262.8,308.4 C266.1,304.6 271.3,304.6 275.6,309.8"/>
+<path class="d3 thin" pathLength="1" d="M265.6,324.6 L266.1,329.4 M270.4,324.6 L269.9,329.4"/>
+<path class="sk d3" pathLength="1" d="M254.2,330.3 Q268.0,326.0 281.8,330.3 L277.1,358.0 L279.0,364.7 L257.0,364.7 L258.9,358.0 Z"/>
+<path class="d3 thin" pathLength="1" d="M268.0,332.2 L268.0,362.8"/>
+<path class="d3" pathLength="1" d="M255.3,331.3 Q252.2,340.3 251.9,349.4 Q251.2,357.5 250.5,365.6"/>
+<circle class="d3" pathLength="1" cx="248.1" cy="367.0" r="3.1"/>
+<path class="d3" pathLength="1" d="M280.7,331.3 Q286.0,339.9 288.4,348.4 Q286.4,353.7 284.5,358.9"/>
+<path class="d3 thin" pathLength="1" d="M282.6,358.0 L297.9,355.1 L298.8,366.6 L283.6,369.4 Z"/>
+<path class="sk d3" pathLength="1" d="M263.1,364.7 L261.3,387.6 L260.8,430.0 M272.9,364.7 L274.7,387.6 L275.2,430.0"/>
+<path class="d3" pathLength="1" d="M260.8,430.0 L252.7,430.0 M275.2,430.0 L283.3,430.0"/>
+<circle class="sk d3" pathLength="1" cx="316.0" cy="311.8" r="9.8"/>
+<path class="d3 thin" pathLength="1" d="M307.6,307.4 C310.1,301.5 316.0,299.5 321.4,302.5 M310.6,304.5 C314.0,300.5 319.4,300.5 323.9,305.9"/>
+<path class="d3 thin" pathLength="1" d="M313.5,321.2 L314.0,326.1 M318.5,321.2 L318.0,326.1"/>
+<path class="sk d3" pathLength="1" d="M301.7,327.1 Q316.0,322.7 330.3,327.1 L325.4,355.7 L327.3,362.6 L304.7,362.6 L306.6,355.7 Z"/>
+<path class="d3 thin" pathLength="1" d="M316.0,329.1 L316.0,360.6"/>
+<path class="d3" pathLength="1" d="M302.9,328.1 Q297.0,336.0 294.0,343.8 Q292.5,351.7 291.0,359.6"/>
+<circle class="d3" pathLength="1" cx="288.6" cy="361.1" r="3.2"/>
+<path class="d3" pathLength="1" d="M329.1,328.1 Q326.7,336.0 321.3,343.8 Q319.3,351.7 317.3,359.6"/>
+<circle class="d3" pathLength="1" cx="319.8" cy="361.1" r="3.2"/>
+<path class="sk d3" pathLength="1" d="M311.5,362.6 L303.2,386.2 L297.3,430.0 M320.5,362.6 L325.8,387.2 L331.8,428.0"/>
+<path class="d3" pathLength="1" d="M296.3,430.0 L307.1,430.0 M330.8,428.0 L341.6,425.1"/>
+<circle class="sk d4" pathLength="1" cx="364.0" cy="315.5" r="9.5"/>
+<path class="d4 thin" pathLength="1" d="M355.9,311.2 C358.3,305.5 364.0,303.6 369.2,306.5 M358.8,308.4 C362.1,304.6 367.3,304.6 371.6,309.8"/>
+<path class="d4 thin" pathLength="1" d="M361.6,324.6 L362.1,329.4 M366.4,324.6 L365.9,329.4"/>
+<path class="sk d4" pathLength="1" d="M350.2,330.3 Q364.0,326.0 377.8,330.3 L373.1,358.0 L375.0,364.7 L353.0,364.7 L354.9,358.0 Z"/>
+<path class="d4 thin" pathLength="1" d="M364.0,332.2 L364.0,362.8"/>
+<path class="d4" pathLength="1" d="M351.3,331.3 Q348.2,340.3 347.9,349.4 Q347.2,357.5 346.5,365.6"/>
+<circle class="d4" pathLength="1" cx="344.1" cy="367.0" r="3.1"/>
+<path class="d4" pathLength="1" d="M376.7,331.3 Q382.0,339.9 384.4,348.4 Q382.4,353.7 380.5,358.9"/>
+<path class="d4 thin" pathLength="1" d="M378.6,358.0 L393.9,355.1 L394.8,366.6 L379.6,369.4 Z"/>
+<path class="sk d4" pathLength="1" d="M359.1,364.7 L357.3,387.6 L356.8,430.0 M368.9,364.7 L370.7,387.6 L371.2,430.0"/>
+<path class="d4" pathLength="1" d="M356.8,430.0 L348.7,430.0 M371.2,430.0 L379.3,430.0"/>
+<path class="d4 dash" pathLength="1" d="M238,286 C284,250 348,250 396,286"/>
+<path class="d4" pathLength="1" d="M382,278 L396,286 L384,296"/>
+<text class="d5 cap" x="320" y="520" text-anchor="middle" style="font-size:34px">the teacher went to the learner</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="slide two">
+    <div>
+      <p class="eyebrow">4 &middot; School</p>
+      <h1>One teacher. <em>Thirty students.</em> Forty-five minutes.</h1>
+      <ul class="cues">
+        <li>You can't wait for each one.</li>
+        <li>You can't go to each one.</li>
+        <li>Thirty students adapt to one teacher. Otherwise there is no time.</li>
+      </ul>
+    </div>
+    <div class="side board">
+      <div class="say">The opposite of Confucius and the Fennomans. Not because of the teacher. Because of the numbers.</div>
+      <svg class="chalk" viewBox="0 0 640 534" role="img" aria-label="Chalk drawing: one teacher at a board, a clock showing 45 minutes, and thirty students appearing in rows">
+        <defs>
+          <filter id="rough41" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="41" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g filter="url(#rough41)">
+<path class="sk d0" pathLength="1" d="M10,440 C200,436 420,442 630,437"/>
+<path class="sk d0" pathLength="1" d="M20,170 L190,170 L190,262 L20,262 Z"/>
+<path class="d0 thin" pathLength="1" d="M34,190 C70,184 110,196 150,188 M34,212 C84,206 120,218 172,210 M34,236 C60,230 96,240 126,234"/>
+<path class="d0 thin" pathLength="1" d="M28,262 L20,290 M182,262 L190,290"/>
+<circle class="sk d0" pathLength="1" cx="236.0" cy="255.4" r="15.4"/>
+<path class="d0 thin" pathLength="1" d="M222.9,248.5 C226.8,239.2 236.0,236.2 244.5,240.8 M227.5,243.8 C232.9,237.7 241.4,237.7 248.3,246.2"/>
+<path class="d0 thin" pathLength="1" d="M232.2,270.0 L232.9,277.7 M239.8,270.0 L239.1,277.7"/>
+<path class="sk d0" pathLength="1" d="M213.7,279.2 Q236.0,272.3 258.3,279.2 L250.6,323.8 L253.7,334.6 L218.3,334.6 L221.4,323.8 Z"/>
+<path class="d0 thin" pathLength="1" d="M236.0,282.3 L236.0,331.5"/>
+<path class="d0" pathLength="1" d="M256.5,280.8 Q261.5,295.4 261.9,310.0 Q263.1,323.1 264.2,336.2"/>
+<circle class="d0" pathLength="1" cx="268.1" cy="338.5" r="4.9"/>
+<path class="d0" pathLength="1" d="M215.5,280.8 Q200.9,286.2 190.9,291.5 Q175.5,283.8 160.1,276.2"/>
+<circle class="d0" pathLength="1" cx="156.2" cy="278.5" r="4.9"/>
+<path class="sk d0" pathLength="1" d="M228.0,334.6 L225.2,371.5 L224.5,440.0 M244.0,334.6 L246.8,371.5 L247.5,440.0"/>
+<path class="d0" pathLength="1" d="M224.5,440.0 L211.4,440.0 M247.5,440.0 L260.6,440.0"/>
+<path class="d0" pathLength="1" d="M160,274 L128,244"/>
+<text class="d5" x="236" y="222" text-anchor="middle" style="font-size:32px">one</text>
+<circle class="sk d1" pathLength="1" cx="560.0" cy="90.0" r="38.0"/>
+<g class="ticks" data-cx="560" data-cy="90" data-r1="30" data-r2="35" data-n="12" data-a0="0" data-a1="330" data-cls="d1 thin"></g>
+<path class="d1" pathLength="1" d="M560,90 L560,62 M560,90 L580,104"/>
+<circle class="d1" pathLength="1" cx="560.0" cy="90.0" r="2.5"/>
+<text class="d1" x="560" y="164" text-anchor="middle" style="font-size:30px">45 min</text>
+<circle class="d2" pathLength="1" cx="306.0" cy="238.0" r="8.0"/>
+<path class="d2 thin" pathLength="1" d="M292,260 Q306,247 320,260"/>
+<circle class="d2" pathLength="1" cx="366.0" cy="238.0" r="8.0"/>
+<path class="d2 thin" pathLength="1" d="M352,260 Q366,247 380,260"/>
+<circle class="d2" pathLength="1" cx="426.0" cy="238.0" r="8.0"/>
+<path class="d2 thin" pathLength="1" d="M412,260 Q426,247 440,260"/>
+<circle class="d2" pathLength="1" cx="486.0" cy="238.0" r="8.0"/>
+<path class="d2 thin" pathLength="1" d="M472,260 Q486,247 500,260"/>
+<circle class="d2" pathLength="1" cx="546.0" cy="238.0" r="8.0"/>
+<path class="d2 thin" pathLength="1" d="M532,260 Q546,247 560,260"/>
+<circle class="d2" pathLength="1" cx="606.0" cy="238.0" r="8.0"/>
+<path class="d2 thin" pathLength="1" d="M592,260 Q606,247 620,260"/>
+<circle class="d2" pathLength="1" cx="306.0" cy="278.0" r="8.0"/>
+<path class="d2 thin" pathLength="1" d="M292,300 Q306,287 320,300"/>
+<circle class="d2" pathLength="1" cx="366.0" cy="278.0" r="8.0"/>
+<path class="d2 thin" pathLength="1" d="M352,300 Q366,287 380,300"/>
+<circle class="d2" pathLength="1" cx="426.0" cy="278.0" r="8.0"/>
+<path class="d2 thin" pathLength="1" d="M412,300 Q426,287 440,300"/>
+<circle class="d2" pathLength="1" cx="486.0" cy="278.0" r="8.0"/>
+<path class="d2 thin" pathLength="1" d="M472,300 Q486,287 500,300"/>
+<circle class="d2" pathLength="1" cx="546.0" cy="278.0" r="8.0"/>
+<path class="d2 thin" pathLength="1" d="M532,300 Q546,287 560,300"/>
+<circle class="d2" pathLength="1" cx="606.0" cy="278.0" r="8.0"/>
+<path class="d2 thin" pathLength="1" d="M592,300 Q606,287 620,300"/>
+<circle class="d3" pathLength="1" cx="306.0" cy="318.0" r="8.0"/>
+<path class="d3 thin" pathLength="1" d="M292,340 Q306,327 320,340"/>
+<circle class="d3" pathLength="1" cx="366.0" cy="318.0" r="8.0"/>
+<path class="d3 thin" pathLength="1" d="M352,340 Q366,327 380,340"/>
+<circle class="d3" pathLength="1" cx="426.0" cy="318.0" r="8.0"/>
+<path class="d3 thin" pathLength="1" d="M412,340 Q426,327 440,340"/>
+<circle class="d3" pathLength="1" cx="486.0" cy="318.0" r="8.0"/>
+<path class="d3 thin" pathLength="1" d="M472,340 Q486,327 500,340"/>
+<circle class="d3" pathLength="1" cx="546.0" cy="318.0" r="8.0"/>
+<path class="d3 thin" pathLength="1" d="M532,340 Q546,327 560,340"/>
+<circle class="d3" pathLength="1" cx="606.0" cy="318.0" r="8.0"/>
+<path class="d3 thin" pathLength="1" d="M592,340 Q606,327 620,340"/>
+<circle class="d3" pathLength="1" cx="306.0" cy="358.0" r="8.0"/>
+<path class="d3 thin" pathLength="1" d="M292,380 Q306,367 320,380"/>
+<circle class="d3" pathLength="1" cx="366.0" cy="358.0" r="8.0"/>
+<path class="d3 thin" pathLength="1" d="M352,380 Q366,367 380,380"/>
+<circle class="d3" pathLength="1" cx="426.0" cy="358.0" r="8.0"/>
+<path class="d3 thin" pathLength="1" d="M412,380 Q426,367 440,380"/>
+<circle class="d3" pathLength="1" cx="486.0" cy="358.0" r="8.0"/>
+<path class="d3 thin" pathLength="1" d="M472,380 Q486,367 500,380"/>
+<circle class="d3" pathLength="1" cx="546.0" cy="358.0" r="8.0"/>
+<path class="d3 thin" pathLength="1" d="M532,380 Q546,367 560,380"/>
+<circle class="d3" pathLength="1" cx="606.0" cy="358.0" r="8.0"/>
+<path class="d3 thin" pathLength="1" d="M592,380 Q606,367 620,380"/>
+<circle class="d4" pathLength="1" cx="306.0" cy="398.0" r="8.0"/>
+<path class="d4 thin" pathLength="1" d="M292,420 Q306,407 320,420"/>
+<circle class="d4" pathLength="1" cx="366.0" cy="398.0" r="8.0"/>
+<path class="d4 thin" pathLength="1" d="M352,420 Q366,407 380,420"/>
+<circle class="d4" pathLength="1" cx="426.0" cy="398.0" r="8.0"/>
+<path class="d4 thin" pathLength="1" d="M412,420 Q426,407 440,420"/>
+<circle class="d4" pathLength="1" cx="486.0" cy="398.0" r="8.0"/>
+<path class="d4 thin" pathLength="1" d="M472,420 Q486,407 500,420"/>
+<circle class="d4" pathLength="1" cx="546.0" cy="398.0" r="8.0"/>
+<path class="d4 thin" pathLength="1" d="M532,420 Q546,407 560,420"/>
+<circle class="d4" pathLength="1" cx="606.0" cy="398.0" r="8.0"/>
+<path class="d4 thin" pathLength="1" d="M592,420 Q606,407 620,420"/>
+<text class="d5" x="456" y="214" text-anchor="middle" style="font-size:32px">thirty</text>
+<path class="d5 dash" pathLength="1" d="M300,262 C286,258 276,262 266,270 M300,330 C284,316 276,304 266,292 M300,410 C278,380 272,340 264,312"/>
+<path class="d5" pathLength="1" d="M278,264 L266,270 L276,280"/>
+<text class="d6 cap" x="320" y="492" text-anchor="middle" style="font-size:34px">thirty adapt to one</text>
+<text class="d6" x="320" y="522" text-anchor="middle" style="font-size:24px">no time for anything else</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="slide two">
+    <div>
+      <p class="eyebrow">5 &middot; Curiosity</p>
+      <h1>At what moment does <em>curiosity</em> go away?</h1>
+      <ul class="cues">
+        <li>While curiosity is there, he searches. When it's gone, he waits to be told.</li>
+        <li>No single moment. The price of not knowing goes up.</li>
+        <li>At 6: fine. At 16: embarrassing in front of the class. At 45: embarrassing in front of yourself.</li>
+        <li>OECD, Helsinki, 2019 to 2023: curiosity and creativity dropped the most among 15-year-olds.</li>
+      </ul>
+    </div>
+    <div class="side board">
+      <div class="box"><span class="lbl">in pedagogy</span><span class="term">information gap</span><span class="def">"I don't know this, but I could." The trigger of curiosity. Loewenstein, 1994.</span></div>
+      <svg class="chalk" viewBox="0 0 640 554" role="img" aria-label="Chalk drawing: a child, a teenager and an adult; the question mark above them shrinks while the price tag grows">
+        <defs>
+          <filter id="rough51" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="51" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g filter="url(#rough51)">
+<path class="sk d0" pathLength="1" d="M10,440 C200,436 420,442 630,437"/>
+<circle class="sk d1" pathLength="1" cx="110.0" cy="327.4" r="9.4"/>
+<path class="d1 thin" pathLength="1" d="M102.0,323.2 C104.4,317.5 110.0,315.7 115.2,318.5 M104.8,320.3 C108.1,316.6 113.3,316.6 117.5,321.8"/>
+<path class="d1 thin" pathLength="1" d="M107.7,336.3 L108.1,341.0 M112.3,336.3 L111.9,341.0"/>
+<path class="sk d1" pathLength="1" d="M96.4,341.9 Q110.0,337.7 123.6,341.9 L118.9,369.1 L120.8,375.7 L99.2,375.7 L101.1,369.1 Z"/>
+<path class="d1 thin" pathLength="1" d="M110.0,343.8 L110.0,373.8"/>
+<path class="d1" pathLength="1" d="M97.5,342.9 Q90.0,338.6 85.3,334.4 Q84.8,325.5 84.3,316.6"/>
+<circle class="d1" pathLength="1" cx="82.0" cy="318.0" r="3.0"/>
+<path class="d1" pathLength="1" d="M122.5,342.9 Q130.0,338.6 134.7,334.4 Q135.2,325.5 135.7,316.6"/>
+<circle class="d1" pathLength="1" cx="138.0" cy="318.0" r="3.0"/>
+<path class="sk d1" pathLength="1" d="M105.1,375.7 L103.4,398.2 L103.0,440.0 M114.9,375.7 L116.6,398.2 L117.0,440.0"/>
+<path class="d1" pathLength="1" d="M103.0,440.0 L95.0,440.0 M117.0,440.0 L125.0,440.0"/>
+<text class="d1" x="110" y="474" text-anchor="middle" style="font-size:30px">6</text>
+<text class="d1" x="110" y="300" text-anchor="middle" style="font-size:84px">?</text>
+<circle class="sk d2" pathLength="1" cx="320.0" cy="281.2" r="13.2"/>
+<path class="d2 thin" pathLength="1" d="M308.8,275.3 C312.1,267.3 320.0,264.7 327.3,268.7 M312.7,271.3 C317.4,266.0 324.6,266.0 330.6,273.3"/>
+<path class="d2 thin" pathLength="1" d="M316.7,293.8 L317.4,300.4 M323.3,293.8 L322.6,300.4"/>
+<path class="sk d2" pathLength="1" d="M300.8,301.7 Q320.0,295.8 339.2,301.7 L332.6,340.1 L335.2,349.4 L304.8,349.4 L307.4,340.1 Z"/>
+<path class="d2 thin" pathLength="1" d="M320.0,304.4 L320.0,346.7"/>
+<path class="d2" pathLength="1" d="M302.4,303.1 Q298.1,315.6 297.7,328.2 Q296.7,339.4 295.7,350.7"/>
+<circle class="d2" pathLength="1" cx="292.4" cy="352.7" r="4.2"/>
+<path class="d2" pathLength="1" d="M337.6,303.1 Q341.9,315.6 342.3,328.2 Q343.3,339.4 344.3,350.7"/>
+<circle class="d2" pathLength="1" cx="347.6" cy="352.7" r="4.2"/>
+<path class="sk d2" pathLength="1" d="M313.2,349.4 L310.7,381.1 L310.1,440.0 M326.8,349.4 L329.3,381.1 L329.9,440.0"/>
+<path class="d2" pathLength="1" d="M310.1,440.0 L298.8,440.0 M329.9,440.0 L341.2,440.0"/>
+<text class="d2" x="320" y="474" text-anchor="middle" style="font-size:30px">16</text>
+<text class="d2" x="320" y="254" text-anchor="middle" style="font-size:50px">?</text>
+<circle class="sk d3" pathLength="1" cx="530.0" cy="251.7" r="15.7"/>
+<path class="d3 thin" pathLength="1" d="M516.7,244.6 C520.6,235.2 530.0,232.1 538.6,236.8 M521.4,239.9 C526.9,233.6 535.5,233.6 542.6,242.3"/>
+<path class="d3 thin" pathLength="1" d="M526.1,266.6 L526.9,274.4 M533.9,266.6 L533.1,274.4"/>
+<path class="sk d3" pathLength="1" d="M507.2,276.0 Q530.0,269.0 552.8,276.0 L544.9,321.5 L548.0,332.5 L512.0,332.5 L515.1,321.5 Z"/>
+<path class="d3 thin" pathLength="1" d="M530.0,279.2 L530.0,329.4"/>
+<path class="d3 thin" pathLength="1" d="M509.1,277.6 Q505.1,292.5 505.9,307.4 Q512.2,317.6 518.5,327.8"/>
+<path class="d3 thin" pathLength="1" d="M550.9,277.6 Q554.9,292.5 554.1,307.4 Q547.8,317.6 541.5,327.8"/>
+<path class="sk d3" pathLength="1" d="M521.9,332.5 L519.0,370.2 L518.2,440.0 M538.1,332.5 L541.0,370.2 L541.8,440.0"/>
+<path class="d3" pathLength="1" d="M518.2,440.0 L504.9,440.0 M541.8,440.0 L555.1,440.0"/>
+<text class="d3" x="530" y="474" text-anchor="middle" style="font-size:30px">45</text>
+<text class="d3" x="530" y="224" text-anchor="middle" style="font-size:24px">?</text>
+<path class="sk d4" pathLength="1" d="M74,196 L146,196 L160,212 L146,228 L74,228 Z"/>
+<circle class="d4 thin" pathLength="1" cx="144.0" cy="212.0" r="2.5"/>
+<text class="d4" x="106" y="219" text-anchor="middle" style="font-size:23px">free</text>
+<path class="sk d4" pathLength="1" d="M270,152 L370,152 L384,168 L370,184 L270,184 Z"/>
+<circle class="d4 thin" pathLength="1" cx="368.0" cy="168.0" r="2.5"/>
+<text class="d4" x="316" y="175" text-anchor="middle" style="font-size:23px">status</text>
+<path class="sk d4" pathLength="1" d="M444,108 L608,108 L622,124 L608,140 L444,140 Z"/>
+<circle class="d4 thin" pathLength="1" cx="606.0" cy="124.0" r="2.5"/>
+<text class="d4" x="522" y="131" text-anchor="middle" style="font-size:23px">self-respect</text>
+<path class="d5 dash" pathLength="1" d="M40,176 C200,150 400,96 606,52"/>
+<path class="d5" pathLength="1" d="M590,48 L606,52 L596,66"/>
+<text class="d5" x="250" y="92" text-anchor="middle" style="font-size:28px">price of not knowing</text>
+<text class="d6 cap" x="320" y="512" text-anchor="middle" style="font-size:32px">the question gets smaller,</text>
+<text class="d6 cap" x="320" y="542" text-anchor="middle" style="font-size:32px">the price gets bigger</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="slide two">
+    <div>
+      <p class="eyebrow">6 &middot; Not alone</p>
+      <h1>The problem is old, and <em>your university</em> talks about it</h1>
+      <ul class="cues">
+        <li>Open University, introduction course.</li>
+        <li>Irene Hein's lecture on Illich: you cannot motivate everyone.</li>
+        <li>With one teacher and thirty, she is right. Two technologies change the numbers: VR and an AI layer.</li>
+        <li>Heikki Pasanen, on the Fennomans: "self-directed learning does not mean the learner is left alone."</li>
+      </ul>
+    </div>
+    <div class="side board">
+      <div class="say">Give every teacher what Confucius had: time for each learner.</div>
+      <svg class="chalk" viewBox="0 0 640 556" role="img" aria-label="Chalk drawing: two lecturers with speech bubbles, and a listener with a lightbulb: not alone">
+        <defs>
+          <filter id="rough61" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="61" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g filter="url(#rough61)">
+<path class="sk d0" pathLength="1" d="M10,440 C200,436 420,442 630,437"/>
+<path class="sk d1" pathLength="1" d="M112,332 L188,332 L182,440 L118,440 Z"/>
+<path class="d1" pathLength="1" d="M104,332 L196,332 L196,320 L104,320 Z"/>
+<path class="d1 thin" pathLength="1" d="M130,356 L170,356 M132,372 L168,372"/>
+<circle class="sk d1" pathLength="1" cx="150.0" cy="270.0" r="20.0"/>
+<path class="d1 thin" pathLength="1" d="M133.0,261.0 C140.0,248.0 152.0,245.0 162.0,252.0"/>
+<path class="d1 thin" pathLength="1" d="M145.6,289.0 L146.0,300.0 M154.4,289.0 L154.0,300.0"/>
+<path class="sk d1" pathLength="1" d="M112.0,318.0 Q120.0,300.0 146.0,300.0 M188.0,318.0 Q180.0,300.0 154.0,300.0"/>
+<text class="d1" x="150" y="474" text-anchor="middle" style="font-size:23px">Irene Hein</text>
+<ellipse class="d2" pathLength="1" cx="190" cy="168" rx="172" ry="30"/>
+<path class="d2" pathLength="1" d="M113,195 L158,240 L156,198"/>
+<text class="d2" x="190" y="175.68" text-anchor="middle" style="font-size:24px">you cannot motivate everyone</text>
+<path class="sk d3" pathLength="1" d="M302,332 L378,332 L372,440 L308,440 Z"/>
+<path class="d3" pathLength="1" d="M294,332 L386,332 L386,320 L294,320 Z"/>
+<path class="d3 thin" pathLength="1" d="M320,356 L360,356 M322,372 L358,372"/>
+<circle class="sk d3" pathLength="1" cx="340.0" cy="270.0" r="20.0"/>
+<path class="d3 thin" pathLength="1" d="M323.0,261.0 C330.0,248.0 342.0,245.0 352.0,252.0"/>
+<path class="d3 thin" pathLength="1" d="M335.6,289.0 L336.0,300.0 M344.4,289.0 L344.0,300.0"/>
+<path class="sk d3" pathLength="1" d="M302.0,318.0 Q310.0,300.0 336.0,300.0 M378.0,318.0 Q370.0,300.0 344.0,300.0"/>
+<text class="d3" x="340" y="474" text-anchor="middle" style="font-size:23px">Heikki Pasanen</text>
+<ellipse class="d4" pathLength="1" cx="424" cy="70" rx="180" ry="30"/>
+<path class="d4" pathLength="1" d="M343,97 L350,240 L388,100"/>
+<text class="d4" x="424" y="77.68" text-anchor="middle" style="font-size:24px">never leave the learner alone</text>
+<path class="d1 thin" pathLength="1" d="M498,352 L562,352 M498,352 L498,288 M504,352 L504,440 M556,352 L556,440"/>
+<circle class="sk d1" pathLength="1" cx="522.0" cy="273.8" r="13.8"/>
+<path class="d1 thin" pathLength="1" d="M510.2,267.6 C513.7,259.3 522.0,256.5 529.6,260.7 M514.4,263.5 C519.2,257.9 526.8,257.9 533.1,265.5"/>
+<path class="d1 thin" pathLength="1" d="M518.5,287.0 L519.2,293.9 M525.5,287.0 L524.8,293.9"/>
+<path class="sk d1" pathLength="1" d="M501.9,295.3 Q522.0,289.1 542.1,295.3 L535.2,335.5 L537.9,345.2 L506.1,345.2 L508.8,335.5 Z"/>
+<path class="d1 thin" pathLength="1" d="M522.0,298.1 L522.0,342.4"/>
+<path class="d1" pathLength="1" d="M503.5,296.7 Q498.7,309.2 498.0,321.6 Q489.7,329.9 481.4,338.2"/>
+<circle class="d1" pathLength="1" cx="477.9" cy="340.3" r="4.4"/>
+<path class="d1" pathLength="1" d="M540.5,296.7 Q545.3,309.2 546.0,321.6 Q554.3,329.9 562.6,338.2"/>
+<circle class="d1" pathLength="1" cx="566.1" cy="340.3" r="4.4"/>
+<path class="sk d1" pathLength="1" d="M515.6,345.2 L553.8,347.9 L555.2,440.0 M528.4,345.2 L560.8,349.3 L562.2,440.0"/>
+<path class="d1" pathLength="1" d="M552.5,440.0 L570.5,440.0 M559.4,440.0 L577.4,440.0"/>
+<circle class="sk d5" pathLength="1" cx="522.0" cy="214.0" r="18.0"/>
+<path class="d5" pathLength="1" d="M514,232 L514,242 L530,242 L530,232 M517,248 L527,248"/>
+<path class="d5 thin" pathLength="1" d="M522,186 L522,172 M500,194 L490,184 M544,194 L554,184 M494,214 L480,214 M550,214 L564,214"/>
+<text class="d5" x="522" y="156" text-anchor="middle" style="font-size:30px">not alone</text>
+<text class="d6 cap" x="320" y="512" text-anchor="middle" style="font-size:32px">an old problem,</text>
+<text class="d6 cap" x="320" y="542" text-anchor="middle" style="font-size:30px">and your university talks about it</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="slide two">
+    <div>
+      <p class="eyebrow">7 &middot; Games</p>
+      <h1>A game is <em>one tool</em>. Only one.</h1>
+      <ul class="cues">
+        <li>It raises interest and attention. It can't learn for the person.</li>
+        <li>Diplomacy paper, 2026: the game raised almost all epistemic emotions. Curiosity, and anxiety too.</li>
+        <li>Enjoyment alone gave no result.</li>
+      </ul>
+    </div>
+    <div class="side board">
+      <div class="box"><span class="lbl">in pedagogy</span><span class="term">epistemic emotions</span><span class="def">Emotions about knowing: curiosity, surprise, confusion, frustration, boredom.</span></div>
+      <svg class="chalk" viewBox="0 0 640 560" role="img" aria-label="Chalk drawing: a board game on a table, emotion arrows rising, and a flat line for learning">
+        <defs>
+          <filter id="rough71" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="71" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g filter="url(#rough71)">
+<path class="sk d0" pathLength="1" d="M10,470 C200,466 420,472 630,467"/>
+<path class="sk d0" pathLength="1" d="M168,372 L472,372 L504,430 L136,430 Z"/>
+<path class="sk d0" pathLength="1" d="M156,430 L156,470 M484,430 L484,470"/>
+<path class="sk d0" pathLength="1" d="M214,346 L426,346 L452,384 L188,384 Z"/>
+<path class="d0 thin" pathLength="1" d="M262,346 L246,384 M310,346 L304,384 M358,346 L362,384 M406,346 L420,384 M202,364 L438,364"/>
+<circle class="d1" pathLength="1" cx="236.0" cy="362.0" r="7.0"/><circle class="d1" pathLength="1" cx="286.0" cy="356.0" r="7.0"/><circle class="d1" pathLength="1" cx="330.0" cy="366.0" r="7.0"/><circle class="d1" pathLength="1" cx="378.0" cy="358.0" r="7.0"/><circle class="d1" pathLength="1" cx="414.0" cy="366.0" r="7.0"/>
+<path class="d1" pathLength="1" d="M448,394 L464,394 L464,410 L448,410 Z M470,390 L486,390 L486,406 L470,406 Z"/>
+<circle class="d1" pathLength="1" cx="456.0" cy="402.0" r="2.0"/>
+<circle class="d1" pathLength="1" cx="474.0" cy="395.0" r="2.0"/>
+<circle class="d1" pathLength="1" cx="482.0" cy="401.0" r="2.0"/>
+<circle class="sk d1" pathLength="1" cx="96.0" cy="311.2" r="13.2"/>
+<path class="d1 thin" pathLength="1" d="M84.8,305.3 C88.1,297.3 96.0,294.7 103.3,298.7 M88.7,301.3 C93.4,296.0 100.6,296.0 106.6,303.3"/>
+<path class="d1 thin" pathLength="1" d="M92.7,323.8 L93.4,330.4 M99.3,323.8 L98.6,330.4"/>
+<path class="sk d1" pathLength="1" d="M76.8,331.7 Q96.0,325.8 115.2,331.7 L108.6,370.1 L111.2,379.4 L80.8,379.4 L83.4,370.1 Z"/>
+<path class="d1 thin" pathLength="1" d="M96.0,334.4 L96.0,376.7"/>
+<path class="d1" pathLength="1" d="M78.4,333.1 Q73.7,345.0 73.1,356.9 Q65.1,364.8 57.2,372.8"/>
+<circle class="d1" pathLength="1" cx="53.9" cy="374.7" r="4.2"/>
+<path class="d1" pathLength="1" d="M113.6,333.1 Q118.3,345.0 118.9,356.9 Q126.9,364.8 134.8,372.8"/>
+<circle class="d1" pathLength="1" cx="138.1" cy="374.7" r="4.2"/>
+<path class="sk d1" pathLength="1" d="M89.9,379.4 L126.4,382.0 L127.8,470.0 M102.1,379.4 L133.0,383.3 L134.4,470.0"/>
+<path class="d1" pathLength="1" d="M125.1,470.0 L142.3,470.0 M131.7,470.0 L148.9,470.0"/>
+<g transform="translate(1088,0) scale(-1,1)">
+<circle class="sk d1" pathLength="1" cx="544.0" cy="311.2" r="13.2"/>
+<path class="d1 thin" pathLength="1" d="M532.8,305.3 C536.1,297.3 544.0,294.7 551.3,298.7 M536.7,301.3 C541.4,296.0 548.6,296.0 554.6,303.3"/>
+<path class="d1 thin" pathLength="1" d="M540.7,323.8 L541.4,330.4 M547.3,323.8 L546.6,330.4"/>
+<path class="sk d1" pathLength="1" d="M524.8,331.7 Q544.0,325.8 563.2,331.7 L556.6,370.1 L559.2,379.4 L528.8,379.4 L531.4,370.1 Z"/>
+<path class="d1 thin" pathLength="1" d="M544.0,334.4 L544.0,376.7"/>
+<path class="d1" pathLength="1" d="M526.4,333.1 Q521.7,345.0 521.1,356.9 Q513.1,364.8 505.2,372.8"/>
+<circle class="d1" pathLength="1" cx="501.9" cy="374.7" r="4.2"/>
+<path class="d1" pathLength="1" d="M561.6,333.1 Q566.3,345.0 566.9,356.9 Q574.9,364.8 582.8,372.8"/>
+<circle class="d1" pathLength="1" cx="586.1" cy="374.7" r="4.2"/>
+<path class="sk d1" pathLength="1" d="M537.9,379.4 L574.4,382.0 L575.8,470.0 M550.1,379.4 L581.0,383.3 L582.4,470.0"/>
+<path class="d1" pathLength="1" d="M573.1,470.0 L590.3,470.0 M579.7,470.0 L596.9,470.0"/>
+</g>
+<path class="sk d2" pathLength="1" d="M170,312 L170,240"/>
+<path class="d2" pathLength="1" d="M159,256 L170,240 L181,256"/>
+<text class="d2" x="170" y="226" text-anchor="middle" style="font-size:25px">curiosity</text>
+<path class="sk d3" pathLength="1" d="M270,312 L270,240"/>
+<path class="d3" pathLength="1" d="M259,256 L270,240 L281,256"/>
+<text class="d3" x="270" y="202" text-anchor="middle" style="font-size:25px">confusion</text>
+<path class="sk d3" pathLength="1" d="M370,312 L370,240"/>
+<path class="d3" pathLength="1" d="M359,256 L370,240 L381,256"/>
+<text class="d3" x="370" y="226" text-anchor="middle" style="font-size:25px">anxiety</text>
+<path class="sk d4" pathLength="1" d="M470,312 L470,240"/>
+<path class="d4" pathLength="1" d="M459,256 L470,240 L481,256"/>
+<text class="d4" x="470" y="202" text-anchor="middle" style="font-size:25px">enjoyment</text>
+<path class="d5 dash" pathLength="1" d="M110,150 C240,152 400,148 530,150"/>
+<text class="d5" x="320" y="130" text-anchor="middle" style="font-size:30px">learning: flat</text>
+<text class="d6 cap" x="320" y="516" text-anchor="middle" style="font-size:32px">every emotion went up.</text>
+<text class="d6 cap" x="320" y="546" text-anchor="middle" style="font-size:32px">learning did not</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="slide two">
+    <div>
+      <p class="eyebrow">8 &middot; The environment</p>
+      <h1>If the environment is ours, <em>curiosity can be designed</em></h1>
+      <ul class="cues">
+        <li>In VR we build the whole environment. The machine, the gauge, the light, what the mentor does when silent, what the student sees.</li>
+        <li>Not alone: with teachers, with students, with people who know how curiosity works.</li>
+        <li>Curiosity arises between learner, subject and environment.</li>
+        <li>If the environment can be changed completely, curiosity can be designed. We want to test it.</li>
+      </ul>
+    </div>
+    <div class="side board">
+      <div class="box"><span class="lbl">in pedagogy</span><span class="term">prepared environment</span><span class="def">Montessori: the environment is designed so the child learns from it, not from the adult.</span></div>
+      <svg class="chalk" id="chalkTpl" viewBox="0 -96 640 506" role="img" aria-label="Chalk drawing: an industrial cabinet with a pressure gauge and valve, a student in a VR headset reaching for it, a waiting mentor, and notes from a teacher, students and a researcher">
+        <defs>
+          <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <filter id="dust" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
+          <clipPath id="cabSide"><polygon points="306,196 320,184 322,320 308,332"/></clipPath>
+          <clipPath id="cabShadow"><polygon points="116,334 308,332 334,348 140,350"/></clipPath>
+          <clipPath id="visor"><path d="M388,204 L428,204 Q434,204 434,210 L434,220 Q434,226 428,226 L388,226 Q382,226 382,220 L382,210 Q382,204 388,204 Z"/></clipPath>
+          <clipPath id="gaugeGlass"><circle cx="166" cy="248" r="24"/></clipPath>
+        </defs>
+        <g class="dust"><ellipse cx="200" cy="342" rx="90" ry="10" filter="url(#dust)"/><ellipse cx="420" cy="336" rx="70" ry="9" filter="url(#dust)"/></g>
+        <g filter="url(#rough)">
+          <path class="sk d0" pathLength="1" d="M22,336 C160,331 380,338 618,333"/>
+          <path class="sk d1" pathLength="1" d="M118,198 L306,196 L308,332 L116,334 Z"/>
+          <path class="sk d1" pathLength="1" d="M118,198 L132,186 L320,184 L306,196"/>
+          <path class="sk d1" pathLength="1" d="M306,196 L320,184 L322,320 L308,332"/>
+          <path class="d1" pathLength="1" d="M214,200 L214,331"/>
+          <path class="d1" pathLength="1" d="M224,258 L224,284 M228,258 L228,284"/>
+          <path class="d1 thin" pathLength="1" d="M124,204 L208,204 M124,326 L208,326 M220,204 L300,204"/>
+          <path class="d1 thin" pathLength="1" d="M128,214 L128,318"/>
+          <g class="hatch" data-clip="cabSide" data-x0="304" data-y0="182" data-x1="324" data-y1="334" data-step="6" data-cls="d2 thin"></g>
+          <g class="hatch" data-clip="cabShadow" data-x0="114" data-y0="330" data-x1="336" data-y1="352" data-step="7" data-cls="d2 thin"></g>
+          <circle class="sk d2" pathLength="1" cx="166" cy="248" r="31"/>
+          <circle class="d2" pathLength="1" cx="166" cy="248" r="25"/>
+          <g class="ticks" data-cx="166" data-cy="248" data-r1="19" data-r2="23" data-n="11" data-a0="150" data-a1="390" data-cls="d3 thin"></g>
+          <path class="d3" pathLength="1" d="M166,248 L179,232"/>
+          <circle class="d3" pathLength="1" cx="166" cy="248" r="2.5"/>
+          <path class="d3 thin" pathLength="1" d="M154,258 Q166,266 178,258"/>
+          <g class="hatch" data-clip="gaugeGlass" data-x0="140" data-y0="222" data-x1="192" data-y1="274" data-step="5" data-cls="d3 faint" data-angle="-60" data-band="146,158"></g>
+          <path class="d3" pathLength="1" d="M148,288 L184,288 L184,300 L148,300 Z"/>
+          <path class="d3 thin" pathLength="1" d="M152,294 L180,294"/>
+          <path class="sk d3" pathLength="1" d="M240,238 L294,238 L294,302 L240,302 Z"/>
+          <path class="d3" pathLength="1" d="M252,266 L252,250 M266,266 L266,252 M280,266 L280,250"/>
+          <circle class="d3" pathLength="1" cx="252" cy="268" r="4"/><circle class="d3" pathLength="1" cx="266" cy="268" r="4"/><circle class="d3" pathLength="1" cx="280" cy="268" r="4"/>
+          <circle class="d3 thin" pathLength="1" cx="252" cy="288" r="3"/><circle class="d3 thin" pathLength="1" cx="266" cy="288" r="3"/><circle class="d3 thin" pathLength="1" cx="280" cy="288" r="3"/>
+          <path class="sk d4" pathLength="1" d="M146,184 L146,158 M154,184 L154,158"/>
+          <path class="d4" pathLength="1" d="M142,158 L158,158 L158,150 L142,150 Z"/>
+          <path class="d4" pathLength="1" d="M150,150 L150,140"/>
+          <circle class="sk d4" pathLength="1" cx="150" cy="128" r="14"/>
+          <circle class="d4" pathLength="1" cx="150" cy="128" r="3"/>
+          <path class="d4" pathLength="1" d="M150,114 L150,142 M136,128 L164,128 M140,118 L160,138 M160,118 L140,138"/>
+          <path class="d4 faint" pathLength="1" d="M170,150 C176,140 166,132 174,122 C180,114 172,106 178,98"/>
+          <path class="d4 faint" pathLength="1" d="M182,156 C190,146 182,138 190,128 C196,120 190,112 196,104"/>
+          <circle class="sk d5" pathLength="1" cx="384.0" cy="177.2" r="13.2"/>
+<path class="d5 thin" pathLength="1" d="M372.8,171.3 C376.1,163.3 384.0,160.7 391.3,164.7 M376.7,167.3 C381.4,162.0 388.6,162.0 394.6,169.3"/>
+<path class="d5 thin" pathLength="1" d="M380.7,189.8 L381.4,196.4 M387.3,189.8 L386.6,196.4"/>
+<path class="sk d5" pathLength="1" d="M364.8,197.7 Q384.0,191.8 403.2,197.7 L396.6,236.1 L399.2,245.4 L368.8,245.4 L371.4,236.1 Z"/>
+<path class="d5 thin" pathLength="1" d="M384.0,200.4 L384.0,242.7"/>
+<path class="sk d5" pathLength="1" d="M370.1,171.9 L397.9,171.9 Q399.9,171.9 399.9,174.6 L399.9,180.5 Q399.9,183.2 397.9,183.2 L370.1,183.2 Q368.1,183.2 368.1,180.5 L368.1,174.6 Q368.1,171.9 370.1,171.9 Z"/>
+<path class="d5 thin" pathLength="1" d="M369.4,177.2 C366.8,165.3 401.2,165.3 398.6,177.2"/>
+<path class="d5" pathLength="1" d="M401.6,199.1 Q405.9,211.6 406.3,224.2 Q407.3,235.4 408.3,246.7"/>
+<circle class="d5" pathLength="1" cx="411.6" cy="248.7" r="4.2"/>
+<path class="d5" pathLength="1" d="M366.4,199.1 Q353.8,203.7 345.2,208.3 Q332.0,201.7 318.7,195.1"/>
+<circle class="d5" pathLength="1" cx="315.4" cy="197.1" r="4.2"/>
+<path class="sk d5" pathLength="1" d="M377.2,245.4 L374.7,277.1 L374.1,336.0 M390.8,245.4 L393.3,277.1 L393.9,336.0"/>
+<path class="d5" pathLength="1" d="M374.1,336.0 L362.8,336.0 M393.9,336.0 L405.2,336.0"/>
+          <g class="mentor">
+<circle class="e5 dash" pathLength="1" cx="556.0" cy="197.5" r="11.5"/>
+<path class="e5 dash thin" pathLength="1" d="M553.1,208.5 L553.7,214.3 M558.9,208.5 L558.3,214.3"/>
+<path class="e5 dash" pathLength="1" d="M539.3,215.4 Q556.0,210.2 572.7,215.4 L567.0,248.9 L569.3,257.0 L542.7,257.0 L545.0,248.9 Z"/>
+<path class="e5 dash" pathLength="1" d="M571.4,216.6 Q575.1,227.5 575.4,238.5 Q576.3,248.3 577.2,258.1"/>
+<circle class="e5 dash" pathLength="1" cx="580.0" cy="259.8" r="3.7"/>
+<path class="e5 dash" pathLength="1" d="M540.6,216.6 Q529.6,220.6 522.1,224.7 Q510.6,218.9 499.1,213.1"/>
+<circle class="e5 dash" pathLength="1" cx="496.2" cy="214.8" r="3.7"/>
+<path class="e5 dash" pathLength="1" d="M550.0,257.0 L547.9,284.7 L547.3,336.0 M562.0,257.0 L564.1,284.7 L564.7,336.0"/>
+<path class="e5 dash" pathLength="1" d="M547.3,336.0 L537.5,336.0 M564.7,336.0 L574.5,336.0"/>
+</g>
+          <text class="d7" x="630" y="368" text-anchor="end" style="font-size:28px">mentor waits</text>
+          <g transform="translate(254,-24)"><circle class="d8 thin" pathLength="1" cx="46" cy="94" r="8"/>
+          <circle class="d8 thin" pathLength="1" cx="42" cy="95" r="3"/><circle class="d8 thin" pathLength="1" cx="50" cy="95" r="3"/>
+          <path class="d8 thin" pathLength="1" d="M46,102 L46,116 M46,106 L36,112 M46,106 L58,110"/></g>
+          <text class="d8" x="318" y="78" style="font-size:28px">teacher: they fail here</text>
+          <path class="d8" pathLength="1" d="M326,88 C308,132 292,190 282,234"/>
+          <path class="d8" pathLength="1" d="M272,220 L282,234 L294,224"/>
+          <g transform="translate(-200,-118)"><circle class="d9 thin" pathLength="1" cx="224" cy="62" r="6"/><circle class="d9 thin" pathLength="1" cx="236" cy="66" r="6"/>
+          <path class="d9 thin" pathLength="1" d="M224,68 L224,80 M236,72 L236,82"/></g>
+          <text class="d9" x="52" y="-46" style="font-size:28px">students: scary here</text>
+          <path class="d9" pathLength="1" d="M118,-34 C128,10 138,58 146,104"/>
+          <path class="d9" pathLength="1" d="M134,92 L146,104 L154,90"/>
+          <g transform="translate(-246,-112)"><circle class="d10 thin" pathLength="1" cx="426" cy="112" r="7"/>
+          <path class="d10 thin" pathLength="1" d="M426,119 L426,132 M418,124 L434,124 M416,126 L432,126 L432,136 L416,136 Z"/></g>
+          <text class="d10" x="198" y="8" style="font-size:28px">researcher: curiosity?</text>
+          <path class="d10" pathLength="1" d="M222,20 C222,90 210,160 200,220"/>
+          <path class="d10" pathLength="1" d="M190,208 L200,220 L212,210"/>
+          <text class="d11 cap" x="210" y="398" text-anchor="middle" style="font-size:34px">built together</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="slide two">
+    <div>
+      <p class="eyebrow">9 &middot; The thin line</p>
+      <h1>The mentor no longer interferes, but <em>has not left</em></h1>
+      <ul class="cues">
+        <li>We see what the student does, where the hand reaches, where he looks.</li>
+        <li>Never looked at the gauge? Attention. Looked for ten seconds and failed? Understanding.</li>
+        <li>Same mistake. Different learners. Different help.</li>
+        <li>The first needs a quiet click. He turns himself, and is sure he noticed it himself.</li>
+        <li>The second needs a question: "what is the pressure right now?"</li>
+        <li>A good master doesn't say "look at the gauge". He walks past and taps it with a wrench.</li>
+      </ul>
+    </div>
+    <div class="side board">
+      <div class="box"><span class="lbl">in pedagogy</span><span class="term">scaffolding and fading</span><span class="def">Support first, then step back.</span></div>
+      <svg class="chalk" viewBox="0 0 640 590" role="img" aria-label="Chalk drawing: a student in a VR headset with his gaze and hand tracked, next to a ladder of help: the student tries, the environment hints, the mentor's body, a question, a hint in words, the answer">
+        <defs>
+          <filter id="rough91" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="91" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g filter="url(#rough91)">
+<path class="sk d0" pathLength="1" d="M14,520 C200,516 420,522 626,517"/>
+<circle class="sk d0" pathLength="1" cx="96.0" cy="326.2" r="16.2"/>
+<path class="d0 thin" pathLength="1" d="M82.3,318.9 C86.3,309.2 96.0,306.0 104.9,310.8 M87.1,314.0 C92.8,307.6 101.7,307.6 108.9,316.5"/>
+<path class="d0 thin" pathLength="1" d="M92.0,341.5 L92.8,349.6 M100.0,341.5 L99.2,349.6"/>
+<path class="sk d0" pathLength="1" d="M72.6,351.2 Q96.0,343.9 119.4,351.2 L111.3,398.0 L114.6,409.3 L77.4,409.3 L80.7,398.0 Z"/>
+<path class="d0 thin" pathLength="1" d="M96.0,354.4 L96.0,406.1"/>
+<path class="sk d0" pathLength="1" d="M79.0,319.7 L113.0,319.7 Q115.4,319.7 115.4,322.9 L115.4,330.2 Q115.4,333.4 113.0,333.4 L79.0,333.4 Q76.6,333.4 76.6,330.2 L76.6,322.9 Q76.6,319.7 79.0,319.7 Z"/>
+<path class="d0 thin" pathLength="1" d="M78.2,326.2 C75.0,311.6 117.0,311.6 113.8,326.2"/>
+<path class="d0" pathLength="1" d="M74.5,352.8 Q69.2,368.2 68.8,383.5 Q67.6,397.2 66.4,411.0"/>
+<circle class="d0" pathLength="1" cx="62.3" cy="413.4" r="5.2"/>
+<path class="d0" pathLength="1" d="M117.5,352.8 Q122.8,368.2 123.2,383.5 Q124.4,397.2 125.6,411.0"/>
+<circle class="d0" pathLength="1" cx="129.7" cy="413.4" r="5.2"/>
+<path class="sk d0" pathLength="1" d="M87.6,409.3 L84.7,448.1 L83.9,520.0 M104.4,409.3 L107.3,448.1 L108.1,520.0"/>
+<path class="d0" pathLength="1" d="M83.9,520.0 L70.2,520.0 M108.1,520.0 L121.8,520.0"/>
+<text class="d1" x="20" y="279.30769230769226" text-anchor="start" style="font-size:25px">VR headset</text>
+<path class="d1 thin" pathLength="1" d="M66,285.0 C70,300.3 68.5,313.2 76.6,321.3"/>
+<path class="d2 dash" pathLength="1" d="M116.2,326.2 L222,370.2"/>
+<text class="d2" x="121.84615384615384" y="312.15384615384613" text-anchor="start" style="font-size:22px">where he looks</text>
+<circle class="d3 dash" pathLength="1" cx="129.7" cy="413.4" r="16.2"/>
+<text class="d3" x="132" y="455.38461538461536" text-anchor="start" style="font-size:21px">where the hand</text>
+<text class="d3" x="132" y="479.38461538461536" text-anchor="start" style="font-size:21px">reaches</text>
+<text class="d4" x="96" y="570" text-anchor="middle" style="font-size:27px">what we see</text>
+<path class="sk d4" pathLength="1" d="M272,524 L302,40"/>
+<path class="sk d4" pathLength="1" d="M344,524 L374,40"/>
+<path class="sk d5" pathLength="1" d="M275,470 L347,470"/>
+<text class="d5" x="361.3471074380165" y="478" text-anchor="start" style="font-size:26px">0  the student tries</text>
+<path class="sk d6" pathLength="1" d="M280,392 L352,392"/>
+<text class="d6" x="366.1818181818182" y="400" text-anchor="start" style="font-size:26px">1  the environment</text>
+<text class="d6 sub" x="382.1818181818182" y="426" text-anchor="start" style="font-size:20px">a sound, the needle, steam</text>
+<path class="sk d7" pathLength="1" d="M285,314 L357,314"/>
+<text class="d7" x="371.0165289256198" y="322" text-anchor="start" style="font-size:26px">2  the mentor's body</text>
+<text class="d7 sub" x="387.0165289256198" y="348" text-anchor="start" style="font-size:20px">looks there, walks over</text>
+<path class="sk d8" pathLength="1" d="M290,236 L362,236"/>
+<text class="d8" x="375.8512396694215" y="244" text-anchor="start" style="font-size:26px">3  a question</text>
+<path class="sk d9" pathLength="1" d="M295,158 L367,158"/>
+<text class="d9" x="380.68595041322317" y="166" text-anchor="start" style="font-size:26px">4  a hint in words</text>
+<path class="sk d10" pathLength="1" d="M300,80 L372,80"/>
+<text class="d10" x="385.5206611570248" y="88" text-anchor="start" style="font-size:26px">5  the answer</text>
+<text class="d10 sub" x="401.5206611570248" y="114" text-anchor="start" style="font-size:20px">only at the end</text>
+<text class="d11" x="474" y="570" text-anchor="middle" style="font-size:27px">what we do about it</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="slide two">
+    <div>
+      <p class="eyebrow">10 &middot; The opposite direction</p>
+      <h1>Almost all educational AI <em>answers faster</em></h1>
+      <ul class="cues">
+        <li>Murayama's group, 2026: ninth-graders with an AI maths tutor asked for ready answers. After the sessions they knew less than before.</li>
+        <li>With us: the student tries, fails, searches. Curiosity stays his.</li>
+        <li>The mentor is there. Always there. Mistakes are not punished. Nobody is left alone.</li>
+        <li>In a classroom things are explained once. In our environment you can try a hundred times. Classmates don't see you fail.</li>
+        <li>One number to watch: how many questions the student asks. First session, tenth session. Curiosity comes back fast. Asking comes back slowly.</li>
+      </ul>
+    </div>
+    <div class="side board">
+      <div class="abc">
+        <div class="bad"><b>Too early</b>: the mentor kills the question.</div>
+        <div class="bad"><b>Too late</b>: the student gives up.</div>
+        <div class="good"><b>The line</b>: support, then fade.</div>
+      </div>
+      <svg class="chalk" viewBox="0 0 640 540" role="img" aria-label="Chalk drawing: a robot tutor throws answers at a student whose question mark fades; bars show a lower score after">
+        <defs>
+          <filter id="rough101" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="101" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g filter="url(#rough101)">
+<path class="sk d0" pathLength="1" d="M10,440 C200,436 420,442 630,437"/>
+<path class="sk d0" pathLength="1" d="M40,224 L122,224 L122,288 L40,288 Z"/>
+<path class="d0" pathLength="1" d="M81,224 L81,204"/>
+<circle class="d0" pathLength="1" cx="81.0" cy="198.0" r="6.0"/>
+<circle class="d0" pathLength="1" cx="62.0" cy="252.0" r="6.0"/>
+<circle class="d0" pathLength="1" cx="100.0" cy="252.0" r="6.0"/>
+<path class="d0 thin" pathLength="1" d="M60,272 L102,272"/>
+<path class="sk d0" pathLength="1" d="M46,288 L116,288 L116,392 L46,392 Z"/>
+<path class="d0 thin" pathLength="1" d="M60,310 L102,310 M60,326 L102,326"/>
+<path class="d0" pathLength="1" d="M46,312 L22,352 M116,312 L140,352"/>
+<path class="sk d0" pathLength="1" d="M62,392 L62,440 M100,392 L100,440"/>
+<text class="d0" x="81" y="474" text-anchor="middle" style="font-size:25px">AI tutor</text>
+<circle class="sk d0" pathLength="1" cx="262.0" cy="255.4" r="15.4"/>
+<path class="d0 thin" pathLength="1" d="M248.9,248.5 C252.8,239.2 262.0,236.2 270.5,240.8 M253.5,243.8 C258.9,237.7 267.4,237.7 274.3,246.2"/>
+<path class="d0 thin" pathLength="1" d="M258.2,270.0 L258.9,277.7 M265.8,270.0 L265.1,277.7"/>
+<path class="sk d0" pathLength="1" d="M239.7,279.2 Q262.0,272.3 284.3,279.2 L276.6,323.8 L279.7,334.6 L244.3,334.6 L247.4,323.8 Z"/>
+<path class="d0 thin" pathLength="1" d="M262.0,282.3 L262.0,331.5"/>
+<path class="d0" pathLength="1" d="M241.5,280.8 Q236.5,295.4 236.1,310.0 Q234.9,323.1 233.8,336.2"/>
+<circle class="d0" pathLength="1" cx="229.9" cy="338.5" r="4.9"/>
+<path class="d0" pathLength="1" d="M282.5,280.8 Q287.5,295.4 287.9,310.0 Q289.1,323.1 290.2,336.2"/>
+<circle class="d0" pathLength="1" cx="294.1" cy="338.5" r="4.9"/>
+<path class="sk d0" pathLength="1" d="M254.0,334.6 L251.2,371.5 L250.5,440.0 M270.0,334.6 L272.8,371.5 L273.5,440.0"/>
+<path class="d0" pathLength="1" d="M250.5,440.0 L237.4,440.0 M273.5,440.0 L286.6,440.0"/>
+<text class="d0 qmark" x="262" y="224" text-anchor="middle" style="font-size:64px">?</text>
+<path class="sk d1" pathLength="1" d="M136,208 L220,208 L220,240 L136,240 Z"/>
+<text class="d1" x="178" y="231" text-anchor="middle" style="font-size:23px">answer</text>
+<path class="sk d2" pathLength="1" d="M142,252 L226,252 L226,284 L142,284 Z"/>
+<text class="d2" x="184" y="275" text-anchor="middle" style="font-size:23px">answer</text>
+<path class="sk d2" pathLength="1" d="M136,296 L220,296 L220,328 L136,328 Z"/>
+<text class="d2" x="178" y="319" text-anchor="middle" style="font-size:23px">answer</text>
+<path class="d3" pathLength="1" d="M400,400 L620,400 M400,400 L400,190"/>
+<path class="sk d4" pathLength="1" d="M432,400 L432,240 L494,240 L494,400"/>
+<text class="d4" x="463" y="432" text-anchor="middle" style="font-size:26px">before</text>
+<path class="sk d5" pathLength="1" d="M526,400 L526,316 L588,316 L588,400"/>
+<text class="d5" x="557" y="432" text-anchor="middle" style="font-size:26px">after</text>
+<path class="d5" pathLength="1" d="M557,246 L557,300"/>
+<path class="d5" pathLength="1" d="M547,288 L557,300 L567,288"/>
+<text class="d5" x="540" y="226" text-anchor="middle" style="font-size:28px">knew less</text>
+<text class="d6 cap" x="320" y="522" text-anchor="middle" style="font-size:34px">a fast answer kills the question</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="slide two">
+    <div>
+      <p class="eyebrow">11 &middot; The open question</p>
+      <h1>Did he learn by himself? <em>Or did we trick him?</em></h1>
+      <ul class="cues">
+        <li>The gauge clicks. He turns his head by himself.</li>
+        <li>He thinks he did it himself. Now he believes he can do it, and his confidence grows.</li>
+        <li>But we helped him, and he didn't know it.</li>
+        <li>So is that good for learning? Or should the learner know when we help him?</li>
+      </ul>
+    </div>
+    <div class="side board">
+      <div class="box"><span class="lbl">in pedagogy</span><span class="term">self-efficacy</span><span class="def">The learner's belief "I can do this". Bandura.</span></div>
+      <svg class="chalk" viewBox="0 0 640 586" role="img" aria-label="Chalk drawing: a gauge clicks, the student turns and thinks he noticed it himself; a faint mentor, revealed last, is the one who clicked it">
+        <defs>
+          <filter id="rough2" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="11" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g filter="url(#rough2)">
+<path class="sk e0" pathLength="1" d="M10,470 C200,466 420,472 630,467"/>
+<path class="sk e0" pathLength="1" d="M84,470 L84,250 M98,470 L98,250"/>
+<path class="e0" pathLength="1" d="M74,250 L108,250"/>
+<circle class="sk e0" pathLength="1" cx="91.0" cy="206.0" r="41.0"/>
+<circle class="e0" pathLength="1" cx="91.0" cy="206.0" r="33.0"/>
+<g class="ticks" data-cx="91" data-cy="206" data-r1="25" data-r2="31" data-n="11" data-a0="150" data-a1="390" data-cls="e0 thin"></g>
+<circle class="e0" pathLength="1" cx="91.0" cy="206.0" r="3.0"/>
+<path class="e0 needleA" pathLength="1" d="M91,206 L72,226"/>
+<path class="sk e0" pathLength="1" d="M360,270 L442,270 L442,392 L360,392 Z"/>
+<path class="e0" pathLength="1" d="M374,392 L374,470 M428,392 L428,470"/>
+<path class="e0" pathLength="1" d="M380,326 L380,304 M401,326 L401,306 M422,326 L422,304"/>
+<circle class="e0" pathLength="1" cx="380.0" cy="330.0" r="5.0"/>
+<circle class="e0" pathLength="1" cx="401.0" cy="330.0" r="5.0"/>
+<circle class="e0" pathLength="1" cx="422.0" cy="330.0" r="5.0"/>
+<circle class="e0 thin" pathLength="1" cx="380.0" cy="362.0" r="4.0"/>
+<circle class="e0 thin" pathLength="1" cx="401.0" cy="362.0" r="4.0"/>
+<circle class="e0 thin" pathLength="1" cx="422.0" cy="362.0" r="4.0"/>
+<path class="e0 thin" pathLength="1" d="M368,280 L434,280 M368,382 L434,382"/>
+<g class="head">
+<circle class="sk e1" pathLength="1" cx="250.0" cy="257.7" r="17.7"/>
+<path class="e1 thin" pathLength="1" d="M233.2,252.4 C234.1,240.0 244.7,235.6 257.1,240.0"/>
+<path class="sk e1" pathLength="1" d="M252.7,248.8 L275.7,248.8 Q279.2,248.8 279.2,252.4 L279.2,267.4 Q279.2,271.0 275.7,271.0 L252.7,271.0 Z"/>
+<path class="e1 thin" pathLength="1" d="M252.7,254.2 C239.4,248.8 230.5,255.9 234.1,264.8"/>
+<path class="e1 thin" pathLength="1" d="M240.3,259.5 C236.7,259.5 236.7,265.7 240.3,265.7"/>
+</g>
+<path class="e1 thin" pathLength="1" d="M245.6,274.5 L246.5,283.3 M254.4,274.5 L253.5,283.3"/>
+<path class="sk e1" pathLength="1" d="M224.3,285.1 Q250.0,277.2 275.7,285.1 L266.8,336.4 L270.3,348.8 L229.7,348.8 L233.2,336.4 Z"/>
+<path class="e1 thin" pathLength="1" d="M250.0,288.7 L250.0,345.3"/>
+<path class="e1" pathLength="1" d="M226.4,286.9 Q220.6,303.7 220.2,320.5 Q218.9,335.5 217.6,350.6"/>
+<circle class="e1" pathLength="1" cx="213.1" cy="353.2" r="5.7"/>
+<path class="e1" pathLength="1" d="M273.6,286.9 Q290.4,293.1 301.9,299.3 Q319.6,290.4 337.3,281.6"/>
+<circle class="e1" pathLength="1" cx="341.7" cy="284.2" r="5.7"/>
+<path class="sk e1" pathLength="1" d="M240.8,348.8 L237.6,391.3 L236.7,470.0 M259.2,348.8 L262.4,391.3 L263.3,470.0"/>
+<path class="e1" pathLength="1" d="M236.7,470.0 L221.7,470.0 M263.3,470.0 L278.3,470.0"/>
+<path class="e1 dash gazeA" pathLength="1" d="M279.2,259.5 C312,267.5 342,286 370,304"/>
+<path class="e2 needleB" pathLength="1" d="M91,206 L112,184"/>
+<path class="e2" pathLength="1" d="M142,186 C150,198 150,214 142,226"/>
+<path class="e2" pathLength="1" d="M156,174 C168,192 168,220 156,238"/>
+<path class="e2 thin" pathLength="1" d="M170,162 C186,186 186,226 170,250"/>
+<text class="e2" x="176" y="142" text-anchor="middle" style="font-size:32px">click</text>
+<path class="e3 thin" pathLength="1" d="M221.7,232.9 C211.1,241.8 207.5,254.2 209.3,266.5 M214.6,225.8 C200.5,238.2 196.9,254.2 198.7,270.1"/>
+<path class="e3 dash" pathLength="1" d="M220.8,259.5 C190,250 160,234 136,218"/>
+<path class="e3" pathLength="1" d="M150,216 L136,218 L144,230"/>
+<circle class="e4 thin" pathLength="1" cx="276.0" cy="216.0" r="4.0"/>
+<circle class="e4 thin" pathLength="1" cx="288.0" cy="196.0" r="7.0"/>
+<path class="e4" pathLength="1" d="M250,112 C258,82 330,72 366,90 C400,72 486,80 498,108 C528,118 520,158 486,162 C464,182 376,182 352,166 C306,180 244,166 244,140 C230,130 234,116 250,112 Z"/>
+<text class="e4" x="376" y="138" text-anchor="middle" style="font-size:30px">I noticed it myself</text>
+<g class="mentor">
+<circle class="e5 dash" pathLength="1" cx="560.0" cy="285.4" r="15.4"/>
+<path class="e5 dash thin" pathLength="1" d="M556.2,300.0 L556.9,307.7 M563.8,300.0 L563.1,307.7"/>
+<path class="e5 dash" pathLength="1" d="M537.7,309.2 Q560.0,302.3 582.3,309.2 L574.6,353.8 L577.7,364.6 L542.3,364.6 L545.4,353.8 Z"/>
+<path class="e5 dash" pathLength="1" d="M580.5,310.8 Q585.5,325.4 585.9,340.0 Q587.1,353.1 588.2,366.2"/>
+<circle class="e5 dash" pathLength="1" cx="592.1" cy="368.5" r="4.9"/>
+<path class="e5 dash" pathLength="1" d="M539.5,310.8 Q524.9,316.2 514.9,321.5 Q499.5,313.8 484.1,306.2"/>
+<circle class="e5 dash" pathLength="1" cx="480.2" cy="308.5" r="4.9"/>
+<path class="e5 dash" pathLength="1" d="M552.0,364.6 L549.2,401.5 L548.5,470.0 M568.0,364.6 L570.8,401.5 L571.5,470.0"/>
+<path class="e5 dash" pathLength="1" d="M548.5,470.0 L535.4,470.0 M571.5,470.0 L584.6,470.0"/>
+</g>
+<path class="e5 dash" pathLength="1" d="M486,300 C566,196 560,40 330,34 C200,32 122,80 106,160"/>
+<path class="e5" pathLength="1" d="M94,146 L106,160 L118,148"/>
+<text class="e5" x="628" y="506" text-anchor="end" style="font-size:28px">the mentor clicked it</text>
+<text class="e6 cap" x="320" y="542" text-anchor="middle" style="font-size:32px">learned by himself?</text>
+<text class="e6 cap" x="320" y="572" text-anchor="middle" style="font-size:32px">or tricked?</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="slide two">
+    <div>
+      <p class="eyebrow">12 &middot; Where we are</p>
+      <h1>We can build the environment. <em>Not its pedagogy.</em></h1>
+      <ul class="cues">
+        <li>That has to be built with someone who knows.</li>
+        <li>Where would you start? What would you read first?</li>
+      </ul>
+    </div>
+    <div class="side board">
+      <div class="say">Give every teacher what Confucius had: time for each learner.</div>
+      <svg class="chalk" viewBox="0 0 640 544" role="img" aria-label="Chalk drawing: Confucius answering a learner on the left; today, a teacher with four learners, each with their own AI mentor">
+        <defs>
+          <filter id="rough121" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="121" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g filter="url(#rough121)">
+<path class="sk d0" pathLength="1" d="M40,216 C140,213 240,218 330,214"/>
+<path class="sk d1" pathLength="1" d="M92,200 L208,200 L208,212 L92,212 Z"/>
+<circle class="sk d1" pathLength="1" cx="150.0" cy="76.3" r="10.3"/>
+<path class="d1" pathLength="1" d="M137.6,70.6 L162.4,70.6 L159.8,62.4 L140.2,62.4 Z"/>
+<path class="d1 thin" pathLength="1" d="M144.8,84.0 C145.4,99.0 154.6,99.0 155.2,84.0"/>
+<path class="d1 thin" pathLength="1" d="M146.9,79.4 L153.1,79.4"/>
+<path class="sk d1" pathLength="1" d="M133.5,92.8 Q150.0,87.6 166.5,92.8 L174.7,200.0 L125.3,200.0 Z"/>
+<path class="d1 thin" pathLength="1" d="M135.6,117.5 C143.8,126.8 156.2,126.8 164.4,117.5"/>
+<path class="d1 thin" pathLength="1" d="M140.7,99.0 L135.6,196.9 M159.3,99.0 L164.4,196.9"/>
+<circle class="sk d1" pathLength="1" cx="262.0" cy="84.9" r="10.9"/>
+<path class="d1 thin" pathLength="1" d="M252.7,80.0 C255.4,73.5 262.0,71.3 268.0,74.5 M256.0,76.7 C259.8,72.4 265.8,72.4 270.7,78.4"/>
+<path class="d1 thin" pathLength="1" d="M259.3,95.3 L259.8,100.8 M264.7,95.3 L264.2,100.8"/>
+<path class="sk d1" pathLength="1" d="M246.2,101.9 Q262.0,96.9 277.8,101.9 L272.4,133.5 L274.6,141.2 L249.4,141.2 L251.6,133.5 Z"/>
+<path class="d1 thin" pathLength="1" d="M262.0,104.0 L262.0,139.0"/>
+<path class="d1" pathLength="1" d="M247.4,102.9 Q243.9,113.3 243.6,123.7 Q242.8,133.0 242.0,142.3"/>
+<circle class="d1" pathLength="1" cx="239.2" cy="143.9" r="3.5"/>
+<path class="d1" pathLength="1" d="M276.6,102.9 Q280.1,113.3 280.4,123.7 Q281.2,133.0 282.0,142.3"/>
+<circle class="d1" pathLength="1" cx="284.8" cy="143.9" r="3.5"/>
+<path class="sk d1" pathLength="1" d="M256.3,141.2 L254.4,167.4 L253.8,216.0 M267.7,141.2 L269.6,167.4 L270.2,216.0"/>
+<path class="d1" pathLength="1" d="M253.8,216.0 L244.5,216.0 M270.2,216.0 L279.5,216.0"/>
+<text class="d1" x="356" y="112" text-anchor="start" style="font-size:30px">Confucius:</text>
+<text class="d1" x="356" y="148" text-anchor="start" style="font-size:30px">an answer for</text>
+<text class="d1" x="356" y="184" text-anchor="start" style="font-size:30px">each learner</text>
+<path class="d2" pathLength="1" d="M150,232 L150,268"/>
+<path class="d2" pathLength="1" d="M140,256 L150,268 L160,256"/>
+<text class="d2" x="170" y="260" text-anchor="start" style="font-size:28px">today</text>
+<path class="sk d2" pathLength="1" d="M10,470 C200,466 420,472 630,467"/>
+<circle class="sk d2" pathLength="1" cx="70.0" cy="298.3" r="14.3"/>
+<path class="d2 thin" pathLength="1" d="M57.8,291.9 C61.4,283.3 70.0,280.4 77.9,284.7 M62.1,287.6 C67.1,281.9 75.0,281.9 81.4,289.7"/>
+<path class="d2 thin" pathLength="1" d="M66.4,311.9 L67.1,319.1 M73.6,311.9 L72.9,319.1"/>
+<path class="sk d2" pathLength="1" d="M49.3,320.5 Q70.0,314.0 90.7,320.5 L83.6,362.0 L86.5,372.0 L53.5,372.0 L56.4,362.0 Z"/>
+<path class="d2 thin" pathLength="1" d="M70.0,323.3 L70.0,369.1"/>
+<path class="d2" pathLength="1" d="M50.9,321.9 Q46.3,335.5 45.9,349.1 Q44.8,361.3 43.8,373.4"/>
+<circle class="d2" pathLength="1" cx="40.2" cy="375.6" r="4.6"/>
+<path class="d2" pathLength="1" d="M89.1,321.9 Q102.7,326.9 112.0,331.9 Q126.3,324.8 140.6,317.6"/>
+<circle class="d2" pathLength="1" cx="144.2" cy="319.8" r="4.6"/>
+<path class="sk d2" pathLength="1" d="M62.6,372.0 L60.0,406.3 L59.3,470.0 M77.4,372.0 L80.0,406.3 L80.7,470.0"/>
+<path class="d2" pathLength="1" d="M59.3,470.0 L47.1,470.0 M80.7,470.0 L92.9,470.0"/>
+<circle class="sk d3" pathLength="1" cx="196.0" cy="329.7" r="11.7"/>
+<path class="d3 thin" pathLength="1" d="M186.1,324.4 C189.0,317.4 196.0,315.1 202.4,318.6 M189.6,320.9 C193.7,316.2 200.1,316.2 205.4,322.7"/>
+<path class="d3 thin" pathLength="1" d="M193.1,340.8 L193.7,346.6 M198.9,340.8 L198.3,346.6"/>
+<path class="sk d3" pathLength="1" d="M179.0,347.8 Q196.0,342.6 213.0,347.8 L207.1,381.7 L209.4,389.9 L182.6,389.9 L184.9,381.7 Z"/>
+<path class="d3 thin" pathLength="1" d="M196.0,350.2 L196.0,387.6"/>
+<path class="sk d3" pathLength="1" d="M183.7,325.0 L208.3,325.0 Q210.0,325.0 210.0,327.4 L210.0,332.6 Q210.0,335.0 208.3,335.0 L183.7,335.0 Q182.0,335.0 182.0,332.6 L182.0,327.4 Q182.0,325.0 183.7,325.0 Z"/>
+<path class="d3 thin" pathLength="1" d="M183.1,329.7 C180.8,319.2 211.2,319.2 208.9,329.7"/>
+<path class="d3" pathLength="1" d="M180.4,349.0 Q176.6,360.1 176.3,371.2 Q175.4,381.1 174.6,391.1"/>
+<circle class="d3" pathLength="1" cx="171.6" cy="392.8" r="3.7"/>
+<path class="d3" pathLength="1" d="M211.6,349.0 Q215.4,360.1 215.7,371.2 Q216.6,381.1 217.4,391.1"/>
+<circle class="d3" pathLength="1" cx="220.4" cy="392.8" r="3.7"/>
+<path class="sk d3" pathLength="1" d="M189.9,389.9 L187.8,418.0 L187.2,470.0 M202.1,389.9 L204.2,418.0 L204.8,470.0"/>
+<path class="d3" pathLength="1" d="M187.2,470.0 L177.3,470.0 M204.8,470.0 L214.7,470.0"/>
+<circle class="d3 dash" pathLength="1" cx="242.0" cy="353.7" r="9.7"/>
+<path class="d3 dash thin" pathLength="1" d="M239.6,362.9 L240.1,367.7 M244.4,362.9 L243.9,367.7"/>
+<path class="d3 dash" pathLength="1" d="M227.9,368.7 Q242.0,364.4 256.1,368.7 L251.2,396.8 L253.1,403.6 L230.9,403.6 L232.8,396.8 Z"/>
+<path class="d3 dash thin" pathLength="1" d="M229.1,369.7 Q226.6,378.9 227.1,388.1 Q231.0,394.4 234.9,400.7"/>
+<path class="d3 dash thin" pathLength="1" d="M254.9,369.7 Q257.4,378.9 256.9,388.1 Q253.0,394.4 249.1,400.7"/>
+<path class="d3 dash" pathLength="1" d="M237.0,403.6 L235.2,426.9 L234.7,470.0 M247.0,403.6 L248.8,426.9 L249.3,470.0"/>
+<path class="d3 dash" pathLength="1" d="M234.7,470.0 L226.5,470.0 M249.3,470.0 L257.5,470.0"/>
+<circle class="sk d3" pathLength="1" cx="306.0" cy="329.7" r="11.7"/>
+<path class="d3 thin" pathLength="1" d="M296.1,324.4 C299.0,317.4 306.0,315.1 312.4,318.6 M299.6,320.9 C303.7,316.2 310.1,316.2 315.4,322.7"/>
+<path class="d3 thin" pathLength="1" d="M303.1,340.8 L303.7,346.6 M308.9,340.8 L308.3,346.6"/>
+<path class="sk d3" pathLength="1" d="M289.0,347.8 Q306.0,342.6 323.0,347.8 L317.1,381.7 L319.4,389.9 L292.6,389.9 L294.9,381.7 Z"/>
+<path class="d3 thin" pathLength="1" d="M306.0,350.2 L306.0,387.6"/>
+<path class="sk d3" pathLength="1" d="M293.7,325.0 L318.3,325.0 Q320.0,325.0 320.0,327.4 L320.0,332.6 Q320.0,335.0 318.3,335.0 L293.7,335.0 Q292.0,335.0 292.0,332.6 L292.0,327.4 Q292.0,325.0 293.7,325.0 Z"/>
+<path class="d3 thin" pathLength="1" d="M293.1,329.7 C290.8,319.2 321.2,319.2 318.9,329.7"/>
+<path class="d3" pathLength="1" d="M290.4,349.0 Q286.6,360.1 286.3,371.2 Q285.4,381.1 284.6,391.1"/>
+<circle class="d3" pathLength="1" cx="281.6" cy="392.8" r="3.7"/>
+<path class="d3" pathLength="1" d="M321.6,349.0 Q325.4,360.1 325.7,371.2 Q326.6,381.1 327.4,391.1"/>
+<circle class="d3" pathLength="1" cx="330.4" cy="392.8" r="3.7"/>
+<path class="sk d3" pathLength="1" d="M299.9,389.9 L297.8,418.0 L297.2,470.0 M312.1,389.9 L314.2,418.0 L314.8,470.0"/>
+<path class="d3" pathLength="1" d="M297.2,470.0 L287.3,470.0 M314.8,470.0 L324.7,470.0"/>
+<circle class="d3 dash" pathLength="1" cx="352.0" cy="353.7" r="9.7"/>
+<path class="d3 dash thin" pathLength="1" d="M349.6,362.9 L350.1,367.7 M354.4,362.9 L353.9,367.7"/>
+<path class="d3 dash" pathLength="1" d="M337.9,368.7 Q352.0,364.4 366.1,368.7 L361.2,396.8 L363.1,403.6 L340.9,403.6 L342.8,396.8 Z"/>
+<path class="d3 dash thin" pathLength="1" d="M339.1,369.7 Q336.6,378.9 337.1,388.1 Q341.0,394.4 344.9,400.7"/>
+<path class="d3 dash thin" pathLength="1" d="M364.9,369.7 Q367.4,378.9 366.9,388.1 Q363.0,394.4 359.1,400.7"/>
+<path class="d3 dash" pathLength="1" d="M347.0,403.6 L345.2,426.9 L344.7,470.0 M357.0,403.6 L358.8,426.9 L359.3,470.0"/>
+<path class="d3 dash" pathLength="1" d="M344.7,470.0 L336.5,470.0 M359.3,470.0 L367.5,470.0"/>
+<circle class="sk d4" pathLength="1" cx="416.0" cy="329.7" r="11.7"/>
+<path class="d4 thin" pathLength="1" d="M406.1,324.4 C409.0,317.4 416.0,315.1 422.4,318.6 M409.6,320.9 C413.7,316.2 420.1,316.2 425.4,322.7"/>
+<path class="d4 thin" pathLength="1" d="M413.1,340.8 L413.7,346.6 M418.9,340.8 L418.3,346.6"/>
+<path class="sk d4" pathLength="1" d="M399.0,347.8 Q416.0,342.6 433.0,347.8 L427.1,381.7 L429.4,389.9 L402.6,389.9 L404.9,381.7 Z"/>
+<path class="d4 thin" pathLength="1" d="M416.0,350.2 L416.0,387.6"/>
+<path class="sk d4" pathLength="1" d="M403.7,325.0 L428.3,325.0 Q430.0,325.0 430.0,327.4 L430.0,332.6 Q430.0,335.0 428.3,335.0 L403.7,335.0 Q402.0,335.0 402.0,332.6 L402.0,327.4 Q402.0,325.0 403.7,325.0 Z"/>
+<path class="d4 thin" pathLength="1" d="M403.1,329.7 C400.8,319.2 431.2,319.2 428.9,329.7"/>
+<path class="d4" pathLength="1" d="M400.4,349.0 Q396.6,360.1 396.3,371.2 Q395.4,381.1 394.6,391.1"/>
+<circle class="d4" pathLength="1" cx="391.6" cy="392.8" r="3.7"/>
+<path class="d4" pathLength="1" d="M431.6,349.0 Q435.4,360.1 435.7,371.2 Q436.6,381.1 437.4,391.1"/>
+<circle class="d4" pathLength="1" cx="440.4" cy="392.8" r="3.7"/>
+<path class="sk d4" pathLength="1" d="M409.9,389.9 L407.8,418.0 L407.2,470.0 M422.1,389.9 L424.2,418.0 L424.8,470.0"/>
+<path class="d4" pathLength="1" d="M407.2,470.0 L397.3,470.0 M424.8,470.0 L434.7,470.0"/>
+<circle class="d4 dash" pathLength="1" cx="462.0" cy="353.7" r="9.7"/>
+<path class="d4 dash thin" pathLength="1" d="M459.6,362.9 L460.1,367.7 M464.4,362.9 L463.9,367.7"/>
+<path class="d4 dash" pathLength="1" d="M447.9,368.7 Q462.0,364.4 476.1,368.7 L471.2,396.8 L473.1,403.6 L450.9,403.6 L452.8,396.8 Z"/>
+<path class="d4 dash thin" pathLength="1" d="M449.1,369.7 Q446.6,378.9 447.1,388.1 Q451.0,394.4 454.9,400.7"/>
+<path class="d4 dash thin" pathLength="1" d="M474.9,369.7 Q477.4,378.9 476.9,388.1 Q473.0,394.4 469.1,400.7"/>
+<path class="d4 dash" pathLength="1" d="M457.0,403.6 L455.2,426.9 L454.7,470.0 M467.0,403.6 L468.8,426.9 L469.3,470.0"/>
+<path class="d4 dash" pathLength="1" d="M454.7,470.0 L446.5,470.0 M469.3,470.0 L477.5,470.0"/>
+<circle class="sk d4" pathLength="1" cx="526.0" cy="329.7" r="11.7"/>
+<path class="d4 thin" pathLength="1" d="M516.1,324.4 C519.0,317.4 526.0,315.1 532.4,318.6 M519.6,320.9 C523.7,316.2 530.1,316.2 535.4,322.7"/>
+<path class="d4 thin" pathLength="1" d="M523.1,340.8 L523.7,346.6 M528.9,340.8 L528.3,346.6"/>
+<path class="sk d4" pathLength="1" d="M509.0,347.8 Q526.0,342.6 543.0,347.8 L537.1,381.7 L539.4,389.9 L512.6,389.9 L514.9,381.7 Z"/>
+<path class="d4 thin" pathLength="1" d="M526.0,350.2 L526.0,387.6"/>
+<path class="sk d4" pathLength="1" d="M513.7,325.0 L538.3,325.0 Q540.0,325.0 540.0,327.4 L540.0,332.6 Q540.0,335.0 538.3,335.0 L513.7,335.0 Q512.0,335.0 512.0,332.6 L512.0,327.4 Q512.0,325.0 513.7,325.0 Z"/>
+<path class="d4 thin" pathLength="1" d="M513.1,329.7 C510.8,319.2 541.2,319.2 538.9,329.7"/>
+<path class="d4" pathLength="1" d="M510.4,349.0 Q506.6,360.1 506.3,371.2 Q505.4,381.1 504.6,391.1"/>
+<circle class="d4" pathLength="1" cx="501.6" cy="392.8" r="3.7"/>
+<path class="d4" pathLength="1" d="M541.6,349.0 Q545.4,360.1 545.7,371.2 Q546.6,381.1 547.4,391.1"/>
+<circle class="d4" pathLength="1" cx="550.4" cy="392.8" r="3.7"/>
+<path class="sk d4" pathLength="1" d="M519.9,389.9 L517.8,418.0 L517.2,470.0 M532.1,389.9 L534.2,418.0 L534.8,470.0"/>
+<path class="d4" pathLength="1" d="M517.2,470.0 L507.3,470.0 M534.8,470.0 L544.7,470.0"/>
+<circle class="d4 dash" pathLength="1" cx="572.0" cy="353.7" r="9.7"/>
+<path class="d4 dash thin" pathLength="1" d="M569.6,362.9 L570.1,367.7 M574.4,362.9 L573.9,367.7"/>
+<path class="d4 dash" pathLength="1" d="M557.9,368.7 Q572.0,364.4 586.1,368.7 L581.2,396.8 L583.1,403.6 L560.9,403.6 L562.8,396.8 Z"/>
+<path class="d4 dash thin" pathLength="1" d="M559.1,369.7 Q556.6,378.9 557.1,388.1 Q561.0,394.4 564.9,400.7"/>
+<path class="d4 dash thin" pathLength="1" d="M584.9,369.7 Q587.4,378.9 586.9,388.1 Q583.0,394.4 579.1,400.7"/>
+<path class="d4 dash" pathLength="1" d="M567.0,403.6 L565.2,426.9 L564.7,470.0 M577.0,403.6 L578.8,426.9 L579.3,470.0"/>
+<path class="d4 dash" pathLength="1" d="M564.7,470.0 L556.5,470.0 M579.3,470.0 L587.5,470.0"/>
+<text class="d5" x="262" y="296" text-anchor="middle" style="font-size:27px">AI mentor</text>
+<path class="d5 thin dash" pathLength="1" d="M244,304 L243,336"/>
+<path class="d5 thin" pathLength="1" d="M182,488 L182,496 L594,496 L594,488"/>
+<text class="d5" x="388" y="528" text-anchor="middle" style="font-size:30px">every learner has one</text>
+<text class="d6 cap" x="320" y="44" text-anchor="middle" style="font-size:31px">give every teacher what Confucius had</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prev" type="button">Back</button>
+  <span class="mid"><button id="play" type="button" hidden>Play</button><span class="hint" id="hint">arrow keys work</span></span>
+  <button id="next" type="button">Next</button>
+</div>
+
+<script>
+(function(){
+  (function buildChalk(){
+    var NS='http://www.w3.org/2000/svg';
+    [].slice.call(document.querySelectorAll('svg.chalk')).forEach(function(svg){
+    function mk(tag,attrs){ var e=document.createElementNS(NS,tag); for(var k in attrs) e.setAttribute(k,attrs[k]); return e; }
+    [].slice.call(svg.querySelectorAll('g.hatch')).forEach(function(g){
+      var x0=+g.dataset.x0,y0=+g.dataset.y0,x1=+g.dataset.x1,y1=+g.dataset.y1,step=+g.dataset.step||6;
+      var ang=(+g.dataset.angle||-55)*Math.PI/180, cls=g.dataset.cls||'';
+      g.setAttribute('clip-path','url(#'+g.dataset.clip+')');
+      var dx=Math.cos(ang),dy=Math.sin(ang), nx=-dy, ny=dx;
+      var cx=(x0+x1)/2, cy=(y0+y1)/2, L=Math.hypot(x1-x0,y1-y0);
+      var band=g.dataset.band?g.dataset.band.split(',').map(Number):null;
+      for(var t=-L/2;t<=L/2;t+=step){
+        var px=cx+nx*t, py=cy+ny*t;
+        if(band && (px<band[0]||px>band[1])) continue;
+        var j=Math.sin(t*12.9898)*43758.5453; j=(j-Math.floor(j)-0.5)*step*0.6;
+        var ax=px-dx*L/2+nx*j, ay=py-dy*L/2+ny*j, bx=px+dx*L/2+nx*j, by=py+dy*L/2+ny*j;
+        g.appendChild(mk('line',{x1:ax.toFixed(1),y1:ay.toFixed(1),x2:bx.toFixed(1),y2:by.toFixed(1),pathLength:'1','class':cls}));
+      }
+    });
+    [].slice.call(svg.querySelectorAll('g.ticks')).forEach(function(g){
+      var cx=+g.dataset.cx,cy=+g.dataset.cy,r1=+g.dataset.r1,r2=+g.dataset.r2,n=+g.dataset.n,a0=+g.dataset.a0,a1=+g.dataset.a1,cls=g.dataset.cls||'';
+      for(var i=0;i<n;i++){ var a=(a0+(a1-a0)*i/(n-1))*Math.PI/180; var rr=(i%5===0)?r1-3:r1;
+        g.appendChild(mk('line',{x1:(cx+rr*Math.cos(a)).toFixed(1),y1:(cy+rr*Math.sin(a)).toFixed(1),x2:(cx+r2*Math.cos(a)).toFixed(1),y2:(cy+r2*Math.sin(a)).toFixed(1),pathLength:'1','class':cls})); }
+    });
+    [].slice.call(svg.querySelectorAll('.sk')).forEach(function(el){
+      var c=el.cloneNode(true); c.classList.remove('sk'); c.classList.add('sk2');
+      c.setAttribute('transform','translate(1.4,-1.2) rotate(0.4 320 200)'); el.parentNode.insertBefore(c,el.nextSibling);
+    });
+    });
+  })();
+  var steps=[].slice.call(document.querySelectorAll('.slide'));
+  var prog=document.getElementById('prog'), count=document.getElementById('count');
+  var prev=document.getElementById('prev'), next=document.getElementById('next');
+  steps.forEach(function(){ var i=document.createElement('i'); prog.appendChild(i); });
+  var bars=[].slice.call(prog.children);
+  var cur=0;
+  try{ var h=parseInt((location.hash||'').replace('#s',''),10); if(h>=1&&h<=steps.length) cur=h-1; }catch(e){}
+  var AUDIO={};for(var k=1;k<=12;k++){AUDIO[k]='/safeskillvr/pedagogy/audio/slide'+(k<10?'0':'')+k+'.mp3';}
+  var play=document.getElementById('play'), hint=document.getElementById('hint');
+  var au=new Audio(); au.preload='none'; var auFor=0;
+  function redraw(){ [].slice.call(steps[cur].querySelectorAll('svg.chalk, svg.tl')).forEach(function(ch){ ch.replaceWith(ch.cloneNode(true)); }); }
+  function label(t,on){ play.textContent=t; play.classList.toggle('on',!!on); }
+  function stopAudio(){ try{ au.pause(); }catch(e){} auFor=0; label('Play',false); }
+  function toggleAudio(){
+    var n=cur+1; if(!AUDIO[n]) return;
+    if(auFor===n && !au.paused){ au.pause(); label('Resume',false); return; }
+    if(auFor!==n || au.ended){ au.src=AUDIO[n]; auFor=n; redraw(); }
+    var pr=au.play(); label('Pause',true);
+    if(pr && pr.catch) pr.catch(function(){ label('Play',false); });
+  }
+  au.addEventListener('ended',function(){ label('Play again',false); });
+  play.addEventListener('click',toggleAudio);
+  function show(i){
+    cur=Math.max(0,Math.min(steps.length-1,i));
+    steps.forEach(function(s,k){ s.classList.toggle('on',k===cur); });
+    bars.forEach(function(b,k){ b.classList.toggle('on',k<=cur); });
+    redraw();
+    stopAudio();
+    var has=!!AUDIO[cur+1]; play.hidden=!has; hint.hidden=has;
+    count.textContent=(cur+1)+' / '+steps.length;
+    prev.disabled=cur===0; next.disabled=cur===steps.length-1;
+    try{ history.replaceState(null,'','#s'+(cur+1)); }catch(e){}
+  }
+  prev.addEventListener('click',function(){show(cur-1);});
+  next.addEventListener('click',function(){show(cur+1);});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(cur+1);}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(cur-1);}
+    if(e.key==='p'||e.key==='P'){e.preventDefault();toggleAudio();}
+  });
+  show(cur);
+})();
+</script>
+
+<div class="srcs">
+  <h2>Sources</h2>
+  <ul>
+    <li>Confucius, Analects 7.8, 11.22 and 15.16.</li>
+    <li>Wood, D., Bruner, J. and Ross, G. (1976). The role of tutoring in problem solving. Journal of Child Psychology and Psychiatry, 17.</li>
+    <li>Bandura, A. (1977). Self-efficacy: toward a unifying theory of behavioral change. Psychological Review, 84.</li>
+    <li>Loewenstein, G. (1994). The psychology of curiosity. Psychological Bulletin, 116.</li>
+    <li>D'Mello, S., Lehman, B., Pekrun, R. and Graesser, A. (2014). Confusion can be beneficial for learning. Learning and Instruction, 29.</li>
+    <li>Arguel, A., Lockyer, L., Kennedy, G., Lodge, J. and Pachman, M. (2019). <a href="https://doi.org/10.1080/10494820.2018.1457544">Seeking optimal confusion</a>. Interactive Learning Environments, 27(2).</li>
+    <li>OECD (2024). Social and Emotional Skills for Better Lives, <a href="https://www.oecd.org/en/publications/social-and-emotional-skills-for-better-lives_35ca7b7c-en/full-report/helsinki-finland_0c0c5d4e.html">Helsinki profile</a>. Survey on Social and Emotional Skills 2023.</li>
+    <li>Ketonen, E., Kruskopf, M., Lonka, K. and Mattlin, M. (2026). <a href="https://doi.org/10.1007/s11251-025-09771-2">Dynamics of university students' epistemic emotions during game-based learning</a>. Instructional Science, 54:23.</li>
+    <li>Lonka, K. (2026). <a href="https://researchportal.helsinki.fi/en/publications/curiosity-drives-learning-mini-lecture-3-professor-kirsti-lonka/">Curiosity Drives Learning</a>, mini-lecture, Finnish Education and Beyond.</li>
+    <li>Pasanen, H. Itseohjautuvuus aikuiskoulutuksessa (Self-direction in adult education). The line about not leaving the learner alone is from this article.</li>
+    <li>Motivation Science Lab (2026). Regulating the AI tutor: intentions, help-seeking and self-regulated learning in adolescent GenAI use. Preprint, work in progress.</li>
+  </ul>
+  <p class="note">Lines attributed to lecturers are our notes from their lectures in the University of Helsinki Open University course Johdatus kasvatustieteisiin, not verbatim quotations. The narration is a synthetic voice reading Erik's text. If we have misread a source, tell us at info@frappua.win and we will correct it.</p>
+</div>
+</body>
+</html>

@@ -308,6 +308,19 @@ const demoBlock = (p) =>
     </div>
   </section>`;
 
+// Pedagogy: a short section on the project page that links to the slides at
+// /<slug>/pedagogy. The slides themselves are a static page in src/pages (see HANDOFF.md).
+const pedagogyBlock = (p) =>
+  !p.pedagogy
+    ? ""
+    : `
+  <section class="section pedagogy-sec">
+    <div class="wrap">
+      ${blockHead(p.pedagogy.title, p.pedagogy.lead)}
+      <div class="reveal">${ctaButton(p.pedagogy.cta)}</div>
+    </div>
+  </section>`;
+
 const caseCard = (c, i) => {
   const points = c.points
     ? `<ul class="case__pts">${c.points.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`
@@ -718,6 +731,7 @@ ${nav(p.slug)}
         <div class="hero__actions reveal-now">
           ${p.cta ? ctaButton(p.cta) : `<a href="#detail" class="btn btn--primary" data-magnetic>Learn more ${icons.arrowDown}</a>`}
           ${projectLinks(p)}
+          ${p.pedagogy ? `<a href="${p.pedagogy.cta.href}" class="btn btn--ghost" data-magnetic>${icons.spark} ${esc(p.pedagogy.heroLabel || p.pedagogy.title)}</a>` : ""}
           <a href="/#contact" class="btn btn--ghost" data-magnetic>Get in touch</a>
         </div>
       </div>
@@ -756,6 +770,7 @@ ${nav(p.slug)}
     </div>
   </section>
   ${demoBlock(p)}
+  ${pedagogyBlock(p)}
   ${casesBlock(p)}
   ${examplesBlock(p)}
   ${processBlock(p)}
@@ -787,13 +802,26 @@ ${scripts()}
 /* ============================================================
    BUILD
    ============================================================ */
-async function copyDir(src, dest) {
+// noOverwrite: refuse to replace a file that already exists in dest. Used for src/pages,
+// where a generated page must always win over a static one.
+async function copyDir(src, dest, { noOverwrite = false } = {}) {
   await fs.mkdir(dest, { recursive: true });
   for (const entry of await fs.readdir(src, { withFileTypes: true })) {
     const s = path.join(src, entry.name);
     const d = path.join(dest, entry.name);
-    if (entry.isDirectory()) await copyDir(s, d);
-    else await fs.copyFile(s, d);
+    if (entry.isDirectory()) {
+      await copyDir(s, d, { noOverwrite });
+      continue;
+    }
+    if (noOverwrite) {
+      const exists = await fs.access(d).then(() => true, () => false);
+      if (exists) {
+        throw new Error(
+          `src/pages would overwrite a generated file: ${path.relative(__dirname, d)} (from ${path.relative(__dirname, s)}). Generated pages always win: rename or remove the file in src/pages.`
+        );
+      }
+    }
+    await fs.copyFile(s, d);
   }
 }
 
@@ -819,6 +847,13 @@ async function build() {
     await fs.writeFile(path.join(dir, "index.html"), projectPage(p), "utf8");
   }
 
+  // Static, self-contained artifacts that are not generated from the content model.
+  // Copied as-is after the generated pages; never allowed to overwrite one of them.
+  const staticPages = path.join(__dirname, "src/pages");
+  if (await fs.access(staticPages).then(() => true, () => false)) {
+    await copyDir(staticPages, DIST, { noOverwrite: true });
+  }
+
   // 404 -> reuse home (nice for static hosts)
   await fs.writeFile(path.join(DIST, "404.html"), homePage(), "utf8");
 
@@ -830,7 +865,7 @@ async function build() {
     `User-agent: *\nAllow: /\n\nSitemap: ${base}/sitemap.xml\n`,
     "utf8"
   );
-  const urls = ["", ...projects.map((p) => p.slug)];
+  const urls = ["", ...projects.map((p) => p.slug), ...projects.filter((p) => p.pedagogy).map((p) => p.slug + "/pedagogy")];
   const sitemap =
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +

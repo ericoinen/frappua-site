@@ -99,6 +99,13 @@ export const projects = [
       caption:
         "Recorded from the prototype. The assistant meets the trainee on the floor, offers the available safety scenarios, first aid kit and safety vest, and then guides the chosen one step by step. The trainee answers in their own words, by voice or by typing.",
     },
+    pedagogy: {
+      title: "How we think about learning",
+      heroLabel: "How we think: 12 slides",
+      lead:
+        "We are learning in public. Twelve slides on curiosity, scaffolding and the question of when an AI mentor should help and when it should wait, prepared for a conversation with Professor Kirsti Lonka at the University of Helsinki.",
+      cta: { label: "Open the slides", href: "/safeskillvr/pedagogy", external: false },
+    },
     audience: {
       title: "Who it's for",
       tags: [

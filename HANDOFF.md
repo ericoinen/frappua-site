@@ -125,3 +125,29 @@ browser console for errors.
 - Optional: put the "F!" mark into preloader/footer for full brand consistency.
 - Future: 3rd project (workshops content is placeholder), 4th (AutomateNow) - fill
   real content when ready. AutomateNow/Workshops currently marked "Coming soon".
+
+## Pedagogy slides (/safeskillvr/pedagogy)
+
+- **Exception to the rule "content lives only in src/site.config.mjs".** `src/pages/` is for
+  self-contained artifacts only (a deck, an interactive piece), not for regular site pages.
+  Regular pages still come from the content model. The build copies `src/pages/` after the
+  generated pages and **fails** if a file there would overwrite a generated one.
+- No third-party requests on this page: fonts are self-hosted in `fonts/`, audio uses
+  `preload="none"`, all asset URLs are root-absolute (`/safeskillvr/pedagogy/...`) because
+  `cleanUrls` serves the page without a trailing slash and relative URLs would 404.
+- A static page, NOT generated from the content model: `src/pages/safeskillvr/pedagogy/index.html`
+  plus `audio/slide01.mp3` to `slide12.mp3`. `build.mjs` copies everything under `src/pages/`
+  into `dist/` as-is, so the folder path is the URL.
+- The page is a 12-slide deck with chalk-style SVG animations and a Play button per slide
+  (synthetic narration). It has its own fonts and palette on purpose and does not load
+  `main.css` or `main.js`.
+- Two entry points on the SafeSkillVR page: a ghost button in the hero (`heroLabel`) and
+  the section after the demo (`title`, `lead`, `cta`).
+- The SafeSkillVR page links to it through the `pedagogy` key of the project in
+  `src/site.config.mjs`, rendered by `pedagogyBlock` in `build.mjs`. Remove the key to hide
+  the section; the sitemap entry follows the key.
+- Source of truth for the deck lives outside this repo, in Erik's working folder
+  `E:\HEH\Kirsti Lonka\Curiosity_can_be_designed.html`. Edit there and regenerate the site
+  copy; do not hand-edit the copy here unless the change is site-only.
+- Same golden rule: no em dash anywhere on the page.
+
