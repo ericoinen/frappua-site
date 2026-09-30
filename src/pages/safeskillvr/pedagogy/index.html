@@ -123,6 +123,12 @@
   .abc div{padding:.8cqw 1cqw;border-left:.4cqw solid var(--line)}
   .abc div.bad{border-color:var(--rust)}
   .abc div.good{border-color:var(--teal)}
+  /* slides whose content is taller than the 16:9 frame */
+  .slide.dense .cues{font-size:1.7cqw;gap:.85cqw;line-height:1.33}
+  .slide.dense h1{font-size:3.8cqw;margin-bottom:1.5cqw}
+  .slide.tall .cues{font-size:1.75cqw;gap:.95cqw}
+  .slide.tall h1{font-size:3.9cqw;margin-bottom:1.6cqw}
+  .slide.tall svg.chalk{max-height:37cqw;width:auto;max-width:100%;justify-self:end}
   .tl{width:100%;height:100%;display:block}
   .sub{font-size:1.8cqw;color:var(--ink-2);margin:0;max-width:60cqw}
 
@@ -937,7 +943,7 @@
     </div>
   </section>
 
-  <section class="slide two">
+  <section class="slide two tall">
     <div>
       <p class="eyebrow">9 &middot; The thin line</p>
       <h1>The mentor no longer interferes, but <em>has not left</em></h1>
@@ -1005,7 +1011,7 @@
     </div>
   </section>
 
-  <section class="slide two">
+  <section class="slide two dense">
     <div>
       <p class="eyebrow">10 &middot; The opposite direction</p>
       <h1>Almost all educational AI <em>answers faster</em></h1>
