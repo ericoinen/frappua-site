@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SafeSkillVR study</title>
+<meta name="description" content="Anonymous four-minute questionnaire after a conversation with the SafeSkillVR mentor avatar.">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:500 800;font-display:swap;src:url('/safeskillvr/pedagogy/fonts/BricolageGrotesque-normal-500-800.woff2') format('woff2')}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url('/safeskillvr/pedagogy/fonts/Inter-normal-400.woff2') format('woff2')}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url('/safeskillvr/pedagogy/fonts/IBMPlexMono-normal-500.woff2') format('woff2')}
+:root{
+  --bg:#F3F5F3; --paper:#FFFFFF; --ink:#16211E; --ink-2:#3E4B47; --mute:#6E7A76; --line:#D6DDD9;
+  --amber:#D99A00; --amber-soft:#FBF1D6; --teal:#2A7A73; --teal-soft:#DDEFEC; --rust:#B4452F; --rust-soft:#F7E1DA;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"IBM Plex Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ color-scheme:dark;
+  --bg:#141A18; --paper:#1C2421; --ink:#EEF2F0; --ink-2:#C2CBC7; --mute:#8D9995; --line:#2F3B37;
+  --amber:#F2B632; --amber-soft:#3A3010; --teal:#5CC2B8; --teal-soft:#153431; --rust:#E8735A; --rust-soft:#3D1F18; } }
+:root[data-theme="dark"]{ color-scheme:dark;
+  --bg:#141A18; --paper:#1C2421; --ink:#EEF2F0; --ink-2:#C2CBC7; --mute:#8D9995; --line:#2F3B37;
+  --amber:#F2B632; --amber-soft:#3A3010; --teal:#5CC2B8; --teal-soft:#153431; --rust:#E8735A; --rust-soft:#3D1F18; }
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.45;padding:16px 16px 48px}
+main{max-width:560px;margin:0 auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.brand{font-family:var(--display);font-weight:700;font-size:15px;white-space:nowrap;text-decoration:none;color:var(--ink)}
+.brand span{color:var(--amber)}
+.lang{display:flex;gap:4px}
+.lang button{font:inherit;font-size:13px;padding:6px 10px;border:1px solid var(--line);background:var(--paper);color:var(--ink-2);border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+h1{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.15;margin:0 0 10px;letter-spacing:-.01em}
+.lead{color:var(--ink-2);margin:0 0 22px}
+h2{font-family:var(--display);font-weight:650;font-size:19px;margin:30px 0 4px}
+.hint{color:var(--mute);font-size:14px;margin:0 0 12px}
+.q{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0}
+.q.bad{border-color:var(--rust);background:var(--rust-soft)}
+.q p{margin:0 0 8px}
+.q .n{font-family:var(--mono);font-size:12px;color:var(--mute);margin-right:6px}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opts label{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:44px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:15px;text-align:center;user-select:none}
+.opts label:has(input:checked){background:var(--amber-soft);border-color:var(--amber);font-weight:600}
+.opts input{position:absolute;opacity:0;width:0;height:0}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.scale label{min-height:46px;font-family:var(--mono);font-size:16px;padding:0}
+.ends{display:flex;justify-content:space-between;color:var(--mute);font-size:12.5px;margin-top:6px}
+input[type=text],textarea{font:inherit;width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+input[type=text].pid{font-family:var(--mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;max-width:160px}
+textarea{min-height:92px;resize:vertical}
+.hp{position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden}
+.foot{margin-top:28px}
+.btn{font:inherit;font-family:var(--display);font-weight:650;font-size:17px;width:100%;min-height:52px;border:0;border-radius:10px;background:var(--amber);color:#16211E;cursor:pointer}
+.btn[disabled]{opacity:.6;cursor:default}
+.err{color:var(--rust);font-size:15px;margin:10px 0 0;min-height:1.2em}
+.done{display:none;background:var(--teal-soft);border:1px solid var(--teal);border-radius:12px;padding:20px 18px;margin-top:20px}
+.done h2{margin-top:0}
+.small{color:var(--mute);font-size:13px;margin-top:28px}
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <a class="brand" href="/safeskillvr">Frappua<span>!</span> / SafeSkillVR</a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+    </div>
+  </div>
+
+  <form id="f" novalidate>
+    <h1 data-t="title"></h1>
+    <p class="lead" data-t="lead"></p>
+
+    <div class="q" data-q="pid">
+      <p><span class="n">0</span><span data-t="pid"></span></p>
+      <input type="text" name="participant" class="pid" inputmode="text" autocomplete="off" autocapitalize="characters" maxlength="4" placeholder="A07">
+    </div>
+
+    <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+    <h2 data-t="h_you"></h2>
+    <div id="bg"></div>
+
+    <h2 data-t="h_emo"></h2>
+    <p class="hint" data-t="emo_hint"></p>
+    <div id="emo"></div>
+
+    <h2 data-t="h_conv"></h2>
+    <p class="hint" data-t="agree_hint"></p>
+    <div id="conv"></div>
+
+    <h2 data-t="h_av"></h2>
+    <p class="hint" data-t="agree_hint2"></p>
+    <div id="av"></div>
+
+    <h2 data-t="h_check"></h2>
+    <div id="chk"></div>
+
+    <h2 data-t="h_open"></h2>
+    <div class="q" data-q="first_spoke">
+      <p><span class="n">20</span><span data-t="o1"></span></p>
+      <textarea name="first_spoke" maxlength="1500"></textarea>
+    </div>
+    <div class="q" data-q="in_the_way">
+      <p><span class="n">21</span><span data-t="o2"></span></p>
+      <textarea name="in_the_way" maxlength="1500"></textarea>
+    </div>
+
+    <div class="foot">
+      <button class="btn" type="submit" data-t="send"></button>
+      <p class="err" id="err" role="alert"></p>
+    </div>
+  </form>
+
+  <div class="done" id="done">
+    <h2 data-t="done_h"></h2>
+    <p data-t="done_p"></p>
+  </div>
+
+  <p class="small" data-t="small"></p>
+</main>
+
+<script>
+(function(){
+var T={
+en:{
+ title:"Thank you for trying SafeSkillVR",
+ lead:"This questionnaire is anonymous and takes about four minutes. There are no right answers; we want to know what you felt. By submitting you agree that the answers are used in research without your name.",
+ pid:"Participant number from your card",
+ h_you:"About you",
+ age:"Age", age_o:["under 20","20-44","45 or older"],
+ games:"Hours a week you play video games", games_o:["none","under 2","2-7","8-15","more than 15"],
+ vr:"Times you have used a VR headset before today", vr_o:["never","1-2","3-10","more than 10"],
+ h_emo:"How strongly did you feel the following emotions, particularly during the conversation with the avatar?",
+ emo_hint:"1 not at all, 2 very little, 3 moderately, 4 strongly, 5 very strongly",
+ felt:"I felt:",
+ emo:["curious","excited","surprised","confused","anxious","frustrated","bored"],
+ lo:"not at all", hi:"very strongly",
+ h_conv:"The conversation", agree_hint:"1 strongly disagree, 5 strongly agree",
+ conv:["I knew what to do.","The conversation was useful to me.","It felt like talking to someone, not to a program.","I would talk to it again."],
+ h_av:"The avatar", agree_hint2:"Same scale",
+ av:["Something about the avatar was unpleasant or eerie.","Its movements looked natural.","Its face and speech looked natural.","After a while I stopped noticing how it looks."],
+ alo:"disagree", ahi:"agree",
+ h_check:"Check",
+ topics:"What did you talk about?", topics_o:["the vest","the first aid kit","both","the conversation did not get going"],
+ h_open:"In your own words",
+ o1:"What did you feel when the avatar first spoke to you?",
+ o2:"If something got in the way, what was it? If nothing, say so.",
+ send:"Send",
+ e_pid:"Enter the number from your card, for example A07.",
+ e_miss:"Please answer the highlighted questions.",
+ e_net:"Could not send. Check the connection and press Send again; your answers are kept.",
+ done_h:"Sent. Thank you.",
+ done_p:"You can close this page. If you have a minute, tell the person at the stand what you thought.",
+ small:"Frappua! / SafeSkillVR, Helsinki. No names, e-mail addresses or device data are stored. Questions: info@frappua.win"
+},
+ru:{
+ title:"Спасибо, что попробовали SafeSkillVR",
+ lead:"Анкета анонимная, около четырёх минут. Правильных ответов нет, нам важно, что вы почувствовали. Отправляя анкету, вы соглашаетесь, что ответы используются в исследовании без указания имени.",
+ pid:"Номер участника с карточки",
+ h_you:"О вас",
+ age:"Возраст", age_o:["до 20","20-44","45 и старше"],
+ games:"Сколько часов в неделю вы играете в видеоигры", games_o:["не играю","до 2","2-7","8-15","больше 15"],
+ vr:"Сколько раз до сегодняшнего дня вы были в VR-шлеме", vr_o:["ни разу","1-2","3-10","больше 10"],
+ h_emo:"Насколько сильно вы чувствовали следующие эмоции именно во время разговора с аватаром?",
+ emo_hint:"1 совсем нет, 2 слабо, 3 умеренно, 4 сильно, 5 очень сильно",
+ felt:"Я чувствовал(а):",
+ emo:["любопытство","удовольствие","удивление","замешательство","тревогу","раздражение","скуку"],
+ lo:"совсем нет", hi:"очень сильно",
+ h_conv:"Разговор", agree_hint:"1 совсем не согласен(на), 5 полностью согласен(на)",
+ conv:["Я понимал(а), что мне делать.","Разговор был для меня полезным.","Это было похоже на разговор с кем-то, а не с программой.","Я бы поговорил(а) с ним ещё."],
+ h_av:"Аватар", agree_hint2:"Та же шкала",
+ av:["Что-то в аватаре было неприятным или жутким.","Его движения выглядели естественно.","Его лицо и речь выглядели естественно.","Через какое-то время я перестал(а) обращать внимание на то, как он выглядит."],
+ alo:"не согласен", ahi:"согласен",
+ h_check:"Проверка",
+ topics:"О чём вы успели поговорить?", topics_o:["о жилете","об аптечке","об обоих","разговор не сложился"],
+ h_open:"Своими словами",
+ o1:"Что вы почувствовали, когда аватар впервые заговорил с вами?",
+ o2:"Если что-то мешало, что именно? Если ничего, так и напишите.",
+ send:"Отправить",
+ e_pid:"Введите номер с карточки, например A07.",
+ e_miss:"Ответьте, пожалуйста, на выделенные вопросы.",
+ e_net:"Не отправилось. Проверьте связь и нажмите «Отправить» ещё раз, ответы сохранены.",
+ done_h:"Отправлено. Спасибо.",
+ done_p:"Страницу можно закрыть. Если есть минута, скажите человеку у стенда, что вы думаете.",
+ small:"Frappua! / SafeSkillVR, Хельсинки. Имена, почта и данные устройства не сохраняются. Вопросы: info@frappua.win"
+}};
+var BG=[["age","age","age_o"],["games","games","games_o"],["vr","vr","vr_o"]];
+var EMO=["curious","excited","surprised","confused","anxious","frustrated","bored"];
+var CONV=["knew","useful","like_someone","talk_again"];
+var AV=["eerie","movement","face_speech","stopped_noticing"];
+var lang=(location.search.match(/[?&]lang=(ru|en)/)||[])[1]||(/^ru/i.test(navigator.language)?"ru":"en");
+var n=1;
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]});}
+function choice(key,label,opts){
+  var h='<div class="q" data-q="'+key+'"><p><span class="n">'+(n++)+'</span>'+esc(label)+'</p><div class="opts">';
+  opts.forEach(function(o,i){h+='<label><input type="radio" name="'+key+'" value="'+i+'">'+esc(o)+'</label>';});
+  return h+'</div></div>';
+}
+function scale(key,label,lo,hi){
+  var h='<div class="q" data-q="'+key+'"><p><span class="n">'+(n++)+'</span>'+label+'</p><div class="opts scale">';
+  for(var v=1;v<=5;v++){h+='<label><input type="radio" name="'+key+'" value="'+v+'">'+v+'</label>';}
+  return h+'</div><div class="ends"><span>1 '+esc(lo)+'</span><span>5 '+esc(hi)+'</span></div></div>';
+}
+function snapshot(){var o={};new FormData(document.getElementById("f")).forEach(function(v,k){o[k]=v;});return o;}
+function restore(o){Object.keys(o).forEach(function(k){var el=document.querySelector('[name="'+k+'"][value="'+o[k]+'"]');if(el)el.checked=true;});}
+function render(){
+  var t=T[lang]; document.documentElement.lang=lang; n=1;
+  document.querySelectorAll("[data-t]").forEach(function(el){el.textContent=t[el.getAttribute("data-t")];});
+  document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-lang")===lang));});
+  var saved=snapshot();
+  document.getElementById("bg").innerHTML=BG.map(function(d){return choice(d[0],t[d[1]],t[d[2]]);}).join("");
+  document.getElementById("emo").innerHTML=EMO.map(function(k,i){return scale(k,'<span style="color:var(--mute)">'+esc(t.felt)+'</span> <b>'+esc(t.emo[i])+'</b>',t.lo,t.hi);}).join("");
+  document.getElementById("conv").innerHTML=CONV.map(function(k,i){return scale(k,esc(t.conv[i]),t.alo,t.ahi);}).join("");
+  document.getElementById("av").innerHTML=AV.map(function(k,i){return scale(k,esc(t.av[i]),t.alo,t.ahi);}).join("");
+  document.getElementById("chk").innerHTML=choice("topics",t.topics,t.topics_o);
+  restore(saved);
+}
+document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){lang=b.getAttribute("data-lang");render();});});
+render();
+
+var REQ=["age","games","vr"].concat(EMO,CONV,AV,["topics"]);
+document.getElementById("f").addEventListener("submit",function(ev){
+  ev.preventDefault();
+  var t=T[lang], err=document.getElementById("err"), f=ev.target, data=snapshot(), bad=[];
+  err.textContent="";
+  document.querySelectorAll(".q.bad").forEach(function(q){q.classList.remove("bad");});
+  var pid=(data.participant||"").trim().toUpperCase();
+  if(!/^[A-Z][0-9]{2,3}$/.test(pid)){bad.push("pid");err.textContent=t.e_pid;}
+  REQ.forEach(function(k){if(!(k in data))bad.push(k);});
+  if(bad.length){
+    bad.forEach(function(k){var q=document.querySelector('[data-q="'+k+'"]');if(q)q.classList.add("bad");});
+    if(!err.textContent)err.textContent=t.e_miss;
+    document.querySelector(".q.bad").scrollIntoView({behavior:"smooth",block:"center"});
+    return;
+  }
+  var body={participant:pid,lang:lang,website:data.website||"",first_spoke:(data.first_spoke||"").trim(),in_the_way:(data.in_the_way||"").trim()};
+  REQ.forEach(function(k){body[k]=Number(data[k]);});
+  var btn=f.querySelector(".btn"); btn.disabled=true;
+  fetch("/api/survey",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)})
+   .then(function(r){if(!r.ok)throw new Error("http "+r.status);return r.json();})
+   .then(function(){f.style.display="none";var d=document.getElementById("done");d.style.display="block";d.scrollIntoView({behavior:"smooth",block:"start"});})
+   .catch(function(){btn.disabled=false;err.textContent=t.e_net;});
+});
+})();
+</script>
+</body>
+</html>

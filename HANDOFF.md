@@ -151,3 +151,27 @@ browser console for errors.
   copy; do not hand-edit the copy here unless the change is site-only.
 - Same golden rule: no em dash anywhere on the page.
 
+
+## Study questionnaire (/safeskillvr/study) and the first API function
+
+- `src/pages/safeskillvr/study/index.html`: a static, self-contained questionnaire (EN/RU,
+  `?lang=ru` or the toggle) filled by participants on their phones after a five-minute
+  session with the SafeSkillVR mentor avatar. `noindex`, not in the sitemap, not linked from
+  the site: participants get a QR code. Fonts come from `/safeskillvr/pedagogy/fonts/`,
+  no third-party requests, root-absolute URLs, no `main.css`/`main.js`.
+- `api/survey.js`: the repo's first Vercel function (ESM, `export default handler`). Vercel
+  picks up `api/*.js` next to the static build with no config change. It validates the body
+  and writes one record to Airtable (base "SafeSkillVR stage zero", table "Responses").
+  Needs three Production env vars in the Vercel project: `AIRTABLE_TOKEN` (personal access
+  token, scope `data.records:write`, access limited to that base), `AIRTABLE_BASE`,
+  `AIRTABLE_TABLE`. Without them it answers 503 and the page shows "could not send".
+- Privacy: no names, e-mail, IP or user agent are stored. Participant number (e.g. A07) is
+  the only link to the session. Honeypot field `website`; a filled honeypot is dropped with
+  a fake 200.
+- Local preview (`npx serve dist`) does not run functions: the page works, sending fails.
+  The mapping is covered by a tiny script in Erik's scratchpad; on production test with a
+  submission and tick "Test" on that row in Airtable.
+- Question text is the English master `E:\HEH\Kirsti Lonka\Avatar_pilot_form_EN.md`
+  (Russian: `Avatar_pilot_form_RU.md`). Change wording there first, then here. Items 4-10 are
+  the EES short form (Pekrun et al. 2017): do not reword them.
+- Same golden rule: no em dash anywhere.
