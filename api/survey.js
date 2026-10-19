@@ -26,7 +26,7 @@ export function toRecord(b) {
     Participant: pid,
     Venue: pid[0],
     Submitted: new Date().toISOString(),
-    Language: ["en", "ru", "fi"].includes(b.lang) ? b.lang : "en",
+    Language: ["en", "fi", "zh", "ru", "ar"].includes(b.lang) ? b.lang : "en",
     Age: pick(AGE, b.age),
     "Games h/week": pick(GAMES, b.games),
     "VR before": pick(VR, b.vr),

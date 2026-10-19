@@ -154,8 +154,8 @@ browser console for errors.
 
 ## Study questionnaire (/safeskillvr/study) and the first API function
 
-- `src/pages/safeskillvr/study/index.html`: a static, self-contained questionnaire (EN/RU,
-  `?lang=ru` or the toggle) filled by participants on their phones after a five-minute
+- `src/pages/safeskillvr/study/index.html`: a static, self-contained questionnaire in five
+  languages (EN, FI, ZH, RU, AR; `?lang=fi` etc. or the toggle; Arabic switches the page to RTL) filled by participants on their phones after a five-minute
   session with the SafeSkillVR mentor avatar. `noindex`, not in the sitemap, not linked from
   the site: participants get a QR code. Fonts come from `/safeskillvr/pedagogy/fonts/`,
   no third-party requests, root-absolute URLs, no `main.css`/`main.js`.
@@ -173,5 +173,8 @@ browser console for errors.
   submission and tick "Test" on that row in Airtable.
 - Question text is the English master `E:\HEH\Kirsti Lonka\Avatar_pilot_form_EN.md`
   (Russian: `Avatar_pilot_form_RU.md`). Change wording there first, then here. Items 4-10 are
-  the EES short form (Pekrun et al. 2017): do not reword them.
+  the EES short form (Pekrun et al. 2017): do not reword them. FI, ZH and AR translations are
+  provisional until checked by native speakers; the Finnish EES words are to be replaced by the
+  wording used by Lonka's group when they answer. The Airtable `Language` select gets new
+  options automatically (the function writes with `typecast: true`).
 - Same golden rule: no em dash anywhere.

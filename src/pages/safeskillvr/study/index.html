@@ -14,7 +14,7 @@
 :root{
   --bg:#F3F5F3; --paper:#FFFFFF; --ink:#16211E; --ink-2:#3E4B47; --mute:#6E7A76; --line:#D6DDD9;
   --amber:#D99A00; --amber-soft:#FBF1D6; --teal:#2A7A73; --teal-soft:#DDEFEC; --rust:#B4452F; --rust-soft:#F7E1DA;
-  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"IBM Plex Mono",Menlo,Consolas,monospace;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif; --body:"Inter",system-ui,"Segoe UI","PingFang SC","Noto Sans CJK SC","Noto Sans Arabic","Noto Naskh Arabic",sans-serif; --mono:"IBM Plex Mono",Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ color-scheme:dark;
   --bg:#141A18; --paper:#1C2421; --ink:#EEF2F0; --ink-2:#C2CBC7; --mute:#8D9995; --line:#2F3B37;
@@ -26,15 +26,15 @@
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.45;padding:16px 16px 48px}
 main{max-width:560px;margin:0 auto}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 12px;margin-bottom:18px}
 .brand{font-family:var(--display);font-weight:700;font-size:15px;white-space:nowrap;text-decoration:none;color:var(--ink)}
 .brand span{color:var(--amber)}
-.lang{display:flex;gap:4px}
+.lang{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
 .lang button{font:inherit;font-size:13px;padding:6px 10px;border:1px solid var(--line);background:var(--paper);color:var(--ink-2);border-radius:999px;cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-h1{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.15;margin:0 0 10px;letter-spacing:-.01em}
+h1{font-family:var(--display),var(--body);font-weight:700;font-size:26px;line-height:1.15;margin:0 0 10px;letter-spacing:-.01em}
 .lead{color:var(--ink-2);margin:0 0 22px}
-h2{font-family:var(--display);font-weight:650;font-size:19px;margin:30px 0 4px}
+h2{font-family:var(--display),var(--body);font-weight:650;font-size:19px;margin:30px 0 4px}
 .hint{color:var(--mute);font-size:14px;margin:0 0 12px}
 .q{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0}
 .q.bad{border-color:var(--rust);background:var(--rust-soft)}
@@ -52,7 +52,7 @@ input[type=text].pid{font-family:var(--mono);font-size:20px;letter-spacing:.08em
 textarea{min-height:92px;resize:vertical}
 .hp{position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden}
 .foot{margin-top:28px}
-.btn{font:inherit;font-family:var(--display);font-weight:650;font-size:17px;width:100%;min-height:52px;border:0;border-radius:10px;background:var(--amber);color:#16211E;cursor:pointer}
+.btn{font:inherit;font-family:var(--display),var(--body);font-weight:650;font-size:17px;width:100%;min-height:52px;border:0;border-radius:10px;background:var(--amber);color:#16211E;cursor:pointer}
 .btn[disabled]{opacity:.6;cursor:default}
 .err{color:var(--rust);font-size:15px;margin:10px 0 0;min-height:1.2em}
 .done{display:none;background:var(--teal-soft);border:1px solid var(--teal);border-radius:12px;padding:20px 18px;margin-top:20px}
@@ -66,7 +66,10 @@ textarea{min-height:92px;resize:vertical}
     <a class="brand" href="/safeskillvr">Frappua<span>!</span> / SafeSkillVR</a>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="fi" aria-pressed="false">FI</button>
+      <button type="button" data-lang="zh" aria-pressed="false">中文</button>
       <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+      <button type="button" data-lang="ar" aria-pressed="false">العربية</button>
     </div>
   </div>
 
@@ -157,6 +160,237 @@ en:{
  done_p:"You can close this page. If you have a minute, tell the person at the stand what you thought.",
  small:"Frappua! / SafeSkillVR, Helsinki. No names, e-mail addresses or device data are stored. Questions: info@frappua.win"
 },
+fi:{
+ "title": "Kiitos, että kokeilit SafeSkillVR:ää",
+ "lead": "Kysely on nimetön ja vie noin neljä minuuttia. Oikeita vastauksia ei ole; haluamme tietää, mitä tunsit. Lähettämällä lomakkeen hyväksyt, että vastauksia käytetään tutkimuksessa ilman nimeäsi.",
+ "pid": "Osallistujanumero kortistasi",
+ "h_you": "Sinusta",
+ "age": "Ikä",
+ "age_o": [
+  "alle 20",
+  "20-44",
+  "45 tai yli"
+ ],
+ "games": "Kuinka monta tuntia viikossa pelaat videopelejä",
+ "games_o": [
+  "en pelaa",
+  "alle 2",
+  "2-7",
+  "8-15",
+  "yli 15"
+ ],
+ "vr": "Kuinka monta kertaa olet käyttänyt VR-laseja ennen tätä päivää",
+ "vr_o": [
+  "en kertaakaan",
+  "1-2",
+  "3-10",
+  "yli 10"
+ ],
+ "h_emo": "Kuinka voimakkaasti tunsit seuraavia tunteita erityisesti keskustelun aikana avatarin kanssa?",
+ "emo_hint": "1 en lainkaan, 2 hyvin vähän, 3 kohtalaisesti, 4 voimakkaasti, 5 hyvin voimakkaasti",
+ "felt": "Tunsin itseni:",
+ "emo": [
+  "uteliaaksi",
+  "innostuneeksi",
+  "yllättyneeksi",
+  "hämmentyneeksi",
+  "ahdistuneeksi",
+  "turhautuneeksi",
+  "tylsistyneeksi"
+ ],
+ "lo": "en lainkaan",
+ "hi": "hyvin voimakkaasti",
+ "h_conv": "Keskustelu",
+ "agree_hint": "1 täysin eri mieltä, 5 täysin samaa mieltä",
+ "conv": [
+  "Tiesin, mitä tehdä.",
+  "Keskustelu oli minulle hyödyllinen.",
+  "Tuntui kuin olisin puhunut jonkun kanssa, en ohjelman kanssa.",
+  "Puhuisin sen kanssa uudelleen."
+ ],
+ "h_av": "Avatar",
+ "agree_hint2": "Sama asteikko",
+ "av": [
+  "Jokin avatarissa oli epämiellyttävää tai karmivaa.",
+  "Sen liikkeet näyttivät luonnollisilta.",
+  "Sen kasvot ja puhe vaikuttivat luonnollisilta.",
+  "Jonkin ajan kuluttua lakkasin kiinnittämästä huomiota sen ulkonäköön."
+ ],
+ "alo": "eri mieltä",
+ "ahi": "samaa mieltä",
+ "h_check": "Tarkistus",
+ "topics": "Mistä puhuitte?",
+ "topics_o": [
+  "liivistä",
+  "ensiapupakkauksesta",
+  "molemmista",
+  "keskustelu ei lähtenyt käyntiin"
+ ],
+ "h_open": "Omin sanoin",
+ "o1": "Mitä tunsit, kun avatar puhui sinulle ensimmäisen kerran?",
+ "o2": "Jos jokin häiritsi, mikä? Jos ei mikään, kirjoita sekin.",
+ "send": "Lähetä",
+ "e_pid": "Kirjoita kortissa oleva numero, esimerkiksi A07.",
+ "e_miss": "Vastaa merkittyihin kysymyksiin.",
+ "e_net": "Lähetys ei onnistunut. Tarkista yhteys ja paina Lähetä uudelleen; vastauksesi säilyvät.",
+ "done_h": "Lähetetty. Kiitos.",
+ "done_p": "Voit sulkea tämän sivun. Jos sinulla on hetki, kerro pisteen henkilölle, mitä ajattelit.",
+ "small": "Frappua! / SafeSkillVR, Helsinki. Nimiä, sähköpostiosoitteita tai laitetietoja ei tallenneta. Kysymykset: info@frappua.win"
+},
+zh:{
+ "title": "感谢您体验 SafeSkillVR",
+ "lead": "本问卷匿名，约需四分钟。没有标准答案，我们想知道您的感受。提交即表示您同意答案在不署名的情况下用于研究。",
+ "pid": "卡片上的参与者编号",
+ "h_you": "关于您",
+ "age": "年龄",
+ "age_o": [
+  "20岁以下",
+  "20-44",
+  "45岁及以上"
+ ],
+ "games": "您每周玩电子游戏的小时数",
+ "games_o": [
+  "不玩",
+  "少于2",
+  "2-7",
+  "8-15",
+  "超过15"
+ ],
+ "vr": "今天之前您使用过VR头显的次数",
+ "vr_o": [
+  "从未",
+  "1-2",
+  "3-10",
+  "超过10"
+ ],
+ "h_emo": "在与虚拟形象交谈的过程中，您在多大程度上感受到以下情绪？",
+ "emo_hint": "1 完全没有，2 很少，3 中等，4 强烈，5 非常强烈",
+ "felt": "我感到：",
+ "emo": [
+  "好奇",
+  "兴奋",
+  "惊讶",
+  "困惑",
+  "焦虑",
+  "沮丧",
+  "无聊"
+ ],
+ "lo": "完全没有",
+ "hi": "非常强烈",
+ "h_conv": "交谈",
+ "agree_hint": "1 完全不同意，5 完全同意",
+ "conv": [
+  "我知道该做什么。",
+  "这次交谈对我有用。",
+  "感觉像是在和某个人交谈，而不是和程序。",
+  "我愿意再和它聊一次。"
+ ],
+ "h_av": "虚拟形象",
+ "agree_hint2": "同样的量表",
+ "av": [
+  "虚拟形象有些地方让人不舒服或诡异。",
+  "它的动作看起来自然。",
+  "它的面部和说话看起来自然。",
+  "过了一会儿我就不再注意它的外表了。"
+ ],
+ "alo": "不同意",
+ "ahi": "同意",
+ "h_check": "核对",
+ "topics": "你们谈了什么？",
+ "topics_o": [
+  "背心",
+  "急救箱",
+  "两者都有",
+  "交谈没有展开"
+ ],
+ "h_open": "用您自己的话",
+ "o1": "虚拟形象第一次和您说话时，您有什么感受？",
+ "o2": "如果有什么妨碍了您，是什么？如果没有，请写明。",
+ "send": "提交",
+ "e_pid": "请输入卡片上的编号，例如 A07。",
+ "e_miss": "请回答标出的问题。",
+ "e_net": "发送失败。请检查网络后再次点击提交，您的答案已保留。",
+ "done_h": "已提交，谢谢。",
+ "done_p": "您可以关闭此页面。如果有时间，请告诉展台的工作人员您的想法。",
+ "small": "Frappua! / SafeSkillVR，赫尔辛基。不保存姓名、电子邮件或设备数据。问题请联系：info@frappua.win"
+},
+ar:{
+ "title": "شكراً لتجربتك SafeSkillVR",
+ "lead": "هذا الاستبيان مجهول الهوية ويستغرق نحو أربع دقائق. لا توجد إجابات صحيحة؛ نريد أن نعرف ما شعرت به. بإرسال الاستبيان توافق على استخدام الإجابات في البحث دون ذكر اسمك.",
+ "pid": "رقم المشارك من بطاقتك",
+ "h_you": "عنك",
+ "age": "العمر",
+ "age_o": [
+  "أقل من 20",
+  "20-44",
+  "45 فأكثر"
+ ],
+ "games": "كم ساعة في الأسبوع تلعب ألعاب الفيديو",
+ "games_o": [
+  "لا ألعب",
+  "أقل من 2",
+  "2-7",
+  "8-15",
+  "أكثر من 15"
+ ],
+ "vr": "كم مرة استخدمت نظارة الواقع الافتراضي قبل اليوم",
+ "vr_o": [
+  "ولا مرة",
+  "1-2",
+  "3-10",
+  "أكثر من 10"
+ ],
+ "h_emo": "ما مدى قوة شعورك بالمشاعر التالية خلال المحادثة مع الأفاتار تحديداً؟",
+ "emo_hint": "1 إطلاقاً، 2 قليلاً جداً، 3 باعتدال، 4 بقوة، 5 بقوة شديدة",
+ "felt": "شعرت بـ:",
+ "emo": [
+  "الفضول",
+  "الحماس",
+  "الدهشة",
+  "الحيرة",
+  "القلق",
+  "الإحباط",
+  "الملل"
+ ],
+ "lo": "إطلاقاً",
+ "hi": "بقوة شديدة",
+ "h_conv": "المحادثة",
+ "agree_hint": "1 لا أوافق إطلاقاً، 5 أوافق تماماً",
+ "conv": [
+  "كنت أعرف ما عليّ فعله.",
+  "كانت المحادثة مفيدة لي.",
+  "شعرت وكأنني أتحدث مع شخص، لا مع برنامج.",
+  "سأتحدث معه مرة أخرى."
+ ],
+ "h_av": "الأفاتار",
+ "agree_hint2": "المقياس نفسه",
+ "av": [
+  "كان في الأفاتار شيء مزعج أو مخيف.",
+  "بدت حركاته طبيعية.",
+  "بدا وجهه وكلامه طبيعيين.",
+  "بعد فترة لم أعد أنتبه إلى شكله."
+ ],
+ "alo": "لا أوافق",
+ "ahi": "أوافق",
+ "h_check": "تحقق",
+ "topics": "عمّ تحدثتما؟",
+ "topics_o": [
+  "عن السترة",
+  "عن حقيبة الإسعافات الأولية",
+  "عن الاثنين",
+  "لم تنطلق المحادثة"
+ ],
+ "h_open": "بكلماتك",
+ "o1": "بماذا شعرت عندما تحدث إليك الأفاتار لأول مرة؟",
+ "o2": "إن كان هناك ما أعاقك، فما هو؟ وإن لم يكن، فاكتب ذلك.",
+ "send": "إرسال",
+ "e_pid": "أدخل الرقم الموجود على بطاقتك، مثلاً A07.",
+ "e_miss": "يرجى الإجابة عن الأسئلة المحددة.",
+ "e_net": "تعذّر الإرسال. تحقق من الاتصال واضغط إرسال مرة أخرى؛ إجاباتك محفوظة.",
+ "done_h": "تم الإرسال. شكراً.",
+ "done_p": "يمكنك إغلاق هذه الصفحة. إن كان لديك دقيقة، أخبر الشخص عند المنصة برأيك.",
+ "small": "Frappua! / SafeSkillVR، هلسنكي. لا تُحفظ أسماء أو عناوين بريد أو بيانات أجهزة. للأسئلة: info@frappua.win"
+},
 ru:{
  title:"Спасибо, что попробовали SafeSkillVR",
  lead:"Анкета анонимная, около четырёх минут. Правильных ответов нет, нам важно, что вы почувствовали. Отправляя анкету, вы соглашаетесь, что ответы используются в исследовании без указания имени.",
@@ -192,7 +426,8 @@ var BG=[["age","age","age_o"],["games","games","games_o"],["vr","vr","vr_o"]];
 var EMO=["curious","excited","surprised","confused","anxious","frustrated","bored"];
 var CONV=["knew","useful","like_someone","talk_again"];
 var AV=["eerie","movement","face_speech","stopped_noticing"];
-var lang=(location.search.match(/[?&]lang=(ru|en)/)||[])[1]||(/^ru/i.test(navigator.language)?"ru":"en");
+var LANGS=["en","fi","zh","ru","ar"];
+var lang=(location.search.match(/[?&]lang=(en|fi|zh|ru|ar)/)||[])[1]||(function(){var n=String(navigator.language||"").slice(0,2).toLowerCase();return LANGS.indexOf(n)>=0?n:"en";})();
 var n=1;
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]});}
 function choice(key,label,opts){
@@ -208,7 +443,7 @@ function scale(key,label,lo,hi){
 function snapshot(){var o={};new FormData(document.getElementById("f")).forEach(function(v,k){o[k]=v;});return o;}
 function restore(o){Object.keys(o).forEach(function(k){var el=document.querySelector('[name="'+k+'"][value="'+o[k]+'"]');if(el)el.checked=true;});}
 function render(){
-  var t=T[lang]; document.documentElement.lang=lang; n=1;
+  var t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=(lang==="ar"?"rtl":"ltr"); n=1;
   document.querySelectorAll("[data-t]").forEach(function(el){el.textContent=t[el.getAttribute("data-t")];});
   document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-lang")===lang));});
   var saved=snapshot();
